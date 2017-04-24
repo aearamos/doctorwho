@@ -15,6 +15,37 @@ ActiveRecord::Schema.define(version: 20170424202455) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "doctors", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street_name"
+    t.string   "city_name"
+    t.string   "phone"
+    t.string   "gender"
+    t.text     "description"
+    t.string   "crm"
+    t.boolean  "activity"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_id"], name: "index_doctors_on_user_id", using: :btree
+  end
+
+  create_table "specialties", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "treatmentspecialties", force: :cascade do |t|
+    t.integer  "doctor_id"
+    t.integer  "specialty_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["doctor_id"], name: "index_treatmentspecialties_on_doctor_id", using: :btree
+    t.index ["specialty_id"], name: "index_treatmentspecialties_on_specialty_id", using: :btree
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -34,4 +65,7 @@ ActiveRecord::Schema.define(version: 20170424202455) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "doctors", "users"
+  add_foreign_key "treatmentspecialties", "doctors"
+  add_foreign_key "treatmentspecialties", "specialties"
 end
