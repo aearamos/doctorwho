@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-require 'faker'
+
 
 Treatmentspecialty.destroy_all
 Specialty.destroy_all
@@ -69,3 +69,12 @@ end
   doctor: doctors.sample
   )
 end
+<<<<<<< HEAD
+
+
+
+
+
+
+=======
+>>>>>>> 5904fbd9191bc60cbc724a5c170cbf19d16c8292
