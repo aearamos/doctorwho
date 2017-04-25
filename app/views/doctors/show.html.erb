@@ -1,4 +1,50 @@
-<h1>doctors#show</h1>
-<p>Find me in app/views/doctors/show.html.erb</p>
 
-<%= @doctor.first_name %>
+
+<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('background.jpg');">
+  <div class="banner-content">
+  <br>
+
+
+  <div class="wrapper" style="background: white; border-radius: 5px; margin: 80px; margin-top: 5px; padding: 10px">
+
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
+      <p>MAP WITH DOCTOR ADDRESS</p>
+      <p>MAP WITH DOCTOR ADDRESS</p>
+      <p>MAP WITH DOCTOR ADDRESS</p>
+      <p>MAP WITH DOCTOR ADDRESS</p>
+    </div>
+
+    <div class="container">
+      <div class="row">
+
+        <div class="col-xs-6" style="text-align: center">
+          <img src="http://www.fillmurray.com/g/200/300" alt="">
+          <p></p>
+          <button>Review</button>
+        </div>
+
+        <div class="col-xs-6">
+          <h1><%= "Dr. " + @doctor.first_name.to_s + " " + @doctor.last_name.to_s %></h1>
+          <% specialties = @doctor.specialties %>
+            <% specialties.each do |specialty| %>
+            <p> <strong><%=specialty.name%></strong> </p>
+          <% end %>
+          <p><strong>Description: </strong><%=@doctor.description%></p>
+          <br>
+          <p><strong>Contact: </strong><%=@doctor.phone%></p>
+          <p><strong>Address: </strong><%=@doctor.street_name.to_s + " - " + @doctor.city_name.to_s%></p>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+</div>
+</div>
+
+
