@@ -1,0 +1,2 @@
+module TreatmentspecialtiesHelper
+end
