@@ -1,5 +1,6 @@
 class Doctor < ApplicationRecord
-  belongs_to :user, optional:true
+
+  belongs_to :user, optional: true
   has_many :reviews
   has_many :treatmentspecialties
   has_many :specialties, through: :treatmentspecialties
@@ -11,7 +12,6 @@ class Doctor < ApplicationRecord
         "-"
     end
   end
-
 end
 
 

@@ -24,7 +24,7 @@ class DoctorsController < ApplicationController
 
   def show
     @doctor = Doctor.find(params[:id])
-    @doctor = Doctor.new
+
   end
 
   def edit
