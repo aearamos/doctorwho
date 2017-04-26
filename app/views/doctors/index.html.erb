@@ -17,7 +17,7 @@
               <% @doctors.each do |doctor|%>
 
                 <div class="card-doctor">
-                  <h3 class= "card-doctor-name">  <%= "#{doctor.first_name}  #{doctor.last_name}" %> </h3>
+                  <h3 class= "card-doctor-name">  <%= doctor.name %> </h3>
                   <p class="card-doctor-address"> <%= doctor.street_name %> <br> <%= doctor.city_name %></p>
                   <p class="card-doctor-specialty">
                  <!-- I'm trying to do a comma after the List of specialties -->
@@ -27,7 +27,7 @@
                       <%= specialty.name %>
                     <% end %>
                   </p>
-                  <img class= "card-doctor-profile" src="http://fillmurray.com/100/150" alt="">
+                  <img class= "card-doctor-profile" src= <%= doctor.photo %> alt="">
                     <%= link_to " ", doctor_path(doctor), class: "card-doctor-link" %>
                   <div class="rating-info">
                     <div class="btn btn-primary card-doctor-index-rating-button"> Review!</div>
