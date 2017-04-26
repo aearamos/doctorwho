@@ -1,18 +1,37 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
 #!/usr/bin/env ruby -U
 
 require 'open-uri'
 require 'nokogiri'
-doctors = []
 
-10.times do |i|
+Treatmentspecialty.destroy_all
+Specialty.destroy_all
+Review.destroy_all
+Doctor.destroy_all
+User.destroy_all
+
+specialties = []
+users = []
+doctors = []
+treatmentspecialties = []
+
+
+specialties << Specialty.create!(name: "Cardiology")
+specialties <<Specialty.create!(name: "Neurology")
+specialties <<Specialty.create!(name: "General")
+specialties <<Specialty.create!(name: "Psychology")
+specialties <<Specialty.create!(name: "Immunology")
+specialties <<Specialty.create!(name: "Oncoology")
+
+5.times do
+  users << User.create!(
+    first_name: Faker::Name.first_name,
+    last_name:  Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "123456"
+  )
+end
+
+2.times do |i|
   html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/#{i+1}")
   #  html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/5")
 
@@ -27,7 +46,7 @@ doctors = []
 
       new_html_doc.search('#main').each do |doc|
         name = doc.search('.title h1').text
-        specialty = doc.search('.title #doctorSpecialities p').text.sub('Ver Mais','').sub('Ver Menos','').sub('ver mais','')
+        specialty = doc.search('.title #doctorSpecialities p')[0].text.sub('Ver Mais','').sub('Ver Menos','').sub('ver mais','')
         crm = doc.search('p.regnum').size.positive? ? doc.search('p.regnum')[0].text.sub("Número de Identificação Profissional: ", '') : "Não disponível."
         website = doc.search('section.website p')
         img = doc.search('.entity-actions').search('img')
@@ -40,9 +59,29 @@ doctors = []
         city_name = "São Paulo"
         activity = true
         phone = "Não disponível."
-        doctor = Doctor.new(name: name, street_name: address, city_name: city_name, description: description, crm: crm, activity: activity, insurance: insurance, photo: photo_id, website: website, phone: phone)
-        doctor.save
+        doctors << Doctor.create!(name: name, street_name: address, city_name: city_name, description: description, crm: crm, activity: activity, insurance: insurance, photo: photo_id, website: website, phone: phone)
       end
     end
   end
 end
+
+
+40.times do
+  treatmentspecialties << Treatmentspecialty.create!(
+    doctor: doctors.sample,
+    specialty: specialties.sample,
+    )
+end
+
+
+30.times do
+  Review.create!(
+  title: Faker::Lorem.sentence,
+  comment: Faker::Lorem.paragraph(2),
+  Rating: (1..5).to_a.sample,
+  date_of_consultancy: Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
+  user: users.sample,
+  doctor: doctors.sample
+  )
+end
+

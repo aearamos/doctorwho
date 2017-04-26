@@ -1,0 +1,41 @@
+
+<div class="wrapper-index">
+
+<h2 class="text-center">Your Doctor Search Results: </h2>
+  <div class="container">
+    <div class="wrapper-flex">
+      <div class="filter-index">
+        <p>Here will come some fancy filters</p>
+      </div>
+      <div class="wrapper-doctor-cards">
+          <div class="row">
+            <div class="col-xs-12">
+              <% @doctors.each do |doctor|%>
+
+                <div class="card-doctor">
+                  <h3 class= "card-doctor-name">  <%= "#{doctor.first_name}  #{doctor.last_name}" %> </h3>
+                  <p class="card-doctor-address"> <%= doctor.street_name %> <br> <%= doctor.city_name %></p>
+                  <p class="card-doctor-specialty">
+                 <!-- I'm trying to do a comma after the List of specialties -->
+                   <!--  <%= doctor.specialties.each{ |specialty|
+                      specialty.name}.join(", ") %> -->
+                    <% doctor.specialties.each do |specialty| %>
+                      <%= specialty.name %>
+                    <% end %>
+                  </p>
+                  <img class= "card-doctor-profile" src="http://fillmurray.com/100/150" alt="">
+                    <%= link_to " ", doctor_path(doctor), class: "card-doctor-link" %>
+                  <div class="rating-info">
+                    <div class="btn btn-primary card-doctor-index-rating-button"> Review!</div>
+                    <div class="card-doctor-rating-description"> Rating </div>
+                    <div class="card-doctor-rating-average"> <%= doctor.average_review.to_f.round(1) %> </div>
+                    <div class="card-doctor-amount-of-reviews"> <%= doctor.reviews.count %> Reviews </div>
+                  </div>
+                </div>
+              <%end%>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

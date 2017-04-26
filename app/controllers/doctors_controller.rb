@@ -4,6 +4,9 @@ class DoctorsController < ApplicationController
 
   def index
     @doctors = Doctor.all
+    @reviews = Review.all
+
+
   end
 
   def new
@@ -21,6 +24,7 @@ class DoctorsController < ApplicationController
 
   def show
     @doctor = Doctor.find(params[:id])
+
   end
 
   def edit
