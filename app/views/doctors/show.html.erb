@@ -20,7 +20,7 @@
           <div class=" col-sm-4 col-xs-12">
             <div style="background-color: #469AE0; border-radius: 5px; padding: 10px">
               <div style="display: flex; justify-content: space-around;">
-                <img src= <%=@doctor.photo %> alt="">
+                <img src= <%=@doctor.photo%> alt="">
                 <div style="text-align: center">
                   <h3>RATING</h3>
                   <h2> <strong> <%= @doctor.average_review.to_f.round(1) %> </strong> </h2>
@@ -43,6 +43,8 @@
           <br>
           <p><strong>Contact: </strong><%=@doctor.phone%></p>
           <p><strong>Address: </strong><%=@doctor.street_name.to_s + " - " + @doctor.city_name.to_s%></p>
+          <p><strong>Website: </strong><%=@doctor.website%></p>
+
         </div>
       </div>
     </div>
