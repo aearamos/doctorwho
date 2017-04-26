@@ -1,0 +1,130 @@
+
+.wrapper-index {
+  background-color: #e2e1f7;
+}
+
+.wrapper-flex {
+  display: flex;
+  background-color: white;
+  // justify-content: space-around;
+
+}
+
+.filter-index {
+  background-color: white;
+  flex: 0 0 20%;
+  border: solid;
+
+}
+
+.wrapper-doctor-cards {
+  flex-grow: 1;
+
+}
+
+
+.card-doctor {
+  height: 175px;
+  background-size: cover !important;
+  position: relative;
+  margin: 10px;
+  border-top: 0.5px dashed #e8e5e5;
+}
+
+.card-doctor:hover{
+  background-color: #e8e5e5;
+}
+
+
+
+.card-doctor-name {
+  color: #88D1E7;
+  position: absolute;
+  top: 10px;
+  left: 120px;
+}
+
+.card-doctor-address {
+  color: #88D1E7;
+  position: absolute;
+  bottom: 40px;
+  left: 120px;
+}
+
+.card-doctor-specialty {
+  color: #909090;
+  position: absolute;
+  bottom: 2px;
+  left: 120px;
+}
+
+.card-doctor-profile {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.card-doctor-index-rating-button {
+  position: absolute;
+  bottom: 90px;
+  right: 50px;
+}
+
+.card-doctor-rating-average {
+  position: absolute;
+  bottom: 90px;
+  right: 2px;
+  background-color: $green;
+  padding: 7px;
+  border-radius: 3px;
+  color: white;
+}
+
+.card-doctor-link {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index:2;
+  background: black;
+  opacity: 0;
+}
+
+.card-doctor-amount-of-reviews {
+  color: #88D1E7;
+  position: absolute;
+  bottom: 50px;
+  right: 2px;
+}
+
+.card-doctor-rating-description {
+  color: $gray;
+  position: absolute;
+  bottom: 130px;
+  right: 5px;
+  font-size: 10px;
+}
+
+//
+.card-category {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 10px;
+  text-transform: uppercase;
+}
+.card-description {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+.card-description h2 {
+  font-size: 24px;
+}
+.card-description p {
+  font-size: 13px;
+  }
+.card-link:hover{
+  opacity: 0.1;
+}
