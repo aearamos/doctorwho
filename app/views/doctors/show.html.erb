@@ -91,7 +91,7 @@
         <h4 class="modal-title">Review <%= "Dr. " + @doctor.first_name.to_s + " " + @doctor.last_name.to_s %></h4>
       </div>
       <div class="modal-body">
-        <%= simple_form_for @review do |f| %>
+        <%= simple_form_for [@doctor, @review] do |f| %>
           <%= f.input :title, label: false, placeholder: "Review title" %>
           <%= f.input :comment, label: false, placeholder: "Comment" %>
           <%= f.input :rating, collection: 1..5, placeholder: "Rating" %>
