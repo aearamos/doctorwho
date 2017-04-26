@@ -1,5 +1,17 @@
 
  <%= simple_form_for @search, url: doctors_path, method: :get do |f| %>
-  <%= f.input :first_name %>
-  <%= f.button :submit %>
+  <%= f.input :name, placeholder: "Renata Lopes", label_html: { class: "search-title" }, input_html: { class: "search-name" }, wrapper_html: { class: "search-box" } %>
+  <%= f.input :specialty, placeholder: "Specialty", label_html: { class: "search-title" }, input_html: { class: "search-name" }, wrapper_html: { class: "search-box" } %>
+  <%= f.input_field :rating_1, as: :boolean, boolean_style: :inline %> 1 and up
+  <br>
+  <%= f.input_field :rating_2, as: :boolean, boolean_style: :inline %> 2 and up
+  <br>
+  <%= f.input_field :rating_3, as: :boolean, boolean_style: :inline %> 3 and up
+  <br>
+  <%= f.input_field :rating_4, as: :boolean, boolean_style: :inline %> 4 and up
+  <br>
+  <%= f.input_field :rating_5, as: :boolean, boolean_style: :inline %> 5 and up
+  <br>
+  <br>
+  <%= f.button :submit, class: "btn btn-primary" %>
 <% end %>

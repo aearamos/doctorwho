@@ -1,4 +1,29 @@
 
+.search-title{
+  background-color: $light-gray;
+  color: $bleu;
+  font-weight: lighter;
+  font-size: 15px;
+  margin-bottom: 2px;
+  padding: 1px 10px;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.search-name{
+
+  padding: 3px;
+  margin: 0px 5px;
+  padding: 4px;
+  font-size: 13px;
+  width: 90%;
+  height: 48%;
+}
+
+.search-box {
+  margin-bottom: 10px;
+}
+
 .wrapper-index {
   background-color: #e2e1f7;
 }
@@ -6,19 +31,22 @@
 .wrapper-flex {
   display: flex;
   background-color: white;
-  // justify-content: space-around;
-
+  // justify-content: space-inbetween;
 }
 
 .filter-index {
   background-color: white;
-  flex: 0 0 20%;
+  flex: 0 0 30%;
   border: solid;
+  padding: 18px;
+  border-radius: 10px;
 
 }
 
 .wrapper-doctor-cards {
   flex-grow: 1;
+  border-radius: 10px;
+  border: solid;
 
 }
 
