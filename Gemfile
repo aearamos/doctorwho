@@ -17,12 +17,14 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
-gem "faker"
 gem "simple_form"
+
 
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'omniauth-facebook'
+
 
   gem 'pry-byebug'
   gem 'pry-rails'
