@@ -78,7 +78,7 @@ end
   Review.create!(
   title: Faker::Lorem.sentence,
   comment: Faker::Lorem.paragraph(2),
-  Rating: (1..5).to_a.sample,
+  rating: (1..5).to_a.sample,
   date_of_consultancy: Faker::Date.between_except(1.year.ago, 1.year.from_now, Date.today),
   user: users.sample,
   doctor: doctors.sample
