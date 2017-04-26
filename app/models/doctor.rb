@@ -7,7 +7,7 @@ class Doctor < ApplicationRecord
 
   def average_review
     if self.reviews.size > 0
-        self.reviews.average(:Rating)
+        self.reviews.average(:rating)
     else
         "-"
     end
