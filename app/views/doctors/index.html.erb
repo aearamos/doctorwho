@@ -24,15 +24,11 @@
                     <% end %>
                   </p>
                   <img class= "card-doctor-profile" src="http://fillmurray.com/100/150" alt="">
-                  <!-- RUBY link_to "", doctor_path , class: "card-doctor-link" RUBY -->
+                    <%= link_to " ", doctor_path(doctor), class: "card-doctor-link" %>
                   <div class="rating-info">
                     <div class="btn btn-primary card-doctor-index-rating-button"> Review!</div>
                     <div class="card-doctor-rating-description"> Rating </div>
-
-                    <!-- to be calculated -->
-                    <div class="card-doctor-rating-average"> <%= doctor.average_review.to_i.round(1) %> </div>
-
-                    <!-- to be calculated -->
+                    <div class="card-doctor-rating-average"> <%= doctor.average_review.to_f.round(1) %> </div>
                     <div class="card-doctor-amount-of-reviews"> <%= doctor.reviews.count %> Reviews </div>
                   </div>
                 </div>
