@@ -48,9 +48,10 @@ end
         name = doc.search('.title h1').text
         specialty = doc.search('.title #doctorSpecialities p')[0].text.sub('Ver Mais','').sub('Ver Menos','').sub('ver mais','')
         crm = doc.search('p.regnum').size.positive? ? doc.search('p.regnum')[0].text.sub("Número de Identificação Profissional: ", '') : "Não disponível."
-        website = doc.search('section.website p')
+        web = doc.search('.website-links a')
+        website = web.size.positive? ? web.attribute('href').value : "Não Disponível."
         img = doc.search('.entity-actions').search('img')
-        photo_id = img.size.positive? ? img.attribute('src').value : "Foto indisponível"
+        photo_id = img.size.positive? ? img.attribute('src').value : "Foto indisponível."
         root = doc.search('.location.d')
         insurance = root.search('p.insurances').text.sub('Atende: ','')
         address = root.search('.address .street').text.gsub(/\s+/, ' ').strip
