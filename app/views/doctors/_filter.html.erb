@@ -1,0 +1,5 @@
+
+ <%= simple_form_for @search, url: doctors_path, method: :get do |f| %>
+  <%= f.input :first_name %>
+  <%= f.button :submit %>
+<% end %>

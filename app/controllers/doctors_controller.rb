@@ -3,10 +3,9 @@ class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
 
   def index
+    @search = Search.new(search_params)
     @doctors = Doctor.all
     @reviews = Review.all
-
-
   end
 
   def new
@@ -50,6 +49,10 @@ private
 
   def doctor_params
     params.require(:doctor).permit(:name, :photo, :photo_cache)
+  end
+
+  def search_params
+    params.require(:search).permit(:first_name) if params[:search]
   end
 
   def set_doctor
