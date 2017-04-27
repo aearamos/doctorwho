@@ -44,7 +44,12 @@
           <p><strong>Convênios: </strong><%=@doctor.insurance%></p>
           <p><strong>Contact: </strong><%=@doctor.phone%></p>
           <p><strong>Address: </strong><%=@doctor.street_name.to_s + " - " + @doctor.city_name.to_s%></p>
-          <p><strong>Website: </strong><%=link_to @doctor.website, @doctor.website %></p>
+          <p><% if @doctor.website == "Não Disponível."%>
+                <strong>Website: </strong><%=@doctor.website %>
+             <% else %>
+                <strong>Website: </strong><%=link_to @doctor.website, @doctor.website %>
+            <%end%>
+          </p>
 
         </div>
       </div>
