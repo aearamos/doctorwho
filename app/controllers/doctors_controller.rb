@@ -4,8 +4,27 @@ class DoctorsController < ApplicationController
 
   def index
     @search = Search.new(search_params)
-    @doctors = Doctor.all
     @reviews = Review.all
+    @doctors = Doctor.all
+
+
+    if params[:search]
+      if params[:search][:name]
+        @name = params[:search][:name]
+        @doctors_name = @doctors.where("name ILIKE  ?", "%#{@name}%")
+      end
+      if params[:search][:rating]
+        @rating = params[:search][:rating]
+        @rating = @rating.to_f
+        @doctors_rating = Doctor.min_average(@rating)
+      end
+      if params[:search][:specialty]
+        @specialty = params[:search][:specialty]
+        @s = Specialty.find_by name: (@specialty)
+        @doctors_specialty = Doctor.doctor_specialty(@s)
+      end
+      @doctors = @doctors_rating & @doctors_name & @doctors_specialty
+    end
   end
 
   def new
