@@ -46,7 +46,7 @@
     background-color: #FFFFFF;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-  padding: 30px;
+    padding: 30px;
   // background-color: white;
   // flex: 0 0 30%;
   // border: solid;
@@ -54,6 +54,7 @@
   // padding: 18px;
   // border-radius: 10px;
   // height: 390px;
+}
 
 .wrapper-doctor-cards {
    box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
@@ -64,22 +65,15 @@
     background-color: #FFFFFF;
     border-top-right-radius: 10px;
     border-top-left-radius: 10px;
-  padding: 30px;
-  flex: 1 0 auto;
-<<<<<<< HEAD
-  border-radius: 5px;
-  border: solid;
-  border-width: thin;
-=======
-  // border-radius: 10px;
-  // border: solid;
-  // border-width: thin;
-
->>>>>>> 3cfc0d64640f060ea1a6e9b37a63513094aa6089
-  background-color: white;
-  margin-left: 10px;
-  margin-bottom: 10px;
-
+    padding: 30px;
+    flex: 1 0 auto;
+    border-radius: 5px;
+    border: solid;
+    border-width: thin;
+    margin-left: 10px;
+    // border-radius: 10px;
+    // border: solid;
+    // border-width: thin;
 }
 
 
