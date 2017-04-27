@@ -20,6 +20,7 @@
   </div>
 
 
+<<<<<<< HEAD
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 red">
         <h1><%= @doctor.name %></h1>
         <% specialties = @doctor.specialties %>
@@ -33,6 +34,27 @@
         <p><strong>Address: </strong><%=@doctor.street_name.to_s + " - " + @doctor.city_name.to_s%></p>
         <p><strong>Website: </strong><%=link_to @doctor.website, @doctor.website %></p>
   </div>
+=======
+        <div class="col-sm-8 col-xs-12">
+          <h1><%= @doctor.name %></h1>
+            <% specialties = @doctor.specialties %>
+            <% specialties.each do |specialty| %>
+            <p> <strong><%=specialty.name%></strong> </p>
+            <% end %>
+          <p><strong>Description: </strong><%=@doctor.description%></p>
+          <br>
+          <p><strong>Convênios: </strong><%=@doctor.insurance%></p>
+          <p><strong>Contact: </strong><%=@doctor.phone%></p>
+          <p><strong>Address: </strong><%=@doctor.street_name.to_s + " - " + @doctor.city_name.to_s%></p>
+          <p><% if @doctor.website == "Não Disponível."%>
+                <strong>Website: </strong><%=@doctor.website %>
+             <% else %>
+                <strong>Website: </strong><%=link_to @doctor.website, @doctor.website %>
+            <%end%>
+          </p>
+
+
+>>>>>>> cd7e0566e2ef6475b8af6c35d83c3ef05a43236c
 
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 green">
     <% reviews = @doctor.reviews %>
