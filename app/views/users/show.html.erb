@@ -53,6 +53,9 @@
 
 
             <!-- MODAL -->
+            <% if @user.doctor.nil? %>
+            <h1>Nao eh medico</h1>
+            <% else %>
             <div id="myModal" class="modal fade" role="dialog">
               <div class="modal-dialog">
 
@@ -84,4 +87,5 @@
 
               </div>
             </div>
+            <% end %>
             <!-- MODAL -->
