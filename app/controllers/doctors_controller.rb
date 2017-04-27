@@ -18,11 +18,13 @@ class DoctorsController < ApplicationController
         @rating = @rating.to_f
         @doctors_rating = Doctor.min_average(@rating)
       end
-      @doctors = @doctors_rating & @doctors_name
+      if params[:search][:specialty]
+        @specialty = params[:search][:specialty]
+        @s = Specialty.find_by name: (@specialty)
+        @doctors_specialty = Doctor.doctor_specialty(@s)
+      end
+      @doctors = @doctors_rating & @doctors_name & @doctors_specialty
     end
-
-
-
   end
 
   def new

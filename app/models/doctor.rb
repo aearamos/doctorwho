@@ -13,23 +13,20 @@ class Doctor < ApplicationRecord
     end
   end
 
-  # def self.min_average(min_value)
-  #   @docs = []
-  #   @doctors.each do |doctor|
-  #   if average_review >= min_value
-  #     @docs << doctor
-  #   end
-  #   return @docs
-  #   end
-  # end
-
-
-    def self.min_average(min_value)
-      @docs = Doctor.all
-      @docs.select do |doctor|
-        doctor.average_review >= min_value
-      end
+  def self.min_average(min_value)
+    @docs = Doctor.all
+    @docs.select do |doctor|
+      doctor.average_review >= min_value
     end
+  end
+
+  def self.doctor_specialty(specialty)
+    @docs = Doctor.all
+    @docs.select do |doctor|
+      doctor.specialties.include?(specialty)
+    end
+  end
+
 
 end
 
