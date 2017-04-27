@@ -19,10 +19,15 @@ gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
 gem "faker"
 ruby '2.3.3'
+gem "simple_form"
+
+
 
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
+  gem 'omniauth-facebook'
+
 
   gem 'pry-byebug'
   gem 'pry-rails'

@@ -1,25 +1,79 @@
 
+.affix-filter{
+  position: fixed;
+}
+
+.search-title{
+  background-color: $light-gray;
+  color: $bleu;
+  font-weight: lighter;
+  font-size: 15px;
+  margin-bottom: 2px;
+  padding: 1px 10px;
+  width: 100%;
+  border-radius: 2px;
+}
+
+.search-name{
+  padding: 3px;
+  margin: 0px 5px;
+  padding: 4px;
+  font-size: 13px;
+  width: 90%;
+  height: 48%;
+}
+
+.search-box {
+  margin-bottom: 10px;
+}
+
 .wrapper-index {
-  background-color: #e2e1f7;
+  background-color: transparent;
 }
 
 .wrapper-flex {
+  padding: 100px;
   display: flex;
-  background-color: white;
-  // justify-content: space-around;
-
 }
 
 .filter-index {
-  background-color: white;
-  flex: 0 0 20%;
-  border: solid;
 
+    box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
+    overflow: hidden;
+    border-top: 1px solid #d5d5d5;
+    border-left: 1px solid #d5d5d5;
+    border-right: 1px solid #d5d5d5;
+    background-color: #FFFFFF;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 30px;
+  // background-color: white;
+  // flex: 0 0 30%;
+  // border: solid;
+  // border-width: thin;
+  // padding: 18px;
+  // border-radius: 10px;
+  // height: 390px;
 }
 
 .wrapper-doctor-cards {
-  flex-grow: 1;
-
+   box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
+    overflow: hidden;
+    border-top: 1px solid #d5d5d5;
+    border-left: 1px solid #d5d5d5;
+    border-right: 1px solid #d5d5d5;
+    background-color: #FFFFFF;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+    padding: 30px;
+    flex: 1 0 auto;
+    border-radius: 5px;
+    border: solid;
+    border-width: thin;
+    margin-left: 10px;
+    // border-radius: 10px;
+    // border: solid;
+    // border-width: thin;
 }
 
 
@@ -32,10 +86,8 @@
 }
 
 .card-doctor:hover{
-  background-color: #e8e5e5;
+  background-color: $off-white;
 }
-
-
 
 .card-doctor-name {
   color: #88D1E7;
@@ -49,6 +101,7 @@
   position: absolute;
   bottom: 40px;
   left: 120px;
+  max-width: 58%;
 }
 
 .card-doctor-specialty {
@@ -74,7 +127,7 @@
   position: absolute;
   bottom: 90px;
   right: 2px;
-  background-color: green;
+  background-color: $boat;
   padding: 7px;
   border-radius: 3px;
   color: white;
@@ -99,7 +152,7 @@
 }
 
 .card-doctor-rating-description {
-  color: $gray;
+  color: $boat;
   position: absolute;
   bottom: 130px;
   right: 5px;

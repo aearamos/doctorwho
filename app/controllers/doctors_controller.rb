@@ -3,10 +3,28 @@ class DoctorsController < ApplicationController
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
 
   def index
-    @doctors = Doctor.all
+    @search = Search.new(search_params)
     @reviews = Review.all
+    @doctors = Doctor.all
 
 
+    if params[:search]
+      if params[:search][:name]
+        @name = params[:search][:name]
+        @doctors_name = @doctors.where("name ILIKE  ?", "%#{@name}%")
+      end
+      if params[:search][:rating]
+        @rating = params[:search][:rating]
+        @rating = @rating.to_f
+        @doctors_rating = Doctor.min_average(@rating)
+      end
+      if params[:search][:specialty]
+        @specialty = params[:search][:specialty]
+        @s = Specialty.find_by name: (@specialty)
+        @doctors_specialty = Doctor.doctor_specialty(@s)
+      end
+      @doctors = @doctors_rating & @doctors_name & @doctors_specialty
+    end
   end
 
   def new
@@ -24,6 +42,7 @@ class DoctorsController < ApplicationController
 
   def show
     @doctor = Doctor.find(params[:id])
+    @review = Review.new
 
   end
 
@@ -50,6 +69,10 @@ private
 
   def doctor_params
     params.require(:doctor).permit(:name, :photo, :photo_cache)
+  end
+
+  def search_params
+    params.require(:search).permit(:first_name) if params[:search]
   end
 
   def set_doctor
