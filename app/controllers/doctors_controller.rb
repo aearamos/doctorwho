@@ -32,7 +32,7 @@ class DoctorsController < ApplicationController
   end
 
   def create
-    @doctor = Doctor.new(cocktail_params)
+    @doctor = Doctor.new(doctor_params)
     if @doctor.save
       redirect_to doctor_path(@doctor)
     else
@@ -47,13 +47,13 @@ class DoctorsController < ApplicationController
   end
 
   def edit
-    @doctor = Doctor.find(params[:id])
+    #@doctor = Doctor.find(params[:id])
   end
 
   def update
-    @doctor = doctor.find(params[:id])
+    #@doctor = doctor.find(params[:id])
     @doctor.update(doctor_params)
-    redirect_to doctor_path(@cocktail)
+    redirect_to doctor_path(@doctor)
 
   end
 
@@ -68,7 +68,7 @@ private
 
 
   def doctor_params
-    params.require(:doctor).permit(:name, :photo, :photo_cache)
+    params.require(:doctor).permit(:photo, :photo_cache, :name, :street_name, :city_name, :phone, :description, :activity, :crm, :insurance, :website)
   end
 
   def search_params
@@ -80,3 +80,7 @@ private
   end
 
 end
+
+
+
+
