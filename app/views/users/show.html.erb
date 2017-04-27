@@ -1,4 +1,39 @@
-<h1>Welcome vv <%=@user.first_name%></h1>
+<div class="container">
+<br>
+<br>
+<br>
 
-<%= link_to "Edit your Profile", edit_user_registration_path %>
+<div class="row">
+  <div class=" col-sm-5 col-xs-12">
+    <h2>Welcome <%=@user.first_name%></h2>
+
+    <% if @user.facebook_picture_url == nil %>
+      <img src="http://www.kozlowskiefaria.adv.br/wp-content/uploads/2014/12/pessoa-anonima-300x300.png" alt="">
+    <% else %>
+      <img src={facebook_picture_url} className="avatar"/>
+    <% end %>
+    <br>
+    <h3> Name: <%= @user.first_name + " " + @user.last_name%></h3>
+    <h3> Email: <%= @user.email %></h3>
+
+    <br>
+    <%= link_to "Edit Account Configurations", edit_user_registration_path %>
+    <br>
+    <%= link_to "Edit Public Profile", edit_user_registration_path %>
+  </div>
+
+  <!-- FAZER A SELECAO SOMENTE SE FOR MEDICO -->
+  <div class=" col-sm-7 col-xs-12">
+
+  <h2>Public Profile</h2>
+  </div>
+
+
+
+
+
+</s></div>
+
+
+
 

@@ -13,7 +13,7 @@ class DoctorsController < ApplicationController
   end
 
   def create
-    @doctor = Doctor.new(cocktail_params)
+    @doctor = Doctor.new(doctor_params)
     if @doctor.save
       redirect_to doctor_path(@doctor)
     else
@@ -34,7 +34,7 @@ class DoctorsController < ApplicationController
   def update
     @doctor = doctor.find(params[:id])
     @doctor.update(doctor_params)
-    redirect_to doctor_path(@cocktail)
+    redirect_to doctor_path(@doctor)
 
   end
 
