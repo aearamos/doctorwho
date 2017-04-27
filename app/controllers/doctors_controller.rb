@@ -1,6 +1,7 @@
 class DoctorsController < ApplicationController
 
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :show]
 
   def index
     @search = Search.new(search_params)
