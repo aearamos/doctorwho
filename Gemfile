@@ -17,7 +17,10 @@ gem 'font-awesome-sass'
 gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
+gem "faker"
+ruby '2.3.3'
 gem "simple_form"
+
 
 
 group :development, :test do

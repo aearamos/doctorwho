@@ -1,3 +1,4 @@
+
 .search-title{
   background-color: $light-gray;
   color: $bleu;
@@ -29,7 +30,6 @@
 .wrapper-flex {
   padding: 100px;
   display: flex;
-  // justify-content: space-inbetween;
 }
 
 .box {
@@ -86,6 +86,7 @@
 
 
 
+
 .card-doctor {
   height: 175px;
   background-size: cover !important;
@@ -94,7 +95,7 @@
 }
 
 .card-doctor:hover{
-  background-color: #e8e5e5;
+  background-color: $off-white;
 }
 
 .card-doctor-name {
@@ -135,7 +136,7 @@
   position: absolute;
   bottom: 90px;
   right: 2px;
-  background-color: green;
+  background-color: $boat;
   padding: 7px;
   border-radius: 3px;
   color: white;
@@ -160,7 +161,7 @@
 }
 
 .card-doctor-rating-description {
-  color: $gray;
+  color: $boat;
   position: absolute;
   bottom: 130px;
   right: 5px;

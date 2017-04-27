@@ -19,7 +19,6 @@
     </div>
   </div>
 
-
   <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 red">
         <h1><%= @doctor.name %></h1>
         <% specialties = @doctor.specialties %>
@@ -31,10 +30,23 @@
         <p><strong>Convênios: </strong><%=@doctor.insurance%></p>
         <p><strong>Contact: </strong><%=@doctor.phone%></p>
         <p><strong>Address: </strong><%=@doctor.street_name.to_s + " - " + @doctor.city_name.to_s%></p>
-        <p><strong>Website: </strong><%=link_to @doctor.website, @doctor.website %></p>
-  </div>
 
+        <p><% if @doctor.website == "Não Disponível."%>
+            <strong>Website: </strong><%=@doctor.website %>
+         <% else %>
+            <strong>Website: </strong><%=link_to @doctor.website, @doctor.website %>
+        <%end%>
+      </p>
+  </div>
+  
+<br>
+<br>
+
+<div class="container white-box">
+  <div class="row">
   <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 green">
+    <h1>Reviews (under construction)</h1>
+
     <% reviews = @doctor.reviews %>
     <% reviews.each do |review| %>
     <section style="background-color: #FAFAFA; padding: 20px; margin: 20px 0; box-shadow: 1px 1px 3px #F0F0F0; position: relative">
