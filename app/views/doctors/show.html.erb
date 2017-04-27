@@ -1,116 +1,106 @@
 
-<div class="all" style="background-image: linear-gradient(180deg, rgba(0,101,168,0.2) 0%, rgba(255,255,255,0.4) 50%), url('http://res.cloudinary.com/livpuppa/image/upload/v1493238698/city_iw0rls.jpg');">
+<div class="background-image" style="background-image: linear-gradient(180deg, rgba(0,101,168,0.2) 0%, rgba(255,255,255,0.4) 50%), url('http://res.cloudinary.com/livpuppa/image/upload/v1493238698/city_iw0rls.jpg');">
 
-
-  <div class="container content-container">
-    <div class="row">
-      <div class=" col-sm-4 col-xs-12">
-      <!--  <div style="background-color: #FFFFFF; border-radius: 5px; padding: 10px">
-      </div>
+<!-- <div class="map">
+<img src="http://res.cloudinary.com/livpuppa/image/upload/v1493303349/Captura_de_Tela_2017-04-27_a%CC%80s_11.28.34_s4aig3.png" alt="" >
+</div>
  -->
-      <!--  <div style="display: flex; justify-content: space-around;">
-      <img src= <%=@doctor.photo%> alt="" >
-      </div>
 
-      <div style="text-align: center">
-      <h3>RATING</h3>
-      <h2> <strong> <%= @doctor.average_review.to_f.round(1) %> </strong> </h2>
-      <a href="#" class="btn btn-success">Reviews</a>
-      </div>
+<div class="wrapper">
+<div class="container">
+<div class="row">
 
-      <!-- <div style="text-align: center">
-      <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#myModal">Review this doctor</button>
-      </div> -->
-      </div>
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 blue">
+    <div><img src= <%=@doctor.photo%> alt=""></div>
+    <div class="rating-info">
+        <div class="btn btn-primary card-doctor-index-rating-button" data-toggle="modal" data-target="#myModal"> Review!</div>
+        <div><a href="#" class="btn btn-success">Reviews</a></div>
+        <div class="card-doctor-rating-average"> <%= @doctor.average_review.to_f.round(1) %></div>
     </div>
   </div>
 
+  <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6 red">
+        <h1><%= @doctor.name %></h1>
+        <% specialties = @doctor.specialties %>
+        <% specialties.each do |specialty| %>
+        <p> <strong><%=specialty.name%></strong> </p>
+        <% end %>
+        <p><strong>Description: </strong><%=@doctor.description%></p>
+        <br>
+        <p><strong>Convênios: </strong><%=@doctor.insurance%></p>
+        <p><strong>Contact: </strong><%=@doctor.phone%></p>
+        <p><strong>Address: </strong><%=@doctor.street_name.to_s + " - " + @doctor.city_name.to_s%></p>
 
-        <div class="col-sm-8 col-xs-12">
-          <h1><%= @doctor.name %></h1>
-            <% specialties = @doctor.specialties %>
-            <% specialties.each do |specialty| %>
-            <p> <strong><%=specialty.name%></strong> </p>
-            <% end %>
-          <p><strong>Description: </strong><%=@doctor.description%></p>
-          <br>
-          <p><strong>Convênios: </strong><%=@doctor.insurance%></p>
-          <p><strong>Contact: </strong><%=@doctor.phone%></p>
-          <p><strong>Address: </strong><%=@doctor.street_name.to_s + " - " + @doctor.city_name.to_s%></p>
-          <p><% if @doctor.website == "Não Disponível."%>
-                <strong>Website: </strong><%=@doctor.website %>
-             <% else %>
-                <strong>Website: </strong><%=link_to @doctor.website, @doctor.website %>
-            <%end%>
-          </p>
-
-
+        <p><% if @doctor.website == "Não Disponível."%>
+            <strong>Website: </strong><%=@doctor.website %>
+         <% else %>
+            <strong>Website: </strong><%=link_to @doctor.website, @doctor.website %>
+        <%end%>
+      </p>
+  </div>
+  
 <br>
 <br>
 
 <div class="container white-box">
   <div class="row">
-    <div class=" col-sm-12 col-xs-12">
+  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 green">
     <h1>Reviews (under construction)</h1>
+
     <% reviews = @doctor.reviews %>
     <% reviews.each do |review| %>
     <section style="background-color: #FAFAFA; padding: 20px; margin: 20px 0; box-shadow: 1px 1px 3px #F0F0F0; position: relative">
+
     <div style="display: flex; align-items: center;">
-    <div style="text-align: center; margin-right: 40px">
-    <h4>Rating:</h4>
-    <h2><%=review.rating%></h2>
+      <div style="text-align: center; margin-right: 40px">
+      <h4>Rating:</h4>
+      <h2><%=review.rating%></h2>
     </div>
+
     <div>
-    <h4><strong><%=review.title%></strong></h4>
-    <h5><%=review.comment%></h5>
-    <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
+      <h4><strong><%=review.title%></strong></h4>
+      <h5><%=review.comment%></h5>
+      <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
     </div>
-    </div>
-    </section>
 
-    <% end %>
-</div>
-</div>
-</div>
+      </section>
+      <% end %>
+  </div>
 
 
+</div><!-- END ROW -->
+</div> <!-- END CONTAINER -->
+</div> <!-- END WRAPPER -->
+</div> <!-- END BACKGROUND -->
 
-
-
-</div>
-
-</div>
-</div>
-
-</div>
-
-
-
-<!-- Modal -->
+<!-- MODAL -->
 <div id="myModal" class="modal fade" role="dialog">
   <div class="modal-dialog">
+    <div class="modal-content">
 
-<!-- Modal content-->
-<div class="modal-content">
-  <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal">&times;</button>
-    <h4 class="modal-title">Review Dr.<%= @doctor.name %></h4>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Review Dr.<%= @doctor.name %></h4>
+      </div>
+
+      <div class="modal-body">
+        <%= simple_form_for [@doctor, @review] do |f| %>
+        <%= f.input :title, label: false, placeholder: "Review title" %>
+        <%= f.input :comment, label: false, placeholder: "Comment" %>
+        <%= f.input :rating, collection: 1..5, placeholder: "Rating" %>
+      </div>
+
+      <div class="modal-footer">
+        <%= f.button :submit %>
+        <% end %>
+      </div>
+
+    </div>
   </div>
-  <div class="modal-body">
-    <%= simple_form_for [@doctor, @review] do |f| %>
-    <%= f.input :title, label: false, placeholder: "Review title" %>
-    <%= f.input :comment, label: false, placeholder: "Comment" %>
-    <%= f.input :rating, collection: 1..5, placeholder: "Rating" %>
-  </div>
-  <div class="modal-footer">
-    <%= f.button :submit %>
-  <% end %>
-  </div>
-</div>
+
+</div><!-- END MODAL -->
 
 
-
-</div>
 
 
 

@@ -1,6 +1,67 @@
-.reviews-list {
-  padding: 80px;
+.red {
+  background-color: $off-white;
+  padding: 30px;
 }
+
+.blue {
+  background-color: $light-gray;
+}
+
+.green{
+  background-color: $light-gray;
+}
+
+.container {
+    max-width: 800px;
+    padding: 18px;
+    box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
+    overflow: hidden;
+    border-top: 1px solid #d5d5d5;
+    border-left: 1px solid #d5d5d5;
+    border-right: 1px solid #d5d5d5;
+    background-color: #FFFFFF;
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.background-image {
+  background: no-repeat center center fixed;
+  background-size: cover;
+}
+
+.wrapper {
+  padding: 100px;
+}
+
+
+
+// .description-card {
+//   display: flex;
+//   justify-content: space-around;
+//   align-items: center;
+// }
+
+// .reviews-list {
+//   padding: 80px;
+// }
+
+// .map {
+//   width: 100%;
+//   height: 100px;
+//   overflow: hidden;
+// }
+
+// .cards-show {
+//     // box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.4);
+//     // overflow: hidden;
+//     margin: 50px;
+//     // border-top: 1px solid #d5d5d5;
+//     // border-left: 1px solid #d5d5d5;
+//     // border-right: 1px solid #d5d5d5;
+//     background-color: $off-white;
+//     border-top-right-radius: 3px;
+//     border-top-left-radius: 3px;
+// }
 
 // .all {
 //   background-color: $ashes;
@@ -13,25 +74,7 @@
 //   // justify-content: center;
 // }
 
-.content-container {
-    box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
-    overflow: hidden;
-    border-top: 1px solid #d5d5d5;
-    border-left: 1px solid #d5d5d5;
-    border-right: 1px solid #d5d5d5;
-    background-color: #FFFFFF;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
-}
-
-
-
-.all {
-  background: url(http://kingofwallpapers.com/sao-paulo/sao-paulo-019.jp) no-repeat center center fixed;
-  background-size: cover;
-}
-
-.white-box {
-  width: 100%;
-  background-color: $off-white;
-}
+// .all {
+//   padding: 50px;
+//   margin: 0 auto;
+// }
