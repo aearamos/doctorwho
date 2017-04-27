@@ -4,10 +4,14 @@
 
 .alert {
   width: 100%;
+
   position: fixed;
+  z-index: 999;
   margin: 0;
   text-align: center;
   color: white;
+
+
 }
 .alert-info {
   background: $bleu;
@@ -15,3 +19,4 @@
 .alert-warning {
   background: $boat;
 }
+
