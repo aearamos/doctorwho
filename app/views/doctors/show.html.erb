@@ -41,9 +41,10 @@
             <% end %>
           <p><strong>Description: </strong><%=@doctor.description%></p>
           <br>
+          <p><strong>Convênios: </strong><%=@doctor.insurance%></p>
           <p><strong>Contact: </strong><%=@doctor.phone%></p>
           <p><strong>Address: </strong><%=@doctor.street_name.to_s + " - " + @doctor.city_name.to_s%></p>
-          <p><strong>Website: </strong><%=@doctor.website%></p>
+          <p><strong>Website: </strong><%=link_to @doctor.website, @doctor.website %></p>
 
         </div>
       </div>

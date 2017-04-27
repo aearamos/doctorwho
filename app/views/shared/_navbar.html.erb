@@ -10,28 +10,36 @@
 
     <!-- Text link -->
     <%= link_to root_path do %>
+      <%= content_tag :span, "Home", :class => "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+
+    <%= link_to root_path do %>
       <%= content_tag :span, "About", :class => "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
     <%= link_to doctors_path do %>
-      <%= content_tag :span, "List of all doctors", :class => "navbar-wagon-item navbar-wagon-link" %>
+      <%= content_tag :span, "Doctor Listing", :class => "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
-    <%= link_to doctors_path do %>
-      <%= content_tag :span, "Login", :class => "navbar-wagon-item navbar-wagon-link" %>
+    <% if !user_signed_in? %>
+      <%= link_to doctors_path do %>
+        <%= content_tag :span, "Login", :class => "navbar-wagon-item navbar-wagon-link" %>
+      <% end %>
     <% end %>
 
 
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
+      <% if user_signed_in? %>
       <div class="dropdown">
-        <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+      <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+          <li><%= link_to('Profile', user_path(current_user)) %></li>
           <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
         </ul>
       </div>
+      <% end %>
     </div>
-
   </div>
 
   <!-- Dropdown appearing on mobile only -->
