@@ -1,4 +1,7 @@
 
+.affix-filter{
+  position: fixed;
+}
 
 .search-title{
   background-color: $light-gray;
@@ -12,7 +15,6 @@
 }
 
 .search-name{
-
   padding: 3px;
   margin: 0px 5px;
   padding: 4px;
@@ -31,7 +33,6 @@
 
 .wrapper-flex {
   display: flex;
-  // justify-content: space-inbetween;
 }
 
 .filter-index {
@@ -40,18 +41,18 @@
   border: solid;
   border-width: thin;
   padding: 18px;
-  border-radius: 10px;
-  height: 390px;
-
+  border-radius: 5px;
+  height: 420px;
 }
 
 .wrapper-doctor-cards {
   flex: 1 0 auto;
-  border-radius: 10px;
+  border-radius: 5px;
   border: solid;
   border-width: thin;
   background-color: white;
   margin-left: 10px;
+  margin-bottom: 10px;
 
 }
 
@@ -65,10 +66,8 @@
 }
 
 .card-doctor:hover{
-  background-color: #e8e5e5;
+  background-color: $off-white;
 }
-
-
 
 .card-doctor-name {
   color: #88D1E7;
@@ -108,7 +107,7 @@
   position: absolute;
   bottom: 90px;
   right: 2px;
-  background-color: green;
+  background-color: $boat;
   padding: 7px;
   border-radius: 3px;
   color: white;
@@ -133,7 +132,7 @@
 }
 
 .card-doctor-rating-description {
-  color: $gray;
+  color: $boat;
   position: absolute;
   bottom: 130px;
   right: 5px;
