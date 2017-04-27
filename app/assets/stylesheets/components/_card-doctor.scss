@@ -1,8 +1,4 @@
 
-.affix-filter{
-  position: fixed;
-}
-
 .search-title{
   background-color: $light-gray;
   color: $bleu;
@@ -36,52 +32,65 @@
   display: flex;
 }
 
-.filter-index {
-
-    box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
-    overflow: hidden;
-    border-top: 1px solid #d5d5d5;
-    border-left: 1px solid #d5d5d5;
-    border-right: 1px solid #d5d5d5;
-    background-color: #FFFFFF;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    padding: 30px;
-  // background-color: white;
-  // flex: 0 0 30%;
-  // border: solid;
-  // border-width: thin;
-  // padding: 18px;
-  // border-radius: 10px;
-  // height: 390px;
+.box {
+  max-width: 800px;
+  padding: 18px;
+  box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
+  overflow: hidden;
+  border-top: 1px solid #d5d5d5;
+  border-left: 1px solid #d5d5d5;
+  border-right: 1px solid #d5d5d5;
+  background-color: #FFFFFF;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
 }
+// .filter-index {
+//     box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
+//     overflow: hidden;
+//     border-top: 1px solid #d5d5d5;
+//     border-left: 1px solid #d5d5d5;
+//     border-right: 1px solid #d5d5d5;
+//     background-color: #FFFFFF;
+//     border-top-right-radius: 10px;
+//     border-top-left-radius: 10px;
+//   padding: 30px;
+//   // background-color: white;
+//   // flex: 0 0 30%;
+//   // border: solid;
+//   // border-width: thin;
+//   // padding: 18px;
+//   // border-radius: 10px;
+//   // height: 390px;
 
-.wrapper-doctor-cards {
-   box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
-    overflow: hidden;
-    border-top: 1px solid #d5d5d5;
-    border-left: 1px solid #d5d5d5;
-    border-right: 1px solid #d5d5d5;
-    background-color: #FFFFFF;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    padding: 30px;
-    flex: 1 0 auto;
-    border-radius: 5px;
-    border: solid;
-    border-width: thin;
-    margin-left: 10px;
-    // border-radius: 10px;
-    // border: solid;
-    // border-width: thin;
-}
+
+// }
+
+// .wrapper-doctor-cards {
+//    box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
+//     overflow: hidden;
+//     border-top: 1px solid #d5d5d5;
+//     border-left: 1px solid #d5d5d5;
+//     border-right: 1px solid #d5d5d5;
+//     background-color: #FFFFFF;
+//     border-top-right-radius: 10px;
+//     border-top-left-radius: 10px;
+//   padding: 30px;
+//   flex: 1 0 auto;
+//   // border-radius: 10px;
+//   // border: solid;
+//   // border-width: thin;
+
+//   background-color: white;
+//   margin-left: 10px;
+
+
+
 
 
 .card-doctor {
   height: 175px;
   background-size: cover !important;
   position: relative;
-  margin: 10px;
   border-top: 0.5px dashed #e8e5e5;
 }
 
@@ -159,7 +168,6 @@
   font-size: 10px;
 }
 
-//
 .card-category {
   position: absolute;
   top: 10px;
@@ -167,17 +175,21 @@
   font-size: 10px;
   text-transform: uppercase;
 }
+
 .card-description {
   position: absolute;
   bottom: 10px;
   left: 10px;
 }
+
 .card-description h2 {
   font-size: 24px;
 }
+
 .card-description p {
   font-size: 13px;
   }
+
 .card-link:hover{
   opacity: 0.1;
 }
