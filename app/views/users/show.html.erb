@@ -1,4 +1,91 @@
-<h1>Welcome vv <%=@user.first_name%></h1>
+<div class="container">
+  <br>
+  <br>
+  <br>
+  <div class="row">
+    <div class=" col-sm-5 col-xs-12">
+      <h2>Welcome <%=@user.first_name%></h2>
 
-<%= link_to "Edit your Profile", edit_user_registration_path %>
+      <% if @user.facebook_picture_url == nil %>
+        <img src="http://www.kozlowskiefaria.adv.br/wp-content/uploads/2014/12/pessoa-anonima-300x300.png" alt="">
+      <% else %>
+        <img src={facebook_picture_url} className="avatar"/>
+      <% end %>
+      <br>
+      <h3> Name: <%= @user.first_name + " " + @user.last_name%></h3>
+      <h3> Email: <%= @user.email %></h3>
 
+      <br>
+      <%= link_to "Edit Account Configurations", edit_user_registration_path %>
+      <br>
+      <a data-toggle="modal" href="#"" data-target="#myModal">Edit Public Profile</a>
+    </div>
+
+    <!-- FAZER A SELECAO SOMENTE SE FOR MEDICO -->
+    <% if @user.doctor.nil? %>
+        <h1>Nao eh medico</h1>
+    <% else %>
+      <div class=" col-sm-7 col-xs-12">
+        <h2>Public Profile</h2>
+        <h4><%= @doctor.name %></h4>
+        <img src=<%=@doctor.photo%> alt="">
+        <h4>Endereco: <%= @doctor.street_name %></h4>
+        <h4>City: <%= @doctor.city_name %></h4>
+        <h4>Phone: <%= @doctor.phone %></h4>
+        <h4>Description: <%= @doctor.description %></h4>
+        <h4>Activity: <%= @doctor.activity %></h4>
+        <h4>CRM: <%= @doctor.crm %></h4>
+        <h4>Insurer: <%= @doctor.insurance %></h4>
+        <h4>Website: <%= @doctor.website %></h4>
+      </div>
+
+    <% end %>
+
+  </div>
+
+
+</div>
+
+
+
+
+
+
+
+            <!-- MODAL -->
+            <% if @user.doctor.nil? %>
+            <h1>Nao eh medico</h1>
+            <% else %>
+            <div id="myModal" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Profile Information</h4>
+                  </div>
+                  <div class="modal-body">
+                    <%= simple_form_for (@doctor) do |f| %>
+                    <%= f.input :name %>
+                    <%= f.input :street_name %>
+                    <%= f.input :city_name %>
+                    <%= f.input :phone %>
+                    <%= f.input :description %>
+                    <%= f.input :activity%>
+                    <%= f.input :crm%>
+                    <%= f.input :insurance%>
+                    <%= f.input :website%>
+
+
+                  </div>
+                  <div class="modal-footer">
+                    <%= f.submit "UPDATE INFORMATION", class: "btn btn-primary" %>
+                    <% end %>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+            <% end %>
+            <!-- MODAL -->

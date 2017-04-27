@@ -66,7 +66,7 @@ end
         insurance = root.search('p.insurances').text.sub('Atende: ','')
         address = root.search('.address .street').text.gsub(/\s+/, ' ').strip
         #hours = root.search('p.openinghours').text.strip.sub('Horário: ','').gsub(/\r\n+/, ' ')
-        description = doc.search('.history div').text.strip.gsub(/\n\n+/, ' ').sub('Ver Mais','').sub('Ver Menos','').gsub(/\r\n+/, ' ').gsub(/\n+/, ' ').gsub(/\t\t+/, ' ').gsub(/\t+/, ' ').gsub(/\+/, ' ')
+        description = doc.search('.history div').text.strip.gsub(/\n\n+/, ' ').sub('Ver Mais','').sub('Ver Menos','').sub('Ver maisVer menos','.').gsub(/\r\n+/, ' ').gsub(/\n+/, ' ').gsub(/\t\t+/, ' ').gsub(/\t+/, ' ').gsub(/\+/, ' ')
         city_name = "São Paulo"
         activity = true
         phone = "Não disponível."
