@@ -20,6 +20,7 @@ gem 'omniauth-facebook'
 gem "faker"
 ruby '2.3.3'
 gem "simple_form"
+gem 'geocoder'
 
 
 
