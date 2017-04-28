@@ -13,7 +13,7 @@ specialties = []
 users = []
 doctors = []
 treatmentspecialties = []
-
+persisted_specialty = []
 
 5.times do
   users << User.create!(
@@ -24,7 +24,7 @@ treatmentspecialties = []
   )
 end
 
-4.times do |i|
+5.times do |i|
   html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/#{i+1}")
   #  html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/5")
 
@@ -44,12 +44,13 @@ end
           specialty = specialty.split(" ")[0]
         end
           #specialty = specialty.gsub('irurgião', "irurgiões")
-        traducoes = { "Cirurgiã" => "Cirurgiões", "ocupacional" => "ocupacionais",
-          "Psicopedagogo" => "Psicopedagogos", "plástico" => "plásticos", "ólogo" => "ólogos",
-          "Otorrino" => "Otorrinos", "Osteopata" => "Osteopatas", "atra" => "atras",
-          "ista" => "istas", "geral" => "gerais", "vascular" => "vasculares",
-          "facial" => "faciais", "euta" => "eutas", "irurgião" => "irurgiões",
-          "óloga" => "ólogos",}
+        traducoes = { "irurgião" => "irurgiões","Cirurgiã" => "Cirurgiões",
+          "ocupacional" => "ocupacionais","Psicopedagogo" => "Psicopedagogos",
+          "plástico" => "plásticos", "ólogo" => "ólogos", "Otorrino" => "Otorrinos",
+          "Osteopata" => "Osteopatas", "atra" => "atras", "ista" => "istas",
+          "geral" => "gerais", "vascular" => "vasculares", "facial" => "faciais",
+           "euta" => "eutas", "óloga" => "ólogos"}
+
 
         traducoes.each do |original, nova|
           specialty = specialty.gsub(original, nova)
@@ -70,7 +71,9 @@ end
         city_name = "São Paulo"
         activity = true
         phone = "Não disponível."
-        persisted_specialty = Specialty.find_by(name: specialties) || Specialty.create!(name: specialty)
+        specialties.each do |value|
+          persisted_specialty = Specialty.find_by(name: value) || Specialty.create!(name: value)
+        end
         doctor = Doctor.create!(name: name, street_name: address, city_name: city_name, description: description, crm: crm, activity: activity, insurance: insurance, photo: photo_id, website: website, phone: phone)
         Treatmentspecialty.create!(doctor: doctor, specialty: persisted_specialty)
         doctors << doctor
