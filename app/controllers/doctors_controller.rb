@@ -28,9 +28,7 @@ class DoctorsController < ApplicationController
     end
 
     @doctors = Kaminari.paginate_array(@doctors) if @doctors.class == Array
-
     @doctors = @doctors.page(params[:page]).per(10)
-
     @doctors
   end
 
