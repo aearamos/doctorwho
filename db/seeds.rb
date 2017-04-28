@@ -13,14 +13,7 @@ specialties = []
 users = []
 doctors = []
 treatmentspecialties = []
-
-
-specialties << Specialty.create!(name: "Cardiology")
-specialties <<Specialty.create!(name: "Neurology")
-specialties <<Specialty.create!(name: "General")
-specialties <<Specialty.create!(name: "Psychology")
-specialties <<Specialty.create!(name: "Immunology")
-specialties <<Specialty.create!(name: "Oncoology")
+persisted_specialty = []
 
 5.times do
   users << User.create!(
@@ -31,7 +24,7 @@ specialties <<Specialty.create!(name: "Oncoology")
   )
 end
 
-2.times do |i|
+5.times do |i|
   html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/#{i+1}")
   #  html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/5")
 
@@ -47,6 +40,24 @@ end
       new_html_doc.search('#main').each do |doc|
         name = doc.search('.title h1').text
         specialty = doc.search('.title #doctorSpecialities p')[0].text.sub('Ver Mais','').sub('Ver Menos','').sub('ver mais','')
+        if specialty.include?("(")
+          specialty = specialty.split(" ")[0]
+        end
+          #specialty = specialty.gsub('irurgião', "irurgiões")
+        traducoes = { "irurgião" => "irurgiões","Cirurgiã" => "Cirurgiões",
+          "ocupacional" => "ocupacionais","Psicopedagogo" => "Psicopedagogos",
+          "plástico" => "plásticos", "ólogo" => "ólogos", "Otorrino" => "Otorrinos",
+          "Osteopata" => "Osteopatas", "atra" => "atras", "ista" => "istas",
+          "geral" => "gerais", "vascular" => "vasculares", "facial" => "faciais",
+           "euta" => "eutas", "óloga" => "ólogos"}
+
+
+        traducoes.each do |original, nova|
+          specialty = specialty.gsub(original, nova)
+        end
+
+        specialties = specialty.split(", ")
+
         crm = doc.search('p.regnum').size.positive? ? doc.search('p.regnum')[0].text.sub("Número de Identificação Profissional: ", '') : "Não disponível."
         web = doc.search('.website-links a')
         website = web.size.positive? ? web.attribute('href').value : "Não Disponível."
@@ -60,20 +71,16 @@ end
         city_name = "São Paulo"
         activity = true
         phone = "Não disponível."
-        doctors << Doctor.create!(name: name, street_name: address, city_name: city_name, description: description, crm: crm, activity: activity, insurance: insurance, photo: photo_id, website: website, phone: phone)
+        specialties.each do |value|
+          persisted_specialty = Specialty.find_by(name: value) || Specialty.create!(name: value)
+        end
+        doctor = Doctor.create!(name: name, street_name: address, city_name: city_name, description: description, crm: crm, activity: activity, insurance: insurance, photo: photo_id, website: website, phone: phone)
+        Treatmentspecialty.create!(doctor: doctor, specialty: persisted_specialty)
+        doctors << doctor
       end
     end
   end
 end
-
-
-40.times do
-  treatmentspecialties << Treatmentspecialty.create!(
-    doctor: doctors.sample,
-    specialty: specialties.sample,
-    )
-end
-
 
 30.times do
   Review.create!(
