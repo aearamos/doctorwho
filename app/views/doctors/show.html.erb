@@ -16,9 +16,10 @@
 
 
 
-
-
 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 blue">
+
+
+<div class="blue">
 
     <div class="1">
       <div class="doc-pic">
@@ -26,32 +27,46 @@
       </div> <!-- pic -->
     </div>
 
-    <div class="2">
+
+</div>
+
+
+
+
+<div class="blue">
+      <div class="2">
+
       <div class="review-buttons">
         <!--
         <button type="button" class="btn btn-info2">Primary</button> -->
         <!--     <button type="button" class="btn btn-primary2"><%= @doctor.average_review.to_f.round(1) %></button> -->
         <!--    <a href="#" class="btn-treehouse">Review</a>
-         --><!--
-        <button type="button" class="btn btn-treehouse">Review!</button>
-        <button type="button" class="btn btn-treehouse">Review!</button> -->
+         -->
+      <button type="button" class="btn btn-treehouse">Review!</button>
       </div> <!-- buttons -->
+
+      <div class="blue">
+      <div class="2">
+      <div class="review-buttons">
+        <!--
+        <button type="button" class="btn btn-info2">Primary</button> -->
+        <!--     <button type="button" class="btn btn-primary2"><%= @doctor.average_review.to_f.round(1) %></button> -->
+        <!--    <a href="#" class="btn-treehouse">Review</a>
+         -->
+        <button type="button" class="btn btn-treehouse">Review!</button>
+      </div> <!-- buttons -->
+      </div>
+
+</div>
+
     </div>
 
 </div>
 
 
-<!-- <div>
-        <p><strong>Convênios: </strong><%=@doctor.insurance%></p>
-        <p><strong>Contact: </strong><%=@doctor.phone%></p>
-        <p><strong>Address: </strong><%=@doctor.street_name.to_s + " - " + @doctor.city_name.to_s%></p>
+</div> <!-- MASTER BLUE -->
 
-        <p><% if @doctor.website == "Não Disponível."%>
-            <strong>Website: </strong><%=@doctor.website %>
-         <% else %>
-            <strong>Website: </strong><%=link_to @doctor.website, @doctor.website %>
-        <%end%></p>
-</div> -->
+
 
 
 
@@ -66,7 +81,8 @@
   </div> -->
 
 <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 red">
-        <h1><%= @doctor.name %></h1>
+        <h1> <%= @doctor.name %> </h1>
+
         <% specialties = @doctor.specialties %>
         <% specialties.each do |specialty| %>
         <p> <strong><%=specialty.name%></strong> </p>
