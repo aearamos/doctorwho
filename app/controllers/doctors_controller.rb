@@ -9,7 +9,8 @@ class DoctorsController < ApplicationController
     @doctors = Doctor.all
 
 
-    if params[:search]
+    if params[:search] && ( params[:search][:name].present? || params[:search][:rating].present? || params[:search][:specialty].present?)
+
       if params[:search][:name]
         @name = params[:search][:name]
         @doctors_name = @doctors.where("name ILIKE  ?", "%#{@name}%")
@@ -22,7 +23,7 @@ class DoctorsController < ApplicationController
       if params[:search][:specialty]
         @specialty = params[:search][:specialty]
         @s = Specialty.find_by name: (@specialty)
-        @doctors_specialty = Doctor.doctor_specialty(@s)
+        @doctors_specialty = params[:search][:specialty].present? ? Doctor.doctor_specialty(@s) : Doctor.all
       end
       @doctors = @doctors_rating & @doctors_name & @doctors_specialty
     end
