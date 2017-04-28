@@ -22,15 +22,19 @@
       <%= content_tag :span, "Doctor Listing", :class => "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
-    <% if !user_signed_in? %>
-      <%= link_to doctors_path do %>
-        <%= content_tag :span, "Login", :class => "navbar-wagon-item navbar-wagon-link" %>
-      <% end %>
-    <% end %>
-
+    <% if !current_user %>
+      <%= link_to "Login",  new_user_session_path %>
+    <% else%>
+    <%end%>
 
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
+      <% if user_signed_in? %>
+      <div class="dropdown">
+      <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+
+
+     <!-- <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
 
 
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">

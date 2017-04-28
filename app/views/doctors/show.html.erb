@@ -91,6 +91,14 @@
         <br>
 </div>
 
+
+        <p><% if @doctor.website == "Não Disponível."%>
+            <strong>Website: </strong><%=@doctor.website %>
+         <% else %>
+            <strong>Website: </strong><%=link_to @doctor.website, @doctor.website %>
+        <%end%>
+      </p>
+  </div>
 <br>
 <br>
 
@@ -158,8 +166,3 @@
     </div>
   </div>
 </div><!-- END MODAL -->
-
-
-
-
-
