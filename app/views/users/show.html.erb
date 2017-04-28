@@ -4,12 +4,13 @@
   <br>
   <div class="row">
     <div class=" col-sm-5 col-xs-12">
-      <h2>Welcome <%=@user.first_name%></h2>
+      <h2>Welcome, <%=@user.first_name%>!</h2>
 
       <% if @user.facebook_picture_url == nil %>
         <img src="http://www.kozlowskiefaria.adv.br/wp-content/uploads/2014/12/pessoa-anonima-300x300.png" alt="">
       <% else %>
-        <img src={facebook_picture_url} className="avatar"/>
+      <%= image_tag avatar_url, class: "avatar" %>
+        <!-- <img src={facebook_picture_url} className="avatar"/> -->
       <% end %>
       <br>
       <h3> Name: <%= @user.first_name + " " + @user.last_name%></h3>
@@ -23,7 +24,7 @@
 
     <!-- FAZER A SELECAO SOMENTE SE FOR MEDICO -->
     <% if @user.doctor.nil? %>
-        <h1>Nao eh medico</h1>
+        <h1>Nao é um medico.</h1>
     <% else %>
       <div class=" col-sm-7 col-xs-12">
         <h2>Public Profile</h2>
@@ -54,7 +55,7 @@
 
             <!-- MODAL -->
             <% if @user.doctor.nil? %>
-            <h1>Nao eh medico</h1>
+            <h1>Nao é um médico.</h1>
             <% else %>
             <div id="myModal" class="modal fade" role="dialog">
               <div class="modal-dialog">

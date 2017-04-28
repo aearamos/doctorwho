@@ -23,6 +23,10 @@
   margin-bottom: 10px;
 }
 
+.wrapper {
+  text-align: center;
+}
+
 .wrapper-index {
   background-color: transparent;
 }
@@ -34,58 +38,16 @@
 
 .box {
   max-width: 800px;
-  padding: 18px;
+  padding: 22px;
   box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
   overflow: hidden;
   border-top: 1px solid #d5d5d5;
   border-left: 1px solid #d5d5d5;
   border-right: 1px solid #d5d5d5;
   background-color: #FFFFFF;
-  border-top-right-radius: 10px;
-  border-top-left-radius: 10px;
+  border-top-right-radius: 6px;
+  border-top-left-radius: 6px;
 }
-// .filter-index {
-//     box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
-//     overflow: hidden;
-//     border-top: 1px solid #d5d5d5;
-//     border-left: 1px solid #d5d5d5;
-//     border-right: 1px solid #d5d5d5;
-//     background-color: #FFFFFF;
-//     border-top-right-radius: 10px;
-//     border-top-left-radius: 10px;
-//   padding: 30px;
-//   // background-color: white;
-//   // flex: 0 0 30%;
-//   // border: solid;
-//   // border-width: thin;
-//   // padding: 18px;
-//   // border-radius: 10px;
-//   // height: 390px;
-
-
-// }
-
-// .wrapper-doctor-cards {
-//    box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
-//     overflow: hidden;
-//     border-top: 1px solid #d5d5d5;
-//     border-left: 1px solid #d5d5d5;
-//     border-right: 1px solid #d5d5d5;
-//     background-color: #FFFFFF;
-//     border-top-right-radius: 10px;
-//     border-top-left-radius: 10px;
-//   padding: 30px;
-//   flex: 1 0 auto;
-//   // border-radius: 10px;
-//   // border: solid;
-//   // border-width: thin;
-
-//   background-color: white;
-//   margin-left: 10px;
-
-
-
-
 
 .card-doctor {
   height: 175px;
