@@ -8,25 +8,22 @@ class DoctorsController < ApplicationController
     @reviews = Review.all
     @doctors = Doctor.all
 
-
-    if params[:search] && ( params[:search][:name].present? || params[:search][:rating].present? || params[:search][:specialty].present?)
-
-      if params[:search][:name]
-        @name = params[:search][:name]
-        @doctors_name = @doctors.where("name ILIKE  ?", "%#{@name}%")
-      end
-      if params[:search][:rating]
-        @rating = params[:search][:rating]
-        @rating = @rating.to_f
-        @doctors_rating = Doctor.min_average(@rating)
-      end
-      if params[:search][:specialty]
-        @specialty = params[:search][:specialty]
-        @s = Specialty.find_by name: (@specialty)
-        @doctors_specialty = params[:search][:specialty].present? ? Doctor.doctor_specialty(@s) : Doctor.all
-      end
-      @doctors = @doctors_rating & @doctors_name & @doctors_specialty
+    if params[:search] && params[:search][:name].present?
+      name = params[:search][:name]
+      @doctors = @doctors.where("name ILIKE  ?", "%#{name}%")
     end
+
+    if params[:search] && params[:search][:rating]
+      rating = params[:search][:rating]
+      @doctors = @doctors.select {|d| d.reviews.count.positive? && d.reviews.average(:rating) >= rating.to_i }
+    end
+
+    if params[:search] && params[:search][:specialty].present?
+      specialty_params = params[:search][:specialty]
+      specialty = Specialty.find_by name: (specialty_params)
+      @doctors = @doctors.select {|d| d.specialties.include?(specialty) }
+    end
+    @doctors
   end
 
   def new
