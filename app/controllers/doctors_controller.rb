@@ -23,6 +23,7 @@ class DoctorsController < ApplicationController
       specialty = Specialty.find_by name: (specialty_params)
       @doctors = @doctors.select {|d| d.specialties.include?(specialty) }
     end
+
     @doctors
   end
 
