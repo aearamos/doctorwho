@@ -9,17 +9,21 @@
   }
 }
 
+
 .title {
   text-align: center;
   padding-bottom: 7px;
+  padding-right: 10px;
+  padding-left: 10px;
 }
 
-.search-form {
-  padding: 7px;
+.seach-form {
+  padding: 19px;
 }
 
 .banner-content {
   background-color: rgba(0,180,245,0.7);
+  border-radius: 5px;
   padding: 30px;
 }
 
