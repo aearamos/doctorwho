@@ -50,7 +50,6 @@ class DoctorsController < ApplicationController
   end
 
   def update
-    #@doctor = doctor.find(params[:id])
     @doctor.update(doctor_params)
     redirect_to doctor_path(@doctor)
 
