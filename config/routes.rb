@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resources :doctors, only: [:show] do
     member do                             # doctor id in URL
       get 'match', to: "doctormatches#index"
+      patch 'match', to: "doctormatches#status"
     end
   end
 
