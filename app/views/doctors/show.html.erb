@@ -27,7 +27,9 @@
       </div> <!-- pic -->
         <%if @doctor.user.nil?%>
           <%if current_user.doctor.nil?%>
-            <button type="button" class="btn btn-danger btn-round-xs btn-xs">Is this you?</button>
+            <%= link_to match_doctor_path(@doctor) do %>
+              <button type="button" class="btn btn-danger btn-round-xs btn-xs">Is this you?</button>
+            <% end %>
           <%end%>
         <%end%>
     </div>
