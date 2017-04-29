@@ -7,7 +7,7 @@ class DoctormatchesController < ApplicationController
   def status
     @doctor = Doctor.find(params[:id])
     redirect_to doctor_path
-    flash[:notice] = "We'll c0ntact you to verify your information shortly..."
+    flash[:notice] = "We'll c0ntact you to verify your information shortly " + @doctor.name
   end
 
 
