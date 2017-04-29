@@ -5,8 +5,8 @@ class DoctormatchesController < ApplicationController
   end
 
   def status
-    puts "ITS WORKING"
     redirect_to doctors_path
+    flash[:notice] = "Will cntact you to verify the information shortly..."
   end
 
 end
