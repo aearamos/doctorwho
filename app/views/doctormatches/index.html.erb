@@ -34,7 +34,7 @@
       <p><strong>Add multiple addresses and phone numbers</strong></p>
       <br>
     <%= link_to match_doctor_path(@doctor) do %>
-      <button type="button" class="btn btn-danger btn-round-lg btn-lg" data-toggle="modal" data-target="#myModal" >Contact us:</button>
+      <button type="button" class="btn btn-danger btn-round-lg btn-lg" data-toggle="modal" data-target="#myModal2"> Contact us: </button>
     <% end %>
 
   </div>
@@ -46,7 +46,7 @@
 
 
 <!-- MODAL -->
-<div id="myModal" class="modal fade" role="dialog">
+<div id="myModal2" class="modal fade" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -54,11 +54,12 @@
         <h4 class="modal-title">Contact us:</h4>
       </div>
       <div class="modal-body">
-        <%= simple_form_for @doctor, :url => match_doctor_path do |f| %>
+      raise
+        <%= simple_form_for (@doctor), :url => match_doctor_path do |f| %>
 
-          <%= simple_fields_for :no_model_fields do |n| %>
-          <%= n.input :phone_number, placeholder: "Phone"  %>
-          <%= n.input :message, placeholder: "Message"  %>
+          <%= simple_fields_for :message do |n| %>
+            <%= n.input :phone_number, label: false, placeholder: "Phone Number"  %>
+            <%= n.input :text, label: false, placeholder: "Message"  %>
           <% end %>
 
       </div>
