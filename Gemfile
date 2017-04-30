@@ -22,6 +22,8 @@ gem 'geocoder'
 gem 'kaminari'
 gem 'bootstrap-kaminari-views'
 
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 
 
