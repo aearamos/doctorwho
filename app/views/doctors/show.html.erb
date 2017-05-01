@@ -16,6 +16,26 @@
 
 <!-- DOCTOR PICTURE -->
 
+<div id="map" style="width: 100%; height: 200px;"></div>
+
+     <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+
 
 <div class="row">
   <div class="col-sm-12 col-md-4">
@@ -38,7 +58,7 @@
         <%if current_user.doctor.nil?%>
         <%= link_to match_doctor_path(@doctor) do %>
         <button role="button" class="btn btn-primary">Is this you?</button>
-        <% end %>
+        <%end%>
         <%end%>
         <%end%>
 
@@ -106,57 +126,6 @@
 <!-- END JAVA REVIEWS -->
 
 
-<!-- <!-- REVIEWS -->
-
- <!--  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 green"> -->
-
-
-<!--
-      <% reviews = @doctor.reviews %>
-      <% reviews.each do |review| %>
-
-      <section style="background-color: #FAFAFA; padding: 20px; margin: 20px 0; box-shadow: 1px 1px 3px #F0F0F0; position: relative">
- -->
-     <!--  <div style="display: flex; align-items: left;">
-      <div style="text-align: left; margin-right: 40px">
-      <h6>Rating:</h6>
-      <div class="btn btn-treehouse"> <%= review.rating %>
-
-
-
-      </div>
-      <h2><%= @review.rating %></h2>
-      </div>
-      <div>
- -->
-
-
-      <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      <%=review.title%>
-      </button>
-      <div class="collapse" id="collapseExample">
-      <div class="well">
-      <h5><%=review.comment%></h5>
-      </div>
-      </div>
- -->
-
-      <!-- <h4><strong><%=review.title%></strong></h4>
-      <h5><%=review.comment%></h5>
-      <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
-
-    </div>
-
-      </div>
-
-        </section>
-        <% end %>
-
-    </div>
-  </div>
-</div>
- -->
 <!-- END REVIEWS -->
 
 </div> <!-- END ROW -->
