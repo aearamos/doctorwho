@@ -23,7 +23,7 @@
         <div class="card-doctor">
           <div class="doctor-contact">
             <h3 class= "card-doctor-name"><%= link_to doctor.name, doctor_path(doctor) %></h3>
-            <p class="card-doctor-address"><%= doctor.street_name %> <br> <%= doctor.city_name %></p>
+            <p class="card-doctor-address"><%= truncate(doctor.street_name) %> <br> <%= doctor.city_name %></p>
             <p class="card-doctor-specialty">
             <% doctor.specialties.each do |specialty| %>
 
