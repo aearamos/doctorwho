@@ -82,7 +82,7 @@ end
   end
 end
 
-30.times do
+300.times do
   Review.create!(
   title: Faker::Lorem.sentence,
   comment: Faker::Lorem.paragraph(2),

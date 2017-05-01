@@ -68,7 +68,7 @@
               </div>
               <div class="card-doctor-rating-description"> Rating
               </div>
-              <div class="card-doctor-rating-average"> <%= doctor.average_review.to_f.round(1) %>
+              <div class="card-doctor-rating-average"> <%= doctor.average_rating ? doctor.average_rating.round(1) : " N/A " %>
               </div>
               <div class="card-doctor-amount-of-reviews"> <%= pluralize(doctor.reviews.count,'Review')  %>
 
