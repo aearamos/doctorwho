@@ -1,4 +1,7 @@
+
+
 class DoctorsController < ApplicationController
+
 
   before_action :set_doctor, only: [:show, :edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:index]
@@ -13,7 +16,7 @@ class DoctorsController < ApplicationController
       @doctors = @doctors.where("name ILIKE  ?", "%#{name}%")
     end
 
-    if params[:search] && params[:search][:rating]
+    if params[:search] && params[:search][:rating].present?
       rating = params[:search][:rating]
       @doctors = @doctors.select {|d| d.reviews.count.positive? && d.reviews.average(:rating) >= rating.to_i }
     end
@@ -23,6 +26,9 @@ class DoctorsController < ApplicationController
       specialty = Specialty.find_by name: (specialty_params)
       @doctors = @doctors.select {|d| d.specialties.include?(specialty) }
     end
+
+    @doctors = Kaminari.paginate_array(@doctors) if @doctors.class == Array
+    @doctors = @doctors.page(params[:page]).per(10)
     @doctors
   end
 
@@ -50,7 +56,6 @@ class DoctorsController < ApplicationController
   end
 
   def update
-    #@doctor = doctor.find(params[:id])
     @doctor.update(doctor_params)
     redirect_to doctor_path(@doctor)
 

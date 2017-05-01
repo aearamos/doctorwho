@@ -71,9 +71,11 @@
     </div>
 
     <!-- FAZER A SELECAO SOMENTE SE FOR MEDICO -->
+
     <% if @user.doctor.nil? %>
         <h1>Nao é um medico.</h1>
     <% else %>
+      <% if current_user.doctorstatus == "true" %>
       <div class=" col-sm-7 col-xs-12">
         <h2>Public Profile</h2>
         <h4><%= @doctor.name %></h4>
@@ -87,7 +89,9 @@
         <h4>Insurer: <%= @doctor.insurance %></h4>
         <h4>Website: <%= @doctor.website %></h4>
       </div>
-
+      <% else %>
+      <h2 style="text-align: center">We are verifying your profile information. You'll be granted access as soon as we finish it</h2>
+      <% end %>
     <% end %>
 
   </div>

@@ -18,16 +18,18 @@ gem 'simple_form'
 gem 'autoprefixer-rails'
 gem 'omniauth-facebook'
 gem "faker"
-ruby '2.3.3'
-gem "simple_form"
 gem 'geocoder'
+gem 'kaminari'
+gem 'bootstrap-kaminari-views'
+
+gem 'activeadmin', github: 'activeadmin/activeadmin'
+gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 
 
 
 group :development, :test do
   gem 'binding_of_caller'
   gem 'better_errors'
-  gem 'omniauth-facebook'
 
 
   gem 'pry-byebug'
@@ -35,6 +37,5 @@ group :development, :test do
   gem 'spring'
   gem 'listen', '~> 3.0.5'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'faker'
 end
 
