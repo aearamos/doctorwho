@@ -7,12 +7,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 70px;
 }
 
 
 .banner h1 {
-  color: white;
-  font-size: 47px;
+  color: #00a6b1;
+  font-size: 45px;
 }
 
 
@@ -71,7 +72,7 @@
     left: 31px;
     width: 880px;
     height: 234px;
-    background-color: $sea;
+    background-color: white;
     border-radius: 5px;
     opacity: 0.5;
     filter: alpha(opacity=70);

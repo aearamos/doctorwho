@@ -4,24 +4,32 @@
 }
 
 .red {
-   overflow: hidden;
-  // border-top: 1px solid #d5d5d5;
-  // border-bottom: 1px solid #d5d5d5;
+  overflow: hidden;
+  background-color: white;
+  padding: 15px 15px 15px 15px;
+
+}
+
+.pic {
+  display: inline-flex;
+  justify-content: space-around;
+  flex-direction: row;
+  overflow: hidden;
   background-color: white;
   padding: 15px 15px 15px 15px;
 
 }
 
 .blue {
-  display: flex;
-  justify-content: space-between;
   overflow: hidden;
-  // border-top: 1px solid #d5d5d5;
-  // border-bottom: 1px solid #d5d5d5;
   background-color: white;
   padding: 15px 15px 15px 15px;
 
 }
+
+
+
+
 
 .green{
   background-color: white;
@@ -75,20 +83,9 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
 .product-image {
   border-radius: 2px;
-  height: 150px;
+  height: 100px;
   box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
 }
 
@@ -108,14 +105,16 @@
   text-decoration: none;
   color: #999999;
 }
+
 .btn-treehouse {
-  width: 100%;
   color: white;
+  height: 50px;
   padding: 10px 15px;
   border-radius: 2px;
   background: #6AD58B;
   transition: background 0.3s ease;
 }
+
 .btn-treehouse:hover {
   opacity: 1;
   background: #3ac162;
@@ -123,12 +122,41 @@
   color: white;
 }
 
+.btn-treehou {
+  color: white;
+  height: 50px;
+  padding: 10px 15px;
+  border-radius: 2px;
+  background: #6AD58B;
+  transition: background 0.3s ease;
+}
+
+.btn-treehou:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .background-image {
   background: no-repeat center center fixed;
   background-size: cover;
 }
 
 .wrapper {
+  text-align: left;
   padding: 50px;
 }
 
