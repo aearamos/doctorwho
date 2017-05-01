@@ -9,16 +9,19 @@
       <div class="title">
         <h1>Find a doctor to trust & fit your need.</h1>
       </div>
-        <form action="<%=doctors_path%>">
-          <div class="seach-form">
-            <form action="" class="search">
-              <input type="text" name = "search[name]" id="search_name" class="search-input" placeholder="Name"></input>
-              <input type="text" class="search-input" placeholder="Place in Sao Paulo"></input>
-              <input type="text" name = "search[specialty]" id="search_specialty" class="search-input" placeholder="Specialty"></input>
-              <button class="btn-treehouse">Find</button>
-            </form>
-          </div>
+
+        <form action="<%=doctors_path%>" class="seach-form search">
+          <input type="text" name = "search[name]" id="search_name" class="search-input" placeholder="Name"></input>
+          <input type="text" name = "search[street_name]" id="search_street_name" class="search-input" placeholder="Place in Sao Paulo"></input>
+          <select name="search[specialty]" id="search_specialty" class="search-input" type="text" style="height:42px; background-color: white; border-radius: 0px">
+              <option value="" >Specialty</option>
+              <%Specialty.all.each do |specialty|%>
+                <option value=<%=specialty.name%>><%=specialty.name%></option>
+                 <%end%>
+          </select>
+          <button class="btn-treehouse">Find</button>
         </form>
+
 
   </div>
 
@@ -34,8 +37,8 @@
       <div class="col-xs-12 col-sm-3">
       <img src="http://res.cloudinary.com/livpuppa/image/upload/v1493632471/3_ohjmyg.png" alt="" class="icons">
 
-      <div><h4>All information you nedd</h4>
-      <p>This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p></div>
+      <div><h4>All information you need</h4>
+      <p>You can choose your doctor according to the specialty you need. Moreover, you can find a doctor according to location, name and rating</p></div>
 
       </div>
 
@@ -67,4 +70,23 @@
 </div>
 
 
+
+<div class="container3">
+  <div class="row">
+
+      <div class="col-xs-12 col-sm-3">
+      <div><h4><%= @reviews_first %></h4>
+      </div>
+
+
+      <div class="col-xs-12 col-sm-3">
+      <div><h4><%= @reviews_second %></h4>
+      </div>
+
+     <div class="col-xs-12 col-sm-3">
+      <div><h4><%= @reviews_third %></h4>
+      </div>
+
+  </div>
+</div>
 
