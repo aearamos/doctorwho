@@ -12,12 +12,10 @@
 <div class="container">
 <div class="row2">
 
-
-
-
-
+<div class="fff"> fasfkafsdfsdfsdf </div>
 
 <!-- DOCTOR PICTURE -->
+
 
 <div class="row">
   <div class="col-sm-12 col-md-4">
@@ -30,9 +28,9 @@
         <div class="caption">
         <h2><%= @doctor.name %> </h2>
         <p><p><% if @doctor.website == "Não Disponível."%>
-        <strong></strong><%=@doctor.website %>
+        Website: <%=@doctor.website %>
         <% else %>
-        <strong></strong><%=link_to @doctor.website, @doctor.website %>
+        <center><%=link_to @doctor.website, @doctor.website %></center>
         <%end%></p>
 
 
@@ -63,10 +61,11 @@
 
     <div class="panel panel-default">
     <div class="panel-body">
+    <h6>Description:</h6>
     <p><%= @doctor.description %></p>
-     <% @doctor.specialties.each do |specialty| %>
-          <p><%= specialty.name %></p>
-          <% end %>
+    <h6>Specialties:</h6>
+    <% @doctor.specialties.each do |specialty| %><p><%= specialty.name %></p>
+    <% end %>
     <br>
 
 
@@ -85,20 +84,25 @@
 
 
 
+<div class="fff"> fasfkafsdfsdfsdf </div>
 <!-- END JAVA REVIEWS -->
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <% @doctor.reviews.each do |review| %>
         <div class="panel panel-default">
           <div class="panel-heading" role="tab" id="headingOne">
-            <h4 class="panel-title">
+            <h5 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= dom_id review %>" aria-expanded="true" aria-controls="<%= dom_id review %>">
-                <%=review.title%>
+                Rating:<div class="btn btn-success"> <%= review.rating %>
+      </div> | <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <%=review.title%>
+      </button>
               </a>
-            </h4>
+            </h5>
           </div>
           <div id="<%= dom_id review %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
               <%=review.comment%>
+              <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
             </div>
           </div>
         </div>
@@ -111,57 +115,6 @@
 
 
 
-
-<!-- REVIEWS -->
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 green">
-
-
-
-      <% reviews = @doctor.reviews %>
-      <% reviews.each do |review| %>
-
-      <section style="background-color: #FAFAFA; padding: 20px; margin: 20px 0; box-shadow: 1px 1px 3px #F0F0F0; position: relative">
-
-      <div style="display: flex; align-items: left;">
-      <div style="text-align: left; margin-right: 40px">
-      <h6>Rating:</h6>
-      <div class="btn btn-treehouse"> <%= review.rating %>
-
-      </div>
-      <h2><%= @review.rating %></h2>
-      </div>
-      <div>
-
-
-
-      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      <%=review.title%>
-      </button>
-      <div class="collapse" id="collapseExample">
-      <div class="well">
-      <h5><%=review.comment%></h5>
-      </div>
-      </div>
-
-
-      <h4><strong><%=review.title%></strong></h4>
-      <h5><%=review.comment%></h5>
-      <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
-
-    </div>
-
-      </div>
-
-        </section>
-        <% end %>
-
-    </div>
-  </div>
-</div>
-
-<!-- END REVIEWS -->
 
 
 
