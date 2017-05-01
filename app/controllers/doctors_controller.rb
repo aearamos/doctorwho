@@ -30,9 +30,14 @@ class DoctorsController < ApplicationController
     @doctors = Kaminari.paginate_array(@doctors) if @doctors.class == Array
     @doctors = @doctors.page(params[:page]).per(10)
     @doctors= @doctors.order("average_rating DESC")
+
     @doctors
 
-  end
+    @hash = Gmaps4rails.build_markers(@doctors) do |doctor, marker|
+      marker.lat doctor.latitude
+      marker.lng doctor.longitude
+    end
+
 
 
   def new
@@ -51,6 +56,9 @@ class DoctorsController < ApplicationController
   def show
     @doctor = Doctor.find(params[:id])
     @review = Review.new
+        @doctor_coordinates = { lat: @doctor.latitude, lng: @doctor.longitude }
+
+
 
   end
 
