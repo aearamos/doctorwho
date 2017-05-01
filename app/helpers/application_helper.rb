@@ -4,8 +4,9 @@ module ApplicationHelper
         "http://www.kozlowskiefaria.adv.br/wp-content/uploads/2014/12/pessoa-anonima-300x300.png"
       elsif current_user.facebook_picture_url.nil?
         "http://www.kozlowskiefaria.adv.br/wp-content/uploads/2014/12/pessoa-anonima-300x300.png"
+
       else
-        current_user.facebook_picture_url
+        "http://www.kozlowskiefaria.adv.br/wp-content/uploads/2014/12/pessoa-anonima-300x300.png"
       end
   end
 end
