@@ -1,11 +1,11 @@
 
  <%= simple_form_for @search, url: doctors_path, method: :get do |f| %>
-  <%= f.input :name, placeholder: "Type a name", label_html: { class: "search-title" }, input_html: { class: "search-name" }, wrapper_html: { class: "search-box" } %>
+  <%= f.input :name, placeholder: "Type a name", label_html: { class: "search-title" }, wrapper_html: { class: "search-box" } %>
   <br>
 
-  <%= f.input :rating, prompt: "Choose a minimum Rating", :collection => 1..5, label_html: { class: "search-title" }, input_html: { class: "search-name" }, wrapper_html: { class: "search-box" }%>
+  <%= f.input :rating, prompt: "Choose a minimum Rating", :collection => 1..5, label_html: { class: "search-title" }, wrapper_html: { class: "search-box" }%>
   <br>
-  <%=f.input :specialty, prompt: "Choose a specialty", :collection => Specialty.all_specialties.sort, label_html: { class: "search-title" }, input_html: { class: "search-name"}, wrapper_html: { class: "search-box" } %>
+  <%=f.input :specialty, prompt: "Choose a specialty", :collection => Specialty.all_specialties.sort, label_html: { class: "search-title" },wrapper_html: { class: "search-box" } %>
   <br>
    <%=f.input :street_name, placeholder: "Choose a location", label_html: { class: "search-title" }, input_html: { class: "search-street" }, wrapper_html: { class: "search-box" }%>
   <%= f.submit "Search", class: "btn-treehouse" %>
