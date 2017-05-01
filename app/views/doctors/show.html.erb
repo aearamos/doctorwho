@@ -12,134 +12,182 @@
 
 
 
+<!-- <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 red">
+    <h1> <%= @doctor.name %> </h1>
+    <br>
+    <% specialties = @doctor.specialties %>
+    <% specialties.each do |specialty| %>
+    <p> <strong><%=specialty.name%></strong> </p>
+    <% end %>
 
+    <p><%= @doctor.street_name%></p>
+    <p><%= @doctor.city_name %></p>
 
-
-
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 blue">
-
-
-<div class="blue">
-
-    <div class="1">
-      <div class="doc-pic">
-        <img src= <%=@doctor.photo%> alt="kudoz" class="product-image doctor-picture hidden-xs">
-      </div> <!-- pic -->
-    </div>
-
-
+    <p><% if @doctor.website == "Não Disponível."%>
+        <strong>Website: </strong><%=@doctor.website %>
+     <% else %>
+        <strong>Website: </strong><%=link_to @doctor.website, @doctor.website %>
+    <%end%>
+    </p>
+    <br>
 </div>
 
+<br>
+<br>
 
-
-
-<div class="blue">
-      <div class="2">
-
-      <div class="review-buttons">
-        <!--
-        <button type="button" class="btn btn-info2">Primary</button> -->
-        <!--     <button type="button" class="btn btn-primary2"><%= @doctor.average_review.to_f.round(1) %></button> -->
-        <!--    <a href="#" class="btn-treehouse">Review</a>
-
-
-         -->
-      <div class="btn btn-treehouse" data-toggle="modal" data-target="#myModal"> Review!</div>
-<!--
-      <button type="button" class="btn btn-treehouse">Review!</button> -->
-      </div> <!-- buttons -->
-
-      <div class="blue">
-      <div class="2">
-      <div class="review-buttons">
-        <!--
-        <button type="button" class="btn btn-info2">Primary</button> -->
-        <!--     <button type="button" class="btn btn-primary2"><%= @doctor.average_review.to_f.round(1) %></button> -->
-        <!--    <a href="#" class="btn-treehouse">Review</a>
-         --><!--
-        <button type="button" class="btn btn-treehouse">Review!</button> -->
-      </div> <!-- buttons -->
-      </div>
-
-</div>
-
-    </div>
-
-</div>
-
-
-</div> <!-- MASTER BLUE -->
-
-
-
-
-
-
-<!--
-    <div class="rating-info">
-        <div class="btn btn-primary card-doctor-index-rating-button" data-toggle="modal" data-target="#myModal"> Review!</div>
-        <div><a href="#" class="btn btn-success">Reviews</a></div>
-
-        <div class="card-doctor-rating-average"> <%= @doctor.average_review.to_f.round(1) %></div>
-    </div>
-  </div> -->
-
-<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 red">
-        <h1> <%= @doctor.name %> </h1>
-
-        <% specialties = @doctor.specialties %>
-        <% specialties.each do |specialty| %>
-        <p> <strong><%=specialty.name%></strong> </p>
-        <% end %>
-        <p><strong>Description: </strong><%=@doctor.description%></p>
-        <br>
-</div>
-
-
-        <p><% if @doctor.website == "Não Disponível."%>
-            <strong>Website: </strong><%=@doctor.website %>
-         <% else %>
-            <strong>Website: </strong><%=link_to @doctor.website, @doctor.website %>
-        <%end%>
-      </p>
+<button class="btn btn-treehouse" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Read the description about this doctor
+</button>
+<div class="collapse" id="collapseExample">
+  <div class="well1">
+   <%= @doctor.description %>
   </div>
-<br>
-<br>
+</div> -->
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- DOCTOR PICTURE -->
+<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 blue">
+  <div class=" panel panel-infopic">
+
+    <div class="doc-pic">
+
+
+
+      <img src= <%=@doctor.photo%> alt="kudoz" class="product-image doctor-picture hidden-xs">
+    </div>
+
+    <div class="btn btn-treehouse"> <%= @doctor.average_review.to_f.round(1) %>
+    </div>
+
+  </div>
+
+  <div class="btn btn-treehouse" data-toggle="modal" data-target="#myModal"> Review!
+  </div>
+
+</div>
+    <div class="blue">
+    <div class="4">
+    <div class="review-buttons">
+
+
+
+    </div>
+    </div>
+</div> <!-- END DOCTOR PICTURE -->
+
+
+
+<!-- DOCTOR DESCRIPTION -->
+<center>
+<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 red">
+  <h1> <%= @doctor.name %> </h1>
+  <% specialties = @doctor.specialties %>
+  <% specialties.each do |specialty| %>
+  <p> <strong><%=specialty.name%></strong> </p>
+  <% end %>
+
+  <p><% if @doctor.website == "Não Disponível."%>
+      <strong>Website: </strong><%=@doctor.website %>
+   <% else %>
+  <strong>Website: </strong><%=link_to @doctor.website, @doctor.website %>
+  <%end%></p>
+
+
+    <button class="btn btn-treehouse" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+  Read the description about this doctor
+  </button>
+  <div class="collapse" id="collapseExample">
+  <div class="well1">
+  <br>
+  <p><%= @doctor.description %></p>
+  </div>
+  </div>
+</div>
+</center>
+<!-- END DOCTOR DESCRIPTION -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- REVIEWS -->
 <div>
   <div class="row">
-
-  <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 green">
-<!--     <h2>Reviews</h2> -->
-
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 green">
     <% reviews = @doctor.reviews %>
     <% reviews.each do |review| %>
-    <section style="background-color: #FAFAFA; padding: 20px; margin: 20px 0; box-shadow: 1px 1px 3px #F0F0F0; position: relative">
 
-    <div style="display: flex; align-items: center;">
-      <div style="text-align: center; margin-right: 40px">
-      <h4>Rating:</h4>
-      <h2><%=review.rating%></h2>
+        <section style="background-color: #FAFAFA; padding: 20px; margin: 20px 0; box-shadow: 1px 1px 3px #F0F0F0; position: relative">
+
+      <div style="display: flex; align-items: left;">
+
+          <div style="text-align: left; margin-right: 40px">
+            <h4>Rating:</h4>
+
+             <div class="btn btn-treehouse"> <%= review.rating %>
+            </div>
+
+
+            <h2><%= @review.rating %></h2>
+          </div>
+
+          <div>
+            <h4><strong><%=review.title%></strong></h4>
+            <h5><%=review.comment%></h5>
+            <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
+          </div>
+
+      </div>
+
+        </section>
+        <% end %>
+
     </div>
-
-    <div>
-      <h4><strong><%=review.title%></strong></h4>
-      <h5><%=review.comment%></h5>
-      <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
-    </div>
-
-      </section>
-      <% end %>
   </div>
-
-
-
-
-
-
-
-
-
+</div>
+<!-- END REVIEWS -->
 
 
 
@@ -148,6 +196,9 @@
 </div> <!-- END CONTAINER -->
 </div> <!-- END WRAPPER -->
 </div> <!-- END BACKGROUND -->
+
+
+
 
 <!-- MODAL -->
 <div id="myModal" class="modal fade" role="dialog">
