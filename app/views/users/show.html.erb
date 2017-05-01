@@ -26,11 +26,11 @@
     </div>
 
       <br>
-      <%= link_to "Edit Account Configurations", edit_user_registration_path %>
+      <%= link_to "Edit account configurations", edit_user_registration_path %>
       <br>
       <% if !@user.doctor.nil? %>
         <% if current_user.doctorstatus == "true" %>
-        <a data-toggle="modal" href="#"" data-target="#myModal">Edit Public Profile</a>
+        <a data-toggle="modal" href="#"" data-target="#myModal">Edit public profile</a>
         <% end %>
       <% end %>
     </div>
@@ -42,17 +42,18 @@
     <% else %>
       <% if current_user.doctorstatus == "true" %>
       <div class=" col-sm-7 col-xs-12">
-        <h2>Public Profile</h2>
-        <h4><%= @doctor.name %></h4>
+        <h2><strong>Public Profile</strong></h2>
+        <h4><strong><%= @doctor.name %></strong></h4>
         <img src=<%=@doctor.photo%> alt="">
-        <h4>Endereco: <%= @doctor.street_name %></h4>
-        <h4>City: <%= @doctor.city_name %></h4>
-        <h4>Phone: <%= @doctor.phone %></h4>
-        <h4>Description: <%= @doctor.description %></h4>
-        <h4>Activity: <%= @doctor.activity %></h4>
-        <h4>CRM: <%= @doctor.crm %></h4>
-        <h4>Insurer: <%= @doctor.insurance %></h4>
-        <h4>Website: <%= @doctor.website %></h4>
+        <h4><strong>Endereco: </strong><%= @doctor.street_name %></h4>
+        <h4><strong>City: </strong><%= @doctor.city_name %></h4>
+        <h4><strong>Phone: </strong><%= @doctor.phone %></h4>
+        <h4><strong>Description:</strong></h4>
+        <p><%= @doctor.description %></p>
+        <h4><strong>Activity: </strong><%= @doctor.activity %></h4>
+        <h4><strong>CRM: </strong><%= @doctor.crm %></h4>
+        <h4><strong>Insurer: </strong><%= @doctor.insurance %></h4>
+        <h4><strong>Website: </strong><%= @doctor.website %></h4>
       </div>
       <% else %>
       <br>
