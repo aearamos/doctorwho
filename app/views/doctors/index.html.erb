@@ -62,16 +62,6 @@
           <img class= "card-doctor-profile" src= <%= doctor.photo %> alt="">
           </div>
 
-
-            <div class="rating-info">
-              <div class="btn btn-primary card-doctor-index-rating-button" data-toggle="modal" data-target="#myModal"> Review!
-              <% #= render 'modal-doctor' %>
-              </div>
-              <div class="card-doctor-rating-description"> Rating
-              </div>
-              <div class="card-doctor-rating-average"> <%= doctor.average_rating ? doctor.average_rating.round(1) : " N/A " %>
-
-              </div>
                 <div class="rating-info">
                   <div class="btn btn-primary card-doctor-index-rating-button" data-toggle="modal" data-target="#myModal<%="#{doctor.id}"%>"> Review!</div>
 
@@ -116,8 +106,8 @@
     </div> <!-- END ROW  -->
   </div> <!-- END WRAPPER -->
 
-
-
+</div>
+</div>
 </div> <!-- END BACKGROUND  -->
 
 
