@@ -1,0 +1,23 @@
+<div id="myModal<%="#{doctor.id}"%>" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Review <%= doctor.name %></h4>
+                      </div>
+                      <div class="modal-body">
+                        <%= simple_form_for [doctor, @review] do |f| %>
+                        <%= f.input :title, label: false, placeholder: "Review title" %>
+                        <%= f.input :comment, label: false, placeholder: "Comment" %>
+                        <%= f.input :rating, collection: 1..5, placeholder: "Rating" %>
+                      </div>
+                      <div class="modal-footer">
+                        <%= f.button :submit %>
+                        <% end %>
+
+                        </div>
+            </div>
+          </div>
+
+
+      </div>
