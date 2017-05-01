@@ -1,5 +1,4 @@
 
-<div class="fonts">
 <div class="banner" style="background-image: linear-gradient(0deg, rgba(255,255,255,1.0) 0%, rgba(0,111,139,0.1) 50%), url('http://res.cloudinary.com/livpuppa/image/upload/v1493192993/banner_wssfw1.jpg');">
 
 
@@ -10,16 +9,17 @@
       <div class="title">
         <h1>Find a doctor to trust & fit your need.</h1>
       </div>
-
-
-      <div class="seach-form">
-        <form action="" class="search">
-        <input type="text" class="search-input" placeholder="Name (optional)"></input>
-        <input type="text" class="search-input" placeholder="City"></input>
-        <input type="text" class="search-input" placeholder="Specialty"></input>
-        <a href="#" class="btn-treehouse">Find</a>
+        <form action="<%=doctors_path%>">
+          <div class="seach-form">
+            <form action="" class="search">
+              <input type="text" name = "search[name]" id="search_name" class="search-input" placeholder="Name"></input>
+              <input type="text" class="search-input" placeholder="Place in Sao Paulo"></input>
+              <input type="text" name = "search[specialty]" id="search_specialty" class="search-input" placeholder="Specialty"></input>
+              <button class="btn-treehouse">Find</button>
+            </form>
+          </div>
         </form>
-      </div>
+
   </div>
 
 </div> <!-- END OF BANNER BACKGROUND  -->
@@ -65,96 +65,6 @@
 
   </div>
 </div>
-
-
-
-
-<div class="container3">
-  <div class="row">
-
-      <div class="col-xs-12 col-sm-3">
-      <div><h4><%= @reviews_first %></h4>
-      </div>
-
-
-      <div class="col-xs-12 col-sm-3">
-      <div><h4><%= @reviews_second %></h4>
-      </div>
-
-     <div class="col-xs-12 col-sm-3">
-      <div><h4><%= @reviews_third %></h4>
-      </div>
-
-
-  
-  
-
-
-
-
-
-
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!--
-http://res.cloudinary.com/livpuppa/image/upload/v1493604229/1_ogejii.png -->
-
-<!--   <h1>h1: Find a doctor you trust & fits your need.</h1>
-
-  <h2>h2: Reviews</h2>
-
-  <h3>h3: Thank you!</h3>
-  <br>
-  <h4>h4: Dr. Carlos Bustamante</h4>
-
-  <h5>h5: Cardiologist / CRM: 83957</h5>
-
-
-
-  <p>p: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris porttitor, orci vehicula finibus congue, lacus felis sagittis libero, a facilisis dolor odio nec ex. Curabitur accumsan consectetur risus finibus efficitur. Vestibulum ornare porta scelerisque. Integer in ultricies augue. Phasellus ultrices gravida eros id congue. Vestibulum lacinia orci luctus erat gravida blandit. Duis sagittis quam vitae pretium scelerisque. Sed blandit vel enim a tincidunt. Cras elementum malesuada ligula. Duis semper nulla et odio ultricies, quis rhoncus risus sodales. Nam consequat diam nec velit faucibus dignissim. Fusce ultrices risus massa, eget feugiat massa tincidunt sit amet. Mauris convallis nulla quis purus vestibulum venenatis.</p>
-  <br>
-  <h6>h6: Warning! You are not allowed to review your own profile.</h6>
-
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-
-</div>
-
-<br><br>
-<br><br>
-<br><br>
-<br><br>
-
-
-</div>
- -->
-
 
 
 
