@@ -5,12 +5,12 @@
 </div>
  -->
 
+
+
+
 <div class="wrapper">
 <div class="container">
-<div class="row">
-
-
-
+<div class="row2">
 
 
 
@@ -18,99 +18,139 @@
 
 
 <!-- DOCTOR PICTURE -->
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 blue">
-  <div class=" panel panel-infopic">
-    <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 red">
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+
+    <div class="panel panel-default">
+    <div class="panel-body">
+        <center>
+        <img src=<%=@doctor.photo%> alt="user" class="avatar-square">
+        </center>
+        <div class="caption">
+        <h2><%= @doctor.name %> </h2>
+        <p><p><% if @doctor.website == "Não Disponível."%>
+        <strong></strong><%=@doctor.website %>
+        <% else %>
+        <strong></strong><%=link_to @doctor.website, @doctor.website %>
+        <%end%></p>
 
 
-    <div class="doc-pic">
-    <img src= <%=@doctor.photo%> alt="" class="product-image doctor-picture hidden-xs">
+        <%if @doctor.user.nil?%>
+        <%if current_user.doctor.nil?%>
+        <%= link_to match_doctor_path(@doctor) do %>
+        <button role="button" class="btn btn-primary">Is this you?</button>
+        <% end %>
+        <%end%>
+        <%end%>
+
+
+        <button role="button" class="btn btn-success" data-toggle='modal' data-target='#myModal'>Review</button>
+
+        </a>
+ </div>
+  </div>
+
+
     </div>
+  </div>
+<!-- END DOCTOR PICTURE -->
 
-      <div class="is-this-you">
-      <%if @doctor.user.nil?%>
-      <%if current_user.doctor.nil?%>
-      <%= link_to match_doctor_path(@doctor) do %>
-      <button type="button" class="btn btn-danger btn-round-xs btn-xs">Is this you?</button>
+
+
+<!-- DOCTOR INFO -->
+<div class="col-sm-12 col-md-8">
+
+    <div class="panel panel-default">
+    <div class="panel-body">
+    <p><%= @doctor.description %></p>
+     <% @doctor.specialties.each do |specialty| %>
+          <p><%= specialty.name %></p>
+          <% end %>
+    <br>
+
+
+
+    </div>
+  </div>
+
+
+    </div>
+  </div>
+</div> <!-- END DOCTOR INFO -->
+
+
+
+
+
+<!-- END JAVA REVIEWS -->
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <% @doctor.reviews.each do |review| %>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h4 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= dom_id review %>" aria-expanded="true" aria-controls="<%= dom_id review %>">
+                <%=review.title%>
+              </a>
+            </h4>
+          </div>
+          <div id="<%= dom_id review %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <%=review.comment%>
+            </div>
+          </div>
+        </div>
       <% end %>
-      <%end%>
-      <%end%>
-      </div>
-
-
-     </div>
-    <div class="btn btn-treehouse"> <%= @doctor.average_review.to_f.round(1) %>
     </div>
-
-
-  <div class="btn btn-treehouse" data-toggle="modal" data-target="#myModal"> Review!
-  </div>
-
-
-</div>
-
-</div> <!-- END DOCTOR PICTURE -->
+<!-- END JAVA REVIEWS -->
 
 
 
-<!-- DOCTOR DESCRIPTION -->
-<center>
-<div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 red">
-  <h1> <%= @doctor.name %> </h1>
-  <% specialties = @doctor.specialties %>
-  <% specialties.each do |specialty| %>
-  <p> <strong><%=specialty.name%></strong> </p>
-  <% end %>
-
-  <p><% if @doctor.website == "Não Disponível."%>
-      <strong>Website: </strong><%=@doctor.website %>
-   <% else %>
-  <strong>Website: </strong><%=link_to @doctor.website, @doctor.website %>
-  <%end%></p>
-
-
-    <button class="btn btn-treehouse full-btn" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-  Read the description about this doctor
-  </button>
-  <div class="collapse" id="collapseExample">
-  <div class="well1">
-  <br>
-  <p><%= @doctor.description %></p>
-  </div>
-  </div>
-</div>
-</center>
-<!-- END DOCTOR DESCRIPTION -->
 
 
 
 
 <!-- REVIEWS -->
-<div>
+
   <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 green">
-    <% reviews = @doctor.reviews %>
-    <% reviews.each do |review| %>
 
-        <section style="background-color: #FAFAFA; padding: 20px; margin: 20px 0; box-shadow: 1px 1px 3px #F0F0F0; position: relative">
+
+
+      <% reviews = @doctor.reviews %>
+      <% reviews.each do |review| %>
+
+      <section style="background-color: #FAFAFA; padding: 20px; margin: 20px 0; box-shadow: 1px 1px 3px #F0F0F0; position: relative">
 
       <div style="display: flex; align-items: left;">
-
-          <div style="text-align: left; margin-right: 40px">
-            <h4>Rating:</h4>
-
-             <div class="btn btn-treehouse"> <%= review.rating %>
-            </div>
+      <div style="text-align: left; margin-right: 40px">
+      <h6>Rating:</h6>
+      <div class="btn btn-treehouse"> <%= review.rating %>
 
 
-            <h2><%= @review.rating %></h2>
-          </div>
 
-          <div>
-            <h4><strong><%=review.title%></strong></h4>
-            <h5><%=review.comment%></h5>
-            <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
-          </div>
+      </div>
+      <h2><%= @review.rating %></h2>
+      </div>
+      <div>
+
+
+
+      <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <%=review.title%>
+      </button>
+      <div class="collapse" id="collapseExample">
+      <div class="well">
+      <h5><%=review.comment%></h5>
+      </div>
+      </div>
+
+
+      <h4><strong><%=review.title%></strong></h4>
+      <h5><%=review.comment%></h5>
+      <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
+
+    </div>
 
       </div>
 
@@ -120,12 +160,13 @@
     </div>
   </div>
 </div>
+
 <!-- END REVIEWS -->
 
 
 
 
-</div><!-- END ROW -->
+</div> <!-- END ROW -->
 </div> <!-- END CONTAINER -->
 </div> <!-- END WRAPPER -->
 </div> <!-- END BACKGROUND -->
@@ -153,4 +194,5 @@
       </div>
     </div>
   </div>
-</div><!-- END MODAL -->
+</div>
+<!-- END MODAL -->
