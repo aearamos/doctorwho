@@ -37,7 +37,7 @@ class DoctorsController < ApplicationController
       marker.lat doctor.latitude
       marker.lng doctor.longitude
     end
-
+  end
 
 
   def new
@@ -57,9 +57,6 @@ class DoctorsController < ApplicationController
     @doctor = Doctor.find(params[:id])
     @review = Review.new
         @doctor_coordinates = { lat: @doctor.latitude, lng: @doctor.longitude }
-
-
-
   end
 
   def edit
@@ -69,7 +66,6 @@ class DoctorsController < ApplicationController
   def update
     @doctor.update(doctor_params)
     redirect_to doctor_path(@doctor)
-
   end
 
   def destroy
@@ -79,7 +75,7 @@ class DoctorsController < ApplicationController
   end
 
 
-private
+  private
 
 
   def doctor_params
@@ -93,9 +89,6 @@ private
   def set_doctor
     @doctor = Doctor.find(params[:id])
   end
-
 end
-
-
 
 
