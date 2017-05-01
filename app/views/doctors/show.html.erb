@@ -10,13 +10,6 @@
 <div class="row">
 
 
-<div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 blue">
-
-
-
-
-
-
 <!-- DOCTOR PICTURE -->
 <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4 blue">
   <div class=" panel panel-infopic">
@@ -27,48 +20,21 @@
     <img src= <%=@doctor.photo%> alt="" class="product-image doctor-picture hidden-xs">
     </div>
 
+    </div> <!-- buttons -->
+    <div class="is-this-you">
+    <%if @doctor.user.nil?%>
+    <%if current_user.doctor.nil?%>
+    <%= link_to match_doctor_path(@doctor) do %>
+    <button type="button" class="btn btn-danger btn-round-xs btn-xs">Is this you?</button>
+    <% end %>
+    <%end%>
+    <%end%>
+    </div>
+
 
 </div>
 
-<div class="blue">
-      <div class="2">
-
-      <div class="review-buttons">
-        <!--
-        <button type="button" class="btn btn-info2">Primary</button> -->
-        <!--     <button type="button" class="btn btn-primary2"><%= @doctor.average_review.to_f.round(1) %></button> -->
-        <!--    <a href="#" class="btn-treehouse">Review</a>
-
-
-         -->
-      <div class="btn btn-treehouse" data-toggle="modal" data-target="#myModal"> Review!</div>
-<!--
-      <button type="button" class="btn btn-treehouse">Review!</button> -->
-      </div> <!-- buttons -->
-
-      <div class="blue">
-      <div class="2">
-      <div class="review-buttons">
-        <!--
-        <button type="button" class="btn btn-info2">Primary</button> -->
-        <!--     <button type="button" class="btn btn-primary2"><%= @doctor.average_review.to_f.round(1) %></button> -->
-        <!--    <a href="#" class="btn-treehouse">Review</a>
-         --><!--
-        <button type="button" class="btn btn-treehouse">Review!</button> -->
-      </div> <!-- buttons -->
-      <div class="is-this-you">
-      <%if @doctor.user.nil?%>
-      <%if current_user.doctor.nil?%>
-      <%= link_to match_doctor_path(@doctor) do %>
-      <button type="button" class="btn btn-danger btn-round-xs btn-xs">Is this you?</button>
-      <% end %>
-      <%end%>
-      <%end%>
-      </div>
-
-
-     </div>
-    <div class="btn btn-treehouse"> <%= @doctor.average_review.to_f.round(1) %>
+<div class="btn btn-treehouse"> <%= @doctor.average_review.to_f.round(1) %>
     </div>
 
 
