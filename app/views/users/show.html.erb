@@ -1,73 +1,38 @@
 <div class="background-image" style="background-image: linear-gradient(180deg, rgba(0,101,168,0.2) 0%, rgba(255,255,255,0.4) 50%), url('http://res.cloudinary.com/livpuppa/image/upload/v1493238698/city_iw0rls.jpg');">
 
 
-
-
-
+<br>
+<br>
+<br>
 
 <div class="container">
-  <br>
-  <br>
-  <br>
+
   <div class="row">
     <div class=" col-sm-5 col-xs-12">
 
-
-
-
-
-<div class="media">
-  <div class="media-body">
-    <div class="media-section">
-      <h2>Pictures</h2>
-      ...
-    </div>
-    <div class="media-section">
-      <h2>Description</h2>
-      ...
-    </div>
-  </div>
-  <div class="media-aside">
-    <div class="media-section">
-      <h2>Share</h2>
-      ...
-    </div>
-    <div class="media-section">
-      <h2>382 upvotes</h2>
-      ...
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <h2>Welcome, <%=@user.first_name%>!</h2>
-
+    <div>
+      <h2 class="text-center">Welcome, <%=@user.first_name%>!</h2>
+      <div class="border">
       <% if @user.facebook_picture_url == nil %>
-        <img src="http://www.kozlowskiefaria.adv.br/wp-content/uploads/2014/12/pessoa-anonima-300x300.png" alt="">
+        <center><%= image_tag "usernoimage.png", size: "200x200" %></center>
       <% else %>
-      <%= image_tag avatar_url, class: "avatar" %>
-        <!-- <img src={facebook_picture_url} className="avatar"/> -->
+        <%= image_tag avatar_url, class: "avatar" %>
+        <img src={facebook_picture_url} className="avatar"/>
       <% end %>
-      <br>
-      <h3> Name: <%= @user.first_name + " " + @user.last_name%></h3>
-      <h3> Email: <%= @user.email %></h3>
+      </div>
+
+      <h3 class="text-center"><strong>User name:</strong> <%= @user.first_name + " " + @user.last_name%></h3>
+      <h3 class="text-center"><strong>User email:</strong> <%= @user.email %></h3>
+    </div>
 
       <br>
       <%= link_to "Edit Account Configurations", edit_user_registration_path %>
       <br>
-      <a data-toggle="modal" href="#"" data-target="#myModal">Edit Public Profile</a>
+      <% if !@user.doctor.nil? %>
+        <% if current_user.doctorstatus == "true" %>
+        <a data-toggle="modal" href="#"" data-target="#myModal">Edit Public Profile</a>
+        <% end %>
+      <% end %>
     </div>
 
     <!-- FAZER A SELECAO SOMENTE SE FOR MEDICO -->
@@ -90,12 +55,18 @@
         <h4>Website: <%= @doctor.website %></h4>
       </div>
       <% else %>
-      <h2 style="text-align: center">We are verifying your profile information. You'll be granted access as soon as we finish it</h2>
+      <br>
+      <br>
+      <center><%= image_tag "verifyinginfo.png", size: "200x200" %></center>
+      <h2 style="text-align: center">We are verifying your profile information <%= current_user.first_name %>.</h2>
+      <h3 style="text-align: center">You'll be granted access as soon as we finish it</h3>
       <% end %>
     <% end %>
 
   </div>
-
+  <br>
+  <br>
+  <br>
 
 </div>
 
@@ -142,5 +113,9 @@
             </div>
             <% end %>
             <!-- MODAL -->
-
+  <br>
+  <br>
+  <br>
 </div>
+
+
