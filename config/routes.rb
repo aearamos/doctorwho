@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
-  resources :doctors, only: [:show]
+  resources :doctors, only: [:show] do
+    member do                             # doctor id in URL
+      get 'match', to: "doctormatches#index"
+      patch 'match', to: "doctormatches#status"
+    end
+  end
 
 end
