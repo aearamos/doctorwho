@@ -19,7 +19,7 @@ class DoctorsController < ApplicationController
 
     if params[:search] && params[:search][:rating].present?
       @rating = params[:search][:rating]
-      @doctors = @doctors.select {|d| d.reviews.count.positive? && d.reviews.average(:rating) >= @rating.to_i }
+      @doctors = @doctors.where("average_rating > ?", @rating)
     end
 
     if params[:search] && params[:search][:specialty].present?
@@ -29,25 +29,10 @@ class DoctorsController < ApplicationController
 
     @doctors = Kaminari.paginate_array(@doctors) if @doctors.class == Array
     @doctors = @doctors.page(params[:page]).per(10)
-    # @doctors
-    # .select('movie_id, movie_name, avg(reviews.rating_out_of_ten)')
-    # .join(:reviews)
-    # .group('movie_id, movie_name')
-    # .order('avg(reviews.rating_out_of_ten) desc')
-    #@doctors = @doctors.order(@doctors.each {|d| d.reviews.average(:rating)})
-    # @doctors
-    #   .joins(:reviews)
-    #   .order("avg(reviews.rating)")
-
-      # @doctors = @doctors.order(@doctors.each {|d| d.reviews.average(:rating)})
-
-      @doctors
+    @doctors= @doctors.order("average_rating DESC")
+    @doctors
 
   end
-
-
-
-
 
 
   def new
