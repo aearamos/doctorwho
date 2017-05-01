@@ -46,7 +46,7 @@
 
     <% if params[:search] %>
       <h4>Your search results for </h4>
-      <h6> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> </h6>
+      <h6> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> <%= @street ? " Location: #{@street}" : "" %>  <br> </h6>
     <% end  %>
     <br>
 
