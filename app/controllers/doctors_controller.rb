@@ -56,7 +56,12 @@ class DoctorsController < ApplicationController
   def show
     @doctor = Doctor.find(params[:id])
     @review = Review.new
-        @doctor_coordinates = { lat: @doctor.latitude, lng: @doctor.longitude }
+    @doctor_coordinates = { lat: @doctor.latitude, lng: @doctor.longitude }
+
+    @hash = Gmaps4rails.build_markers(@doctor) do |doctor, marker|
+      marker.lat doctor.latitude
+      marker.lng doctor.longitude
+    end
   end
 
   def edit
