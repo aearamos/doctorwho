@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430143152) do
+ActiveRecord::Schema.define(version: 20170501152817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,14 +37,15 @@ ActiveRecord::Schema.define(version: 20170430143152) do
     t.string   "crm"
     t.boolean  "activity"
     t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
     t.string   "photo"
     t.string   "insurance"
     t.string   "website"
     t.string   "name"
     t.float    "latitude"
     t.float    "longitude"
+    t.float    "average_rating"
     t.index ["user_id"], name: "index_doctors_on_user_id", using: :btree
   end
 
