@@ -38,7 +38,6 @@ class DoctorsController < ApplicationController
       marker.lng doctor.longitude
     end
 
-  end
 
 
   def new
