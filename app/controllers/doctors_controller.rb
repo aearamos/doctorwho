@@ -10,27 +10,45 @@ class DoctorsController < ApplicationController
     @search = Search.new(search_params)
     @reviews = Review.all
     @doctors = Doctor.all
+    @review = Review.new
 
     if params[:search] && params[:search][:name].present?
-      name = params[:search][:name]
-      @doctors = @doctors.where("name ILIKE  ?", "%#{name}%")
+      @name = params[:search][:name]
+      @doctors = @doctors.where("name ILIKE  ?", "%#{@name}%")
     end
 
     if params[:search] && params[:search][:rating].present?
-      rating = params[:search][:rating]
-      @doctors = @doctors.select {|d| d.reviews.count.positive? && d.reviews.average(:rating) >= rating.to_i }
+      @rating = params[:search][:rating]
+      @doctors = @doctors.select {|d| d.reviews.count.positive? && d.reviews.average(:rating) >= @rating.to_i }
     end
 
     if params[:search] && params[:search][:specialty].present?
-      specialty_params = params[:search][:specialty]
-      specialty = Specialty.find_by name: (specialty_params)
-      @doctors = @doctors.select {|d| d.specialties.include?(specialty) }
+      @specialty_params = params[:search][:specialty]
+      @doctors = @doctors.joins(:specialties).where(specialties: { name:  params[:search][:specialty]})
     end
 
     @doctors = Kaminari.paginate_array(@doctors) if @doctors.class == Array
     @doctors = @doctors.page(params[:page]).per(10)
-    @doctors
+    # @doctors
+    # .select('movie_id, movie_name, avg(reviews.rating_out_of_ten)')
+    # .join(:reviews)
+    # .group('movie_id, movie_name')
+    # .order('avg(reviews.rating_out_of_ten) desc')
+    #@doctors = @doctors.order(@doctors.each {|d| d.reviews.average(:rating)})
+    # @doctors
+    #   .joins(:reviews)
+    #   .order("avg(reviews.rating)")
+
+      # @doctors = @doctors.order(@doctors.each {|d| d.reviews.average(:rating)})
+
+      @doctors
+
   end
+
+
+
+
+
 
   def new
     @doctor = Doctor.new

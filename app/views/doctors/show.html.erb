@@ -91,7 +91,9 @@
         <% specialties.each do |specialty| %>
         <p> <strong><%=specialty.name%></strong> </p>
         <% end %>
-        <p><strong>Description: </strong><%=@doctor.description%></p>
+        <p class="read-more"><strong>Description: </strong><%=truncate(@doctor.description, length: 200) { link_to "Continue", "#" }%></p>
+
+
         <br>
 </div>
 
