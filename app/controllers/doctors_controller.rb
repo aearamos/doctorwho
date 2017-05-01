@@ -32,6 +32,11 @@ class DoctorsController < ApplicationController
     @doctors= @doctors.order("average_rating DESC")
     @doctors
 
+    @hash = Gmaps4rails.build_markers(@doctors) do |doctor, marker|
+      marker.lat doctor.latitude
+      marker.lng doctor.longitude
+    end
+   
   end
 
 
@@ -51,6 +56,9 @@ class DoctorsController < ApplicationController
   def show
     @doctor = Doctor.find(params[:id])
     @review = Review.new
+        @doctor_coordinates = { lat: @doctor.latitude, lng: @doctor.longitude }
+
+
 
   end
 
