@@ -83,8 +83,6 @@
 
 
 
-
-
 <!-- END JAVA REVIEWS -->
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <% @doctor.reviews.each do |review| %>
@@ -128,6 +126,8 @@
       <div style="text-align: left; margin-right: 40px">
       <h6>Rating:</h6>
       <div class="btn btn-treehouse"> <%= review.rating %>
+
+
 
       </div>
       <h2><%= @review.rating %></h2>
