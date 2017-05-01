@@ -23,10 +23,15 @@
 
 
   </head>
+
+
+
   <body class="<%= controller_name %> <%= action_name %>">
 
   <%= render 'shared/navbar' %>
   <%= render 'shared/flashes' %>
+  <div class="background-image" style="background-image: linear-gradient(180deg, rgba(0,101,168,0.2) 0%, rgba(255,255,255,0.4) 50%), url('http://res.cloudinary.com/livpuppa/image/upload/v1493238698/city_iw0rls.jpg');">
+
   <%= yield %>
 
   <%= javascript_include_tag "https://maps.google.com/maps/api/js" %>
@@ -36,5 +41,6 @@
   <%= javascript_include_tag "application" %>
 
   <%= yield(:after_js) %>
+
   </body>
 </html>

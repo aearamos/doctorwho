@@ -12,9 +12,9 @@
 
 .title {
   text-align: center;
-  padding-bottom: 7px;
-  padding-right: 10px;
-  padding-left: 10px;
+  padding-bottom: 6px;
+  padding-right: 15px;
+  padding-left: 15px;
 }
 
 .seach-form {
@@ -22,102 +22,34 @@
 }
 
 .banner-content {
-  background-color: rgba(0,180,245,0.7);
+  background-color: rgba(255,255,255,0.9);
   border-radius: 5px;
-  padding: 30px;
+  padding: 9px;
+  padding-right: 24px;
+  padding-left: 24px;
+  padding-bottom: 18px;
 }
 
-// tripselectorcapture_test2_teaser.gif
-
-
-.overlay-content {
-    left: auto;
-    top: 0;
-    width: 100%;
-    max-width: 100%;
-    margin-left: 0;
-    padding: 15px;
-    border-radius: 0;
+.container2 {
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 80px;
+  padding-right: 120px;
+  padding-left: 120px;
+  background-color: white;
 }
 
-.overlay-content {
-    position: absolute;
-    z-index: 9997;
-    top: 20px;
-    left: 50%;
-    width: 920px;
-    margin-left: -460px;
-    padding: 40px 95px;
-    background: #f4f4f4;
-    background-position: fixed;
-    box-sizing: border-box;
-    border-radius: 6px;
+
+.container3 {
+  text-align: center;
+  padding-top: 60px;
+  padding-bottom: 6px;
+  padding-right: 120px;
+  padding-left: 120px;
+  background-color: $bleu;
 }
 
-.group, .constrained-content, .constrained-content-alt, .constrained-content-super, div.slat-header, div.full-tabs, #wrap ul.tabs, ul.vertical-sidenav, form.goods-search, .player-list-with-filters, table.lists-table td.title div.follow-prompt, div.bucket-container, div.list-container {
-    position: relative;
-}
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    border: 0;
-    background: transparent;
-}
-
-div {
-    display: block;
-}
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    border: 0;
-    background: transparent;
-}
-
-body {
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: #444;
-    font-size: 62.5%;
-    text-rendering: optimizeLegibility;
-    background: #fff;
-}
-
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td {
-    margin: 0;
-    padding: 0;
-    font-size: 100%;
-    vertical-align: baseline;
-    border: 0;
-    background: transparent;
-}
-
-.overlay-content:after {
-    display: none;
- }
-
-.overlay-content:after {
-    position: absolute;
-    content: "";
-    bottom: -20px;
-    height: 20px;
-    width: 1px;
-}
-.group:after, .constrained-content:after, .constrained-content-alt:after, .constrained-content-super:after, div.slat-header:after, div.full-tabs:after, #wrap ul.tabs:after, ul.vertical-sidenav:after, form.goods-search:after, .player-list-with-filters:after, table.lists-table td.title div.follow-prompt:after, div.bucket-container:after, div.list-container:after {
-    content: ".";
-    display: block;
-    height: 0;
-    clear: both;
-    visibility: hidden;
-}
-
-::selection {
-    color: #fff;
-    color: rgba(255,255,255,0.85);
-    background: #ea4c89;
+.icons {
+  height: 99px;
+  vertical-align: center;
 }

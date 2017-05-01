@@ -24,7 +24,18 @@
 
 
      <div id="map" style="width: 100%; height: 200px;"></div>
+    <% if params[:search] %>
+      <h4>Your search results for </h4>
+      <h6> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> </h6>
+    <% end  %>
+    <br>
       <% @doctors.each do |doctor|%>
+        <div class="card-doctor">
+          <div class="doctor-contact">
+            <h3 class= "card-doctor-name"><%= link_to doctor.name, doctor_path(doctor) %></h3>
+            <p class="card-doctor-address"><%= doctor.street_name %> <br> <%= doctor.city_name %></p>
+            <p class="card-doctor-specialty">
+            <% doctor.specialties.each do |specialty| %>
 
 
       <% content_for(:after_js) do %>
@@ -59,21 +70,28 @@
           Categoria: <%= specialty.name %>
           <% end %></p>
           <img class= "card-doctor-profile" src= <%= doctor.photo %> alt="">
+
+            <%= specialty.name %>
+
+            <% end %></p>
+            <img class= "card-doctor-profile" src= <%= doctor.photo %> alt="">
           </div>
 
 
 
-          <div class="rating-info">
-          <div class="btn btn-primary card-doctor-index-rating-button"> Review!
+            <div class="rating-info">
+              <div class="btn btn-primary card-doctor-index-rating-button" data-toggle="modal" data-target="#myModal"> Review!
+              <% #= render 'modal-doctor' %>
+              </div>
+              <div class="card-doctor-rating-description"> Rating
+              </div>
+              <div class="card-doctor-rating-average"> <%= doctor.average_review.to_f.round(1) %>
+              </div>
+              <div class="card-doctor-amount-of-reviews"> <%= pluralize(doctor.reviews.count,'Review')  %>
+
+              </div>
+            </div>
           </div>
-          <div class="card-doctor-rating-description"> Rating
-          </div>
-          <div class="card-doctor-rating-average"> <%= doctor.average_review.to_f.round(1) %>
-          </div>
-          <div class="card-doctor-amount-of-reviews"> <%= doctor.reviews.count %> Reviews
-          </div>
-          </div>
-        </div>
       <%end%>
       <%= paginate @doctors, theme: 'twitter-bootstrap-3' %>
    </div>
