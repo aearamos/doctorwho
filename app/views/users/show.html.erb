@@ -38,7 +38,12 @@
     <!-- FAZER A SELECAO SOMENTE SE FOR MEDICO -->
 
     <% if @user.doctor.nil? %>
-        <h1>Nao é um medico.</h1>
+      <br>
+      <br>
+      <%= link_to doctors_path do %>
+      <center><%= image_tag "lupa.png", size: "200x200" %></center>
+      <%end%>
+      <h1 style="padding: 15px"><center>Find out the best doctors in town</center></h1>
     <% else %>
       <% if current_user.doctorstatus == "true" %>
       <div class=" col-sm-7 col-xs-12">
@@ -88,7 +93,7 @@
                 <div class="modal-content">
                   <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Profile Information</h4>
+                    <h4 class="modal-title">Public Profile Information</h4>
                   </div>
                   <div class="modal-body">
                     <%= simple_form_for (@doctor) do |f| %>
