@@ -1,0 +1,25 @@
+// .panel-default > .panel-heading {
+
+//     background-color: white;
+//     border-color: white !important;
+//     text-align: left;
+// }
+
+
+.well1 {
+    min-height: 20px;
+    padding: 19px;
+    margin-bottom: 20px;
+    /* background-color: #f5f5f5; */
+    /* border: 1px solid #e3e3e3; */
+    border-radius: 2px;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.05);
+    text-align: left;
+    color: $dark;
+  font-size: 15.5px;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+  line-height: 25px;
+  text-align: left;
+}
