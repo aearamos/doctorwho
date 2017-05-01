@@ -7,5 +7,6 @@
   <br>
   <%=f.input :specialty, prompt: "Choose a specialty", :collection => Specialty.all_specialties.sort, label_html: { class: "search-title" }, input_html: { class: "search-name"}, wrapper_html: { class: "search-box" } %>
   <br>
+   <%=f.input :street_name, placeholder: "Choose a location", label_html: { class: "search-title" }, input_html: { class: "search-street" }, wrapper_html: { class: "search-box" }%>
   <%= f.submit "Search", class: "btn-treehouse" %>
 <% end %>
