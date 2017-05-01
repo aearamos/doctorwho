@@ -1,32 +1,47 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <a href="/" class="navbar-wagon-brand">
-    <img src="images/lewagon.png" />
+  <a href="/">
+    <%= image_tag "logo_drwho.png", size: "200x50" %>
+
   </a>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right">
-
-
     <!-- Text link -->
-    <a href="" class="navbar-wagon-item navbar-wagon-link">About</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Find a doctor</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Leave a review</a>
-    <a href="" class="navbar-wagon-item navbar-wagon-link">Login</a>
+    <%= link_to root_path do %>
+      <%= content_tag :span, "Home", :class => "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+
+    <%= link_to root_path do %>
+      <%= content_tag :span, "About", :class => "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+
+    <%= link_to doctors_path do %>
+      <%= content_tag :span, "Doctor Listing", :class => "navbar-wagon-item navbar-wagon-link" %>
+    <% end %>
+
+    <% if !current_user %>
+      <%= link_to "Login",  new_user_session_path %>
+    <% else%>
+    <%end%>
 
 
+    <% if current_user %>
     <!-- Profile picture and dropdown -->
     <div class="navbar-wagon-item">
+
       <div class="dropdown">
-        <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown">
+
+      <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+     <!-- <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
         <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Dashboard</a></li>
-          <li><a href="#">Log Out</a></li>
+          <li><%= link_to('Profile', user_path(current_user)) %></li>
+          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+          <%else%>
+          <%end%>
         </ul>
       </div>
     </div>
-
   </div>
 
   <!-- Dropdown appearing on mobile only -->

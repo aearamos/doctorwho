@@ -1,45 +1,87 @@
+<div class="background-image" style="background-image: linear-gradient(180deg, rgba(0,101,168,0.2) 0%, rgba(255,255,255,0.4) 50%), url('http://res.cloudinary.com/livpuppa/image/upload/v1493238698/city_iw0rls.jpg');">
 
-<div class="wrapper-index">
 
-<h2 class="text-center">Your Doctor Search Results: </h2>
-  <div class="container">
-    <div class="wrapper-flex">
-      <div class="filter-index">
-        <p>Here will come some fancy filters</p>
-      </div>
-      <div class="wrapper-doctor-cards">
-          <div class="row">
-            <div class="col-xs-12">
-              <% @doctors.each do |doctor|%>
+<div class="wrapper">
+<div class="row">
+<!-- <center>
 
-                <div class="card-doctor">
-                  <h3 class= "card-doctor-name">  <%= "#{doctor.first_name}  #{doctor.last_name}" %> </h3>
-                  <p class="card-doctor-address"> <%= doctor.street_name %> <br> <%= doctor.city_name %></p>
-                  <p class="card-doctor-specialty">
-                 <!-- I'm trying to do a comma after the List of specialties -->
-                   <!--  <%= doctor.specialties.each{ |specialty|
-                      specialty.name}.join(", ") %> -->
-                    <% doctor.specialties.each do |specialty| %>
-                      <%= specialty.name %>
-                    <% end %>
-                  </p>
-                  <img class= "card-doctor-profile" src="http://fillmurray.com/100/150" alt="">
-                  <!-- RUBY link_to "", doctor_path , class: "card-doctor-link" RUBY -->
-                  <div class="rating-info">
-                    <div class="btn btn-primary card-doctor-index-rating-button"> Review!</div>
-                    <div class="card-doctor-rating-description"> Rating </div>
+<h2>There are <%=@doctors.count%> doctors near you!</h3> -->
 
-                    <!-- to be calculated -->
-                    <div class="card-doctor-rating-average"> <%= doctor.average_review.to_i.round(1) %> </div>
 
-                    <!-- to be calculated -->
-                    <div class="card-doctor-amount-of-reviews"> <%= doctor.reviews.count %> Reviews </div>
-                  </div>
-                </div>
-              <%end%>
-            </div>
-          </div>
-        </div>
+
+  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+    <div class="box"><h3><i class="fa fa-filter" aria-hidden="true">
+      </i>Narrow your search results</h3>
+      <h6> <%= link_to "x Reset Filter",  doctors_path %> </h6>
+      <%= render 'filter' %>
     </div>
   </div>
-</div>
+
+
+
+  <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+    <div class="box">
+
+
+     <div id="map" style="width: 100%; height: 200px;"></div>
+
+     <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+
+    <% if params[:search] %>
+      <h4>Your search results for </h4>
+      <h6> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> </h6>
+    <% end  %>
+    <br>
+
+      <% @doctors.each do |doctor|%>
+        <div class="card-doctor">
+          <div class="doctor-contact">
+            <h3 class= "card-doctor-name"><%= link_to doctor.name, doctor_path(doctor) %></h3>
+            <p class="card-doctor-address"><%= truncate(doctor.street_name) %> <br> <%= doctor.city_name %></p>
+            <p class="card-doctor-specialty">
+            <% doctor.specialties.each do |specialty| %>
+            Categoria: <%= specialty.name %>
+          <% end %></p>
+          <img class= "card-doctor-profile" src= <%= doctor.photo %> alt="">
+          </div>
+
+
+            <div class="rating-info">
+              <div class="btn btn-primary card-doctor-index-rating-button" data-toggle="modal" data-target="#myModal"> Review!
+              <% #= render 'modal-doctor' %>
+              </div>
+              <div class="card-doctor-rating-description"> Rating
+              </div>
+              <div class="card-doctor-rating-average"> <%= doctor.average_rating ? doctor.average_rating.round(1) : " N/A " %>
+              </div>
+              <div class="card-doctor-amount-of-reviews"> <%= pluralize(doctor.reviews.count,'Review')  %>
+
+              </div>
+            </div>
+          </div>
+      <%end%>
+      <%= paginate @doctors, theme: 'twitter-bootstrap-3' %>
+   </div>
+  </div>
+
+</div> <!-- END WRAPPER  -->
+</div> <!-- END ROW -->
+
+
+</div> <!-- END BACKGROUND  -->

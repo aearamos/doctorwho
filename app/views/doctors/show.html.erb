@@ -1,82 +1,188 @@
+<div class="background-image" style="background-image: linear-gradient(180deg, rgba(0,101,168,0.2) 0%, rgba(255,255,255,0.4) 50%), url('http://res.cloudinary.com/livpuppa/image/upload/v1493238698/city_iw0rls.jpg');">
+
+<!-- <div class="map container">
+<img src="http://res.cloudinary.com/livpuppa/image/upload/v1493303349/Captura_de_Tela_2017-04-27_a%CC%80s_11.28.34_s4aig3.png" alt="" >
+</div>
+ -->
 
 
-<div class="banner" style="background-image: linear-gradient(-225deg, rgba(0,101,168,0.6) 0%, rgba(0,36,61,0.6) 50%), url('background.jpg');">
-  <div class="banner-content">
+
+
+<div class="wrapper">
+<div class="container">
+<div class="row2">
+
+<div class="fff"> fasfkafsdfsdfsdf </div>
+
+<!-- DOCTOR PICTURE -->
+
+
+<div class="row">
+  <div class="col-sm-12 col-md-4">
+
+    <div class="panel panel-default">
+    <div class="panel-body">
+        <center>
+        <img src=<%=@doctor.photo%> alt="user" class="avatar-square">
+        </center>
+        <div class="caption">
+        <h2><%= @doctor.name %> </h2>
+        <p><p><% if @doctor.website == "Não Disponível."%>
+        Website: <%=@doctor.website %>
+        <% else %>
+        <center><%=link_to @doctor.website, @doctor.website %></center>
+        <%end%></p>
+
+
+        <%if @doctor.user.nil?%>
+        <%if current_user.doctor.nil?%>
+        <%= link_to match_doctor_path(@doctor) do %>
+        <button role="button" class="btn btn-primary">Is this you?</button>
+        <% end %>
+        <%end%>
+        <%end%>
+
+
+        <button role="button" class="btn btn-success" data-toggle='modal' data-target='#myModal'>Review</button>
+
+        </a>
+ </div>
+  </div>
+
+
+    </div>
+  </div>
+<!-- END DOCTOR PICTURE -->
+
+
+
+<!-- DOCTOR INFO -->
+<div class="col-sm-12 col-md-8">
+
+    <div class="panel panel-default">
+    <div class="panel-body">
+    <h6>Description:</h6>
+    <p><%= @doctor.description %></p>
+    <h6>Specialties:</h6>
+    <% @doctor.specialties.each do |specialty| %><p><%= specialty.name %></p>
+    <% end %>
     <br>
 
 
-    <div class="wrapper" style="background: white; border-radius: 5px; margin: 80px; margin-top: 5px; padding: 10px">
 
-      <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('background.jpg');">
-        <p>MAP WITH DOCTOR ADDRESS</p>
-        <p>MAP WITH DOCTOR ADDRESS</p>
-        <p>MAP WITH DOCTOR ADDRESS</p>
-        <p>MAP WITH DOCTOR ADDRESS</p>
-      </div>
+    </div>
+  </div>
 
-      <div class="container">
-        <div class="row">
-          <div class=" col-sm-4 col-xs-12">
-            <div style="background-color: #469AE0; border-radius: 5px; padding: 10px">
-              <div style="display: flex; justify-content: space-around;">
-                <img src="http://www.fillmurray.com/190/190" alt="">
-                <div style="text-align: center">
-                  <h3>RATING</h3>
-                  <h2> <strong> 4.7 </strong> </h2>
-                  <a href="#" class="btn btn-success">Reviews</a>
-                </div>
-              </div>
-              <br>
-              <div style="text-align: center">
-                <a href="#" class="btn btn-danger">Review this doctor</a>
-              </div>
+
+    </div>
+  </div>
+</div> <!-- END DOCTOR INFO -->
+
+
+<div class="fff"> fasfkafsdfsdfsdf </div>
+<!-- END JAVA REVIEWS -->
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+      <% @doctor.reviews.each do |review| %>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="headingOne">
+            <h5 class="panel-title">
+              <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= dom_id review %>" aria-expanded="true" aria-controls="<%= dom_id review %>">
+                Rating:<div class="btn btn-success"> <%= review.rating %>
+      </div> | <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <%=review.title%>
+      </button>
+              </a>
+            </h5>
+          </div>
+          <div id="<%= dom_id review %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
+            <div class="panel-body">
+              <%=review.comment%>
+              <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
             </div>
           </div>
-        <div class="col-sm-8 col-xs-12">
-          <h1><%= "Dr. " + @doctor.first_name.to_s + " " + @doctor.last_name.to_s %></h1>
-            <% specialties = @doctor.specialties %>
-            <% specialties.each do |specialty| %>
-            <p> <strong><%=specialty.name%></strong> </p>
-            <% end %>
-          <p><strong>Description: </strong><%=@doctor.description%></p>
-          <br>
-          <p><strong>Contact: </strong><%=@doctor.phone%></p>
-          <p><strong>Address: </strong><%=@doctor.street_name.to_s + " - " + @doctor.city_name.to_s%></p>
         </div>
+      <% end %>
+    </div>
+<!-- END JAVA REVIEWS -->
+
+
+<!-- <!-- REVIEWS -->
+
+ <!--  <div class="row">
+    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 green"> -->
+
+
+<!--
+      <% reviews = @doctor.reviews %>
+      <% reviews.each do |review| %>
+
+      <section style="background-color: #FAFAFA; padding: 20px; margin: 20px 0; box-shadow: 1px 1px 3px #F0F0F0; position: relative">
+ -->
+     <!--  <div style="display: flex; align-items: left;">
+      <div style="text-align: left; margin-right: 40px">
+      <h6>Rating:</h6>
+      <div class="btn btn-treehouse"> <%= review.rating %>
+
+
+
+      </div>
+      <h2><%= @review.rating %></h2>
+      </div>
+      <div>
+ -->
+
+
+      <!-- <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+      <%=review.title%>
+      </button>
+      <div class="collapse" id="collapseExample">
+      <div class="well">
+      <h5><%=review.comment%></h5>
+      </div>
+      </div>
+ -->
+
+      <!-- <h4><strong><%=review.title%></strong></h4>
+      <h5><%=review.comment%></h5>
+      <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
+
+    </div>
+
+      </div>
+
+        </section>
+        <% end %>
+
+    </div>
+  </div>
+</div>
+ -->
+<!-- END REVIEWS -->
+
+</div> <!-- END ROW -->
+</div> <!-- END CONTAINER -->
+</div> <!-- END WRAPPER -->
+</div> <!-- END BACKGROUND -->
+
+<!-- MODAL -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Review Dr.<%= @doctor.name %></h4>
+      </div>
+      <div class="modal-body">
+        <%= simple_form_for [@doctor, @review] do |f| %>
+        <%= f.input :title, label: false, placeholder: "Review title" %>
+        <%= f.input :comment, label: false, placeholder: "Comment" %>
+        <%= f.input :rating, collection: 1..5, placeholder: "Rating" %>
+      </div>
+      <div class="modal-footer">
+        <%= f.button :submit %>
+        <% end %>
       </div>
     </div>
-
-<br>
-<br>
-
-
-  <h1>REVIEWS</h1>
-  <% reviews = @doctor.reviews %>
-    <% reviews.each do |review| %>
-    <section style="background-color: #FAFAFA; padding: 20px; margin: 20px 0; box-shadow: 1px 1px 3px #F0F0F0; position: relative">
-
-    <div style="display: flex; align-items: center;">
-    <div style="text-align: center; margin-right: 40px">
-    <h4>RATING:</h4>
-    <h2><%=review.Rating%></h2>
-    </div>
-
-    <div>
-    <h4><strong><%=review.title%></strong></h4>
-    <h6><%=review.comment%></h6>
-    <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
-    </div>
-    </div>
-    </section>
-    <% end %>
-
-    </div>
-
+  </div>
 </div>
-</div>
-
-
-
-
-
-
+<!-- END MODAL -->

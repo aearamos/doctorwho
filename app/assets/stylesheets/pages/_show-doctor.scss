@@ -1,0 +1,252 @@
+
+.fff {
+  background-color: $light-gray;
+  color: $gray;
+  text-align: center;
+  padding: 10px;
+}
+
+.panel-body {
+  border-radius: 0px;
+}
+
+.panel {
+  border-radius: 0px;
+}
+
+.panel-default {
+  border-radius: 0px;
+}
+
+.caption {
+  text-align: center;
+}
+
+.thumbnail {
+  padding: 50px;
+}
+
+
+.avatar-square {
+  width: 100px;
+}
+
+
+.infos {
+  background-color: $light-gray;
+}
+
+.red {
+  overflow: hidden;
+  background-color: white;
+  padding: 15px 15px 15px 15px;
+
+}
+
+.pic {
+  display: inline-flex;
+  justify-content: space-around;
+  flex-direction: row;
+  overflow: hidden;
+  background-color: white;
+  padding: 15px 15px 15px 15px;
+
+}
+
+.blue {
+  overflow: hidden;
+  background-color: white;
+  padding: 15px 15px 15px 15px;
+
+}
+
+.green{
+  background-color: white;
+  padding: 10px 40px 10px 40px;
+}
+
+.modul-headline {
+    position: relative;
+    line-height: 15px;
+    color: #333;
+    padding: 10px 15px 10px 15px;
+    margin: 0;
+    background-color: #f5f5f5;
+    border: 1px solid #dcdcdc;
+    // border-bottom: 1px solid #dcdcdc;
+    max-height: 999999px;
+}
+
+.panel-body {
+  padding: 29px;
+}
+
+.container {
+    max-width: 1000px;
+    padding: 30px;
+    box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
+    overflow: hidden;
+    border-top: 1px solid #d5d5d5;
+    border-left: 1px solid #d5d5d5;
+    border-right: 1px solid #d5d5d5;
+    background-color: #FFFFFF;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 6px;
+}
+
+.product {
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.doc-pic {
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.review-buttons {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+
+
+.product-image {
+  border-radius: 0px;
+  height: 100px;
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+
+
+.btn-medium {
+  color: #999999;
+  border: 1px solid #999999;
+  padding: 10px 15px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 0.6;
+
+  box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
+}
+.btn-medium:hover {
+  opacity: 1;
+  text-decoration: none;
+  color: #999999;
+}
+
+.btn-treehouse {
+  color: white;
+  border-radius: 2px;
+  background: #6AD58B;
+  transition: background 0.3s ease;
+}
+
+.btn-treehouse:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
+}
+
+.btn-treehou {
+  color: white;
+  height: 50px;
+  padding: 10px 15px;
+  border-radius: 2px;
+  background: #6AD58B;
+  transition: background 0.3s ease;
+}
+
+.btn-treehou:hover {
+  opacity: 1;
+  background: #3ac162;
+  text-decoration: none;
+  color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+.background-image {
+  background: no-repeat center center fixed;
+  background-size: cover;
+}
+
+.wrapper {
+  text-align: left;
+  padding: 50px;
+}
+
+
+/* Build your own button classes ! */
+
+// .btn-info2 {
+//   height: 100px;
+// }
+
+// .btn-primary2 {
+//   height: 100px;
+// }
+
+// .btn-success2 {
+//   height: 100px;
+// }
+
+
+// .description-card {
+//   display: flex;
+//   justify-content: space-around;
+//   align-items: center;
+// }
+
+// .reviews-list {
+//   padding: 80px;
+// }
+
+// .map {
+//   width: 100%;
+//   height: 100px;
+//   overflow: hidden;
+// }
+
+// .cards-show {
+//     // box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.4);
+//     // overflow: hidden;
+//     margin: 50px;
+//     // border-top: 1px solid #d5d5d5;
+//     // border-left: 1px solid #d5d5d5;
+//     // border-right: 1px solid #d5d5d5;
+//     background-color: $off-white;
+//     border-top-right-radius: 3px;
+//     border-top-left-radius: 3px;
+// }
+
+// .all {
+//   background-color: $ashes;
+//   text-align: center;
+//   height: 100vh;
+//   /* if you have a 70px navbar => height: calc(100vh - 70px); */
+//   // background-size: cover !important;
+//   // display: flex;
+//   // align-items: center;
+//   // justify-content: center;
+// }
+
+// .all {
+//   padding: 50px;
+//   margin: 0 auto;
+// }
