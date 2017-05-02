@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :destroy]
   end
   root to: 'pages#home'
+  get "about", to: "pages#about"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :doctors, only: [:show] do
@@ -16,6 +17,7 @@ Rails.application.routes.draw do
       get 'match', to: "doctormatches#index"
       patch 'match', to: "doctormatches#status"
     end
+
   end
 
 end
