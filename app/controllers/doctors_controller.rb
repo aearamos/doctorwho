@@ -55,7 +55,7 @@ class DoctorsController < ApplicationController
       marker.lat doctor.latitude
       marker.lng doctor.longitude
 
-      marker.infowindow "<h6>#{doctor.name}</h6>"
+      marker.infowindow "<h5>#{doctor.name}</h5>"
     end
   end
 
@@ -83,7 +83,7 @@ class DoctorsController < ApplicationController
       marker.lng doctor.longitude
 
 
-      marker.infowindow "<h6>#{doctor.name}</h6>"
+      marker.infowindow "<h5>#{doctor.name}</h5>"
 
 
     end
