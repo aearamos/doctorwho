@@ -14,6 +14,26 @@
 
 
 
+<div id="map" style="width: 100%; height: 200px;"></div>
+
+     <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+
 
 <!-- MAP -->
 <div id="map" style="width: 100%; height: 200px;"></div>
@@ -59,8 +79,10 @@
         <%if @doctor.user.nil?%>
         <%if current_user.doctor.nil?%>
         <%= link_to match_doctor_path(@doctor) do %>
+
         <br>
         <button type="button" class="btn btn-primary btn-xs" data-placement="bottom">Is this you?</button>
+
         <%end%>
         <%end%>
         <%end%>

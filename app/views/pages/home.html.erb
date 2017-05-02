@@ -1,35 +1,31 @@
 
-
 <div class="fonts">
+
 <div class="banner" style="background-image: linear-gradient(0deg, rgba(255,255,255,1.0) 0%, rgba(0,111,139,0.1) 50%), url('http://res.cloudinary.com/livpuppa/image/upload/v1493192993/banner_wssfw1.jpg');">
 
-<div class="banner-content">
 
-  <div class="title">
-    <h1>Find a doctor to trust & fit your need.</h1>
-  </div>
 
-  <form class="navbar-form navbar-left" role="search">
-    <div class="form-group">
-      <input type="text" class="form-control" placeholder="Name">
-      <input type="text" class="form-control" placeholder="City">
-      <input type="text" class="form-control" placeholder="Specialty">
-    </div>
-    <button role="submit" class="btn btn-primary">Find</button>
-  </form>
+  <div class="banner-content">
+      <div class="title">
+        <h1>Find a doctor you trust & fits your needs</h1>
+      </div>
 
-      <!-- <div class="seach-form">
-        <form action="" class="search">
-        <input type="text" class="search-input" placeholder="Name (optional)"></input>
-        <input type="text" class="search-input" placeholder="City"></input>
-        <input type="text" class="search-input" placeholder="Specialty"></input>
-        <a href="#" class="btn-treehouse">Find</a>
+
+        <form action="<%=doctors_path%>" class="seach-form search">
+          <input type="text" name = "search[name]" id="search_name" class="search-input" placeholder="Name"></input>
+          <input type="text" name = "search[street_name]" id="search_street_name" class="search-input" placeholder="Place in Sao Paulo"></input>
+          <select name="search[specialty]" id="search_specialty" class="search-input" type="text" style="height:42px; background-color: white; border-radius: 0px">
+              <option value="" >Specialty</option>
+              <%Specialty.all.each do |specialty|%>
+                <option value=<%=specialty.name%>><%=specialty.name%></option>
+                 <%end%>
+          </select>
+          <button class="btn-treehouse">Find</button>
         </form>
-      </div> -->
+
+
   </div>
 </div> <!-- END OF BANNER BACKGROUND  -->
-
-
 
 
 
@@ -100,4 +96,3 @@
 
 </div>
 </div>
-

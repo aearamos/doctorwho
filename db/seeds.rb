@@ -24,7 +24,7 @@ persisted_specialty = []
   )
 end
 
-5.times do |i|
+10.times do |i|
   html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/#{i+1}")
   #  html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/5")
 
@@ -65,7 +65,7 @@ end
         photo_id = img.size.positive? ? img.attribute('src').value : "Foto indisponível."
         root = doc.search('.location.d')
         insurance = root.search('p.insurances').text.sub('Atende: ','')
-        address = root.search('.address .street').text.gsub(/\s+/, ' ').strip
+        address = root.search('.address .street')[0].text.gsub(/\s+/, ' ').strip
         #hours = root.search('p.openinghours').text.strip.sub('Horário: ','').gsub(/\r\n+/, ' ')
         description = doc.search('.history div').text.strip.gsub(/\n\n+/, ' ').sub('Ver Mais','').sub('Ver Menos','').sub('Ver maisVer menos','.').gsub(/\r\n+/, ' ').gsub(/\n+/, ' ').gsub(/\t\t+/, ' ').gsub(/\t+/, ' ').gsub(/\+/, ' ')
         city_name = "São Paulo"

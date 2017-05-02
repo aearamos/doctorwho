@@ -26,27 +26,9 @@
 
      <div id="map" style="width: 100%; height: 200px;"></div>
 
-     <% content_for(:after_js) do %>
-        <%= javascript_tag do %>
-          $(document).ready(function() {
-            var handler = Gmaps.build('Google');
-            handler.buildMap({ internal: { id: 'map' } }, function() {
-              markers = handler.addMarkers(<%= raw @hash.to_json %>);
-              handler.bounds.extendWith(markers);
-              handler.fitMapToBounds();
-              if (markers.length == 0) {
-                handler.getMap().setZoom(2);
-              } else if (markers.length == 1) {
-                handler.getMap().setZoom(14);
-              }
-            });
-          });
-        <% end %>
-      <% end %>
-
     <% if params[:search] %>
       <h4>Your search results for </h4>
-      <h6> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> </h6>
+      <h6> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> <%= @street ? " Location: #{@street}" : "" %>  <br> </h6>
     <% end  %>
     <br>
 
@@ -54,7 +36,7 @@
         <div class="card-doctor">
           <div class="doctor-contact">
             <h3 class= "card-doctor-name"><%= link_to doctor.name, doctor_path(doctor) %></h3>
-            <p class="card-doctor-address"><%= truncate(doctor.street_name) %> <br> <%= doctor.city_name %></p>
+            <p class="card-doctor-address"><%= doctor.street_name %> <br> <%= doctor.city_name %></p>
             <p class="card-doctor-specialty">
             <% doctor.specialties.each do |specialty| %>
             Categoria: <%= specialty.name %>
@@ -111,3 +93,22 @@
 </div> <!-- END BACKGROUND  -->
 
 
+ <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(4);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(10);
+              } else if (markers.length > 1) {
+                handler.getMap().setZoom(6);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
