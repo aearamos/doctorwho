@@ -83,9 +83,9 @@
 
 
             <!-- MODAL -->
-            <div class="container">
-            <div class="row">
-            <div class="col-xs-12">
+          <div class="container-fluid">
+          <div class="row">
+          <div class="col-xs-12">
             <% if @user.doctor.nil? %>
             <h1>Nao é um médico.</h1>
             <% else %>
@@ -99,6 +99,8 @@
                     <h4 class="modal-title">Public Profile Information</h4>
                   </div>
                   <div class="modal-body">
+
+
                     <%= simple_form_for (@doctor) do |f| %>
                     <%= f.input :name %>
                     <%= f.input :street_name %>
