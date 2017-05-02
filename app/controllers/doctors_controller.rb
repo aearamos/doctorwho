@@ -30,7 +30,13 @@ class DoctorsController < ApplicationController
      if params[:search] && params[:search][:street_name].present?
       @street = params[:search][:street_name]
       @doctors = @doctors.where("street_name ILIKE  ?", "%#{@street}%")
+      #@doctors = Doctor.near([@doctor.latitude, @doctor.longitude], 10)
+      # @doctors.each do |doctor|
+      #    @doctors = @doctors.near([doctor.latitude, doctor.longitude], 1000)
+      # end
     end
+
+
 
     @doctors = Kaminari.paginate_array(@doctors) if @doctors.class == Array
     @doctors = @doctors.page(params[:page]).per(10)
@@ -39,8 +45,17 @@ class DoctorsController < ApplicationController
     @doctors
 
     @hash = Gmaps4rails.build_markers(@doctors) do |doctor, marker|
+      if doctor.latitude.nil? ==true
+        doctor.latitude = -23.533773
+      end
+      if doctor.longitude.nil? == true
+        doctor.longitude = -46.65290
+      end
+
       marker.lat doctor.latitude
       marker.lng doctor.longitude
+
+      marker.infowindow "<h6>#{doctor.name}</h6>"
     end
   end
 
@@ -66,6 +81,9 @@ class DoctorsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@doctor) do |doctor, marker|
       marker.lat doctor.latitude
       marker.lng doctor.longitude
+
+      marker.infowindow "<h6>#{doctor.name}</h6>"
+
     end
   end
 
