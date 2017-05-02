@@ -8,7 +8,7 @@
 <div class="container">
 
   <div class="row">
-    <div class=" col-sm-5 col-xs-12">
+    <div class="col-xs-12 col-sm-5">
 
     <div>
       <h2 class="text-center">Welcome, <%=@user.first_name%>!</h2>
@@ -46,7 +46,7 @@
       <h1 style="padding: 15px"><center>Find out the best doctors in town</center></h1>
     <% else %>
       <% if current_user.doctorstatus == "true" %>
-      <div class=" col-sm-7 col-xs-12">
+      <div class="col-xs-12 col-sm-7">
         <h2><strong>Public Profile</strong></h2>
         <h4><strong><%= @doctor.name %></strong></h4>
         <img src=<%=@doctor.photo%> alt="">
@@ -83,6 +83,9 @@
 
 
             <!-- MODAL -->
+            <div class="container">
+            <div class="row">
+            <div class="col-xs-12">
             <% if @user.doctor.nil? %>
             <h1>Nao é um médico.</h1>
             <% else %>
@@ -118,6 +121,9 @@
               </div>
             </div>
             <% end %>
+            </div>
+            </div>
+            </div>
             <!-- MODAL -->
   <br>
   <br>
