@@ -82,7 +82,9 @@ class DoctorsController < ApplicationController
       marker.lat doctor.latitude
       marker.lng doctor.longitude
 
+
       marker.infowindow "<h6>#{doctor.name}</h6>"
+
 
     end
   end

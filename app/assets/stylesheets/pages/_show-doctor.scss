@@ -1,6 +1,17 @@
 
+.you {
+  max-height: 10px;
+}
+
+.hide_description {
+  height: 150px;
+  overflow: hidden;
+}
+
 .fff {
-  background-color: $light-gray;
+  display: flex;
+  justify-content: space-between;
+  background-color: #e5e5e5;
   color: $gray;
   text-align: center;
   padding: 10px;
