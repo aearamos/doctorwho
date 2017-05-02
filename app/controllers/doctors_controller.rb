@@ -27,6 +27,11 @@ class DoctorsController < ApplicationController
       @doctors = @doctors.joins(:specialties).where(specialties: { name:  params[:search][:specialty]})
     end
 
+     if params[:search] && params[:search][:street_name].present?
+      @street = params[:search][:street_name]
+      @doctors = @doctors.where("street_name ILIKE  ?", "%#{@street}%")
+    end
+
     @doctors = Kaminari.paginate_array(@doctors) if @doctors.class == Array
     @doctors = @doctors.page(params[:page]).per(10)
     @doctors= @doctors.order("average_rating DESC")
@@ -56,7 +61,12 @@ class DoctorsController < ApplicationController
   def show
     @doctor = Doctor.find(params[:id])
     @review = Review.new
-        @doctor_coordinates = { lat: @doctor.latitude, lng: @doctor.longitude }
+    @doctor_coordinates = { lat: @doctor.latitude, lng: @doctor.longitude }
+
+    @hash = Gmaps4rails.build_markers(@doctor) do |doctor, marker|
+      marker.lat doctor.latitude
+      marker.lng doctor.longitude
+    end
   end
 
   def edit

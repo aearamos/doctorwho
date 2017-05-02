@@ -1,6 +1,7 @@
 <div class="background-image" style="background-image: linear-gradient(180deg, rgba(0,101,168,0.2) 0%, rgba(255,255,255,0.4) 50%), url('http://res.cloudinary.com/livpuppa/image/upload/v1493238698/city_iw0rls.jpg');">
 
 
+
 <div class="wrapper">
 <div class="row">
 <!-- <center>
@@ -45,7 +46,7 @@
 
     <% if params[:search] %>
       <h4>Your search results for </h4>
-      <h6> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> </h6>
+      <h6> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> <%= @street ? " Location: #{@street}" : "" %>  <br> </h6>
     <% end  %>
     <br>
 
@@ -61,27 +62,52 @@
           <img class= "card-doctor-profile" src= <%= doctor.photo %> alt="">
           </div>
 
+                <div class="rating-info">
+                  <div class="btn btn-primary card-doctor-index-rating-button" data-toggle="modal" data-target="#myModal<%="#{doctor.id}"%>"> Review!</div>
 
-            <div class="rating-info">
-              <div class="btn btn-primary card-doctor-index-rating-button" data-toggle="modal" data-target="#myModal"> Review!
-              <% #= render 'modal-doctor' %>
+
+                      <div id="myModal<%="#{doctor.id}"%>" class="modal fade" role="dialog"> <!-- START MODAL -->
+                        <div class="modal-dialog">
+                          <div class="modal-content">
+                            <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title">Review <%= doctor.name %></h4>
+                            </div>
+                            <div class="modal-body">
+                              <%= simple_form_for [doctor, @review] do |f| %>
+                              <%= f.input :title, label: false, placeholder: "Review title" %>
+                              <%= f.input :comment, label: false, placeholder: "Comment" %>
+                              <%= f.input :rating, collection: 1..5, placeholder: "Rating" %>
+                            </div>
+                            <div class="modal-footer">
+                              <%= f.button :submit %>
+                              <% end %>
+                            </div>
+                          </div>
+                        </div>
+                      </div><!-- END MODAL -->
+
+                  <div class="card-doctor-rating-description"> Rating </div>
+                  <div class="card-doctor-rating-average"> <%= doctor.average_rating ? doctor.average_rating.round(1) : " N/A " %> </div>
+
+
+
+                  <div class="card-doctor-amount-of-reviews"> <%= pluralize(doctor.reviews.count,'Review')  %> </div>
+                </div>
               </div>
-              <div class="card-doctor-rating-description"> Rating
-              </div>
-              <div class="card-doctor-rating-average"> <%= doctor.average_rating ? doctor.average_rating.round(1) : " N/A " %>
-              </div>
-              <div class="card-doctor-amount-of-reviews"> <%= pluralize(doctor.reviews.count,'Review')  %>
 
-              </div>
-            </div>
-          </div>
-      <%end%>
-      <%= paginate @doctors, theme: 'twitter-bootstrap-3' %>
-   </div>
-  </div>
+          <%end%>
 
-</div> <!-- END WRAPPER  -->
-</div> <!-- END ROW -->
+          <%= paginate @doctors, theme: 'twitter-bootstrap-3' %>
+        </div>
+      </div>
 
 
+    </div> <!-- END ROW  -->
+  </div> <!-- END WRAPPER -->
+
+</div>
+</div>
 </div> <!-- END BACKGROUND  -->
+
+
