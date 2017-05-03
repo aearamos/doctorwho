@@ -34,6 +34,7 @@ class DoctorsController < ApplicationController
       # @doctors.each do |doctor|
       #    @doctors = @doctors.near([doctor.latitude, doctor.longitude], 1000)
       # end
+
     end
 
 
