@@ -3,7 +3,7 @@
   color: #252761;
   text-shadow: none;
   position: absolute;
-  top: 20px;
+  top: 15px;
   right: 24px;
 }
 .card-d {
@@ -15,12 +15,13 @@
   color: white;
   position: relative;
   margin-top: 20px;
+  padding: 15px;
 }
 
 .card-d-review {
   position: absolute;
   right: 20px;
-  top: 39px;
+  top: 34px;
   min-width: 40px;
   text-align: center;
   background-color: $midnight;
@@ -36,34 +37,38 @@
 .rating-button{
   position: absolute;
   right: 20px;
-  top: 77px;
+  bottom: 20px;
+  text-shadow: none;
 }
 
 
 .avatar-big{
-  position: absolute;
-  left: 15px;
-  top: 15px;
+  // position: absolute;
+  // left: 15px;
+  // top: 15px;
   max-height: 45%;
 
 }
-.card-d-category {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  font-size: 10px;
-  text-transform: uppercase;
 
-}
+// .card-d-category {
+//   position: absolute;
+//   top: 10px;
+//   left: 10px;
+//   font-size: 10px;
+//   text-transform: uppercase;
+// }
+
 .card-d-description {
-  position: absolute;
-  bottom: 10px;
-  left: 15px;
+  // position: absolute;
+  // bottom: 10px;
+  // left: 15px;
+
 
 }
 .card-d-description h2 {
   font-size: 19px;
   text-shadow: none;
+   margin-top: 2px !important;
 }
 .card-d-description p {
   font-size: 13px;
@@ -81,15 +86,16 @@
   background: black;
   opacity: 0;
 }
-.card-d-link:hover{
+.card-d-link:hover {
   opacity: 0.1;
 }
 
 
-.main-card-info{
+.main-card-info {
   background-color: red;
 }
-.search-title{
+
+.search-title {
   background-color: $light-gray;
   color: $bleu;
   font-weight: lighter;
@@ -100,7 +106,7 @@
   border-radius: 2px;
 }
 
-.search-name{
+.search-name {
   padding: 3px;
   margin: 0px 5px;
   padding: 4px;
