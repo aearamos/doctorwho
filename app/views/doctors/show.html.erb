@@ -10,13 +10,40 @@
 <div class="container">
 <div class="row2">
 
-<%= link_to doctors_path do %>
-  <div class="fff"> <button type="button" class="btn btn-link glyphicon glyphicon-chevron-left"></button> </div>
-<% end %>
+<!-- buttons nav -->
+<div style="display: flex; justify-content: space-between">
+  <div>
+  <%= link_to root_path do %>
+    <div> <button type="button" class="btn btn-link glyphicon glyphicon-home" data-toggle="tooltip" data-placement="right" title="Back to home"></button> </div>
+  <% end %>
+  </div>
+  <div>
+  <%= link_to doctors_path do %>
+    <div> <button type="button" class="btn btn-link glyphicon glyphicon-list" data-toggle="tooltip" data-placement="right" title="Doctor listing"></button> </div>
+  <% end %>
+  </div>
+  <div>
+  <%= link_to doctors_path do %>
+    <div> <button type="button" class="btn btn-link glyphicon glyphicon-search" data-toggle="tooltip" data-placement="right" title="Search new doctor"></button> </div>
+  <% end %>
+  </div>
+  <div>
+  <%= link_to user_path(current_user) do %>
+    <div> <button type="button" class="btn btn-link glyphicon glyphicon-user" data-toggle="tooltip" data-placement="right" title="User profile"></button> </div>
+  <% end %>
+  </div>
+
+</div>
+
+
+
+
+<!-- buttons nav END -->
+
 
 <!-- MAP -->
 <div id="map" style="width: 100%; height: 200px;"></div>
-    
+
 
 <br>
 
