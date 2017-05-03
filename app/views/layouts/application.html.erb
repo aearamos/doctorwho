@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>DoctorWho</title>
+    <title><%= yield(:title_tag).blank? ? "DoctorWho - Find a doctor you trust & fits your needs" : yield(:title_tag) %></title>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
 
