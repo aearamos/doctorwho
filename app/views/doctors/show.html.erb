@@ -10,32 +10,11 @@
 <div class="container">
 <div class="row2">
 
-<div class="fff"> <button type="button" class="btn btn-link glyphicon glyphicon-chevron-left"></button> </div>
-
-
+<%= link_to doctors_path do %>
+  <div class="fff"> <button type="button" class="btn btn-link glyphicon glyphicon-chevron-left"></button> </div>
+<% end %>
 
 <div id="map" style="width: 100%; height: 200px;"></div>
-
-<!-- MAP -->
-     <% content_for(:after_js) do %>
-        <%= javascript_tag do %>
-          $(document).ready(function() {
-            var handler = Gmaps.build('Google');
-            handler.buildMap({ internal: { id: 'map' } }, function() {
-              markers = handler.addMarkers(<%= raw @hash.to_json %>);
-              handler.bounds.extendWith(markers);
-              handler.fitMapToBounds();
-              if (markers.length == 0) {
-                handler.getMap().setZoom(2);
-              } else if (markers.length == 1) {
-                handler.getMap().setZoom(14);
-              }
-            });
-          });
-        <% end %>
-      <% end %>
-<!-- END MAP -->
-
 
 <!-- DOCTOR PICTURE -->
 <div class="row">
@@ -74,9 +53,7 @@
         Website: <%=@doctor.website %>
         <% else %>
         <center><h6><%=link_to @doctor.website, @doctor.website %></h6></center>
-        <%end%></p>
-
-
+        <% end %></p>
 
         <button role="button" class="btn btn-primary btn-md" data-toggle='modal' data-target='#myModal'>Review</button>
 
@@ -113,7 +90,7 @@
 </div> <!-- END DOCTOR INFO -->
 
 
-<div class="fff"> fasfkafsdfsdfsdf </div>
+<div class="fff"> Reviews </div>
 <!-- END JAVA REVIEWS -->
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <% @doctor.reviews.each do |review| %>
@@ -169,3 +146,24 @@
   </div>
 </div>
 <!-- END MODAL -->
+
+
+<!-- MAP -->
+     <% content_for(:after_js) do %>
+        <%= javascript_tag do %>
+          $(document).ready(function() {
+            var handler = Gmaps.build('Google');
+            handler.buildMap({ internal: { id: 'map' } }, function() {
+              markers = handler.addMarkers(<%= raw @hash.to_json %>);
+              handler.bounds.extendWith(markers);
+              handler.fitMapToBounds();
+              if (markers.length == 0) {
+                handler.getMap().setZoom(2);
+              } else if (markers.length == 1) {
+                handler.getMap().setZoom(14);
+              }
+            });
+          });
+        <% end %>
+      <% end %>
+<!-- END MAP -->
