@@ -1,9 +1,7 @@
 <div class="navbar-wagon">
   <!-- Logo -->
-  <a href="/">
-    <%= image_tag "logo_drwho.png", size: "200x50" %>
 
-  </a>
+  <a href="/"><%= image_tag "logo_drwho.png", size: "200x50" %></a>
 
   <!-- Right Navigation -->
   <div class="navbar-wagon-right hidden-xs">
@@ -20,48 +18,58 @@
       <%= content_tag :span, "Doctor Listing", :class => "navbar-wagon-item navbar-wagon-link" %>
     <% end %>
 
-    <% if !current_user %>
-      <%= link_to "Login",  new_user_session_path %>
-    <% else%>
-    <%end%>
+  <% if !current_user %>
+    <%= link_to "Login",  new_user_session_path, :class=> "login-link" %>
+  <% end %>
 
 
     <% if current_user %>
     <!-- Profile picture and dropdown -->
-    <div class="navbar-wagon-item">
-
-      <div class="dropdown">
-
-      <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
-     <!-- <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><%= link_to('Profile', user_path(current_user)) %></li>
-          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-          <%else%>
-          <%end%>
-        </ul>
+      <div class="navbar-wagon-item">
+        <div class="dropdown">
+        <%= image_tag avatar_url, class: "avatar dropdown-toggle", id: "navbar-wagon-menu", "data-toggle" => "dropdown" %>
+       <!-- <img src="http://placehold.it/50x50" class="avatar dropdown-toggle" id="navbar-wagon-menu" data-toggle="dropdown"> -->
+            <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+              <li><%= link_to('Profile', user_path(current_user)) %></li>
+              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
+            </ul>
+        </div>
       </div>
-    </div>
+    <% end %>
   </div>
 
   <!-- Dropdown appearing on mobile only -->
-<% if current_user %>
-  <div class="navbar-wagon-item hidden-md hidden-lg">
-    <div class="dropdown">
-      <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
-        <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
-          <li><%= link_to('Profile', user_path(current_user)) %></li>
-          <li><%= link_to('Logout', destroy_user_session_path, :method => :delete) %></li>
-          <%else%>
-          <%end%>
-        </ul>
+  <% if current_user %>
+    <div class="navbar-wagon-item hidden-md hidden-lg hidden-sm">
+      <div class="dropdown">
+        <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+          <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+            <li><%= link_to 'Profile', user_path(current_user)%></li>
+            <li><%= link_to 'Doctor Listing', doctors_path %></li>
+            <li><%= link_to 'About', about_path %></li>
+            <li><%= link_to 'Home', root_path %></li>
+            <li><%= link_to 'Logout', destroy_user_session_path, :method => :delete %></li>
+          </ul>
+        <%else%>
+          <div class="navbar-wagon-item hidden-md hidden-lg hidden-sm">
+            <div class="dropdown">
+              <i class="fa fa-bars dropdown-toggle" data-toggle="dropdown"></i>
+                <ul class="dropdown-menu dropdown-menu-right navbar-wagon-dropdown-menu">
+                  <li><%= link_to 'Login', new_user_session_path%></li>
+                  <li><%= link_to 'Doctor Listing', doctors_path %></li>
+                  <li><%= link_to 'About', about_path %></li>
+                </ul>
+              </div>
+            </div>
+        <% end %>
+      </div>
     </div>
-  </div>
-
-
-
-
-
-
-
 </div>
+
+
+
+
+
+
+
+
