@@ -1,14 +1,11 @@
-
-<div class="container">
-  <br>
-  <br>
+<!--
+SIGN UP-->
 
 
-  <div class="row">
-    <div class="col-xs-12 col-sm-5">
-      <div class="border-form-div">
+<div class="wrapper">
+<div class="box border-form-div">
 
-        <h2>Sign up</h2>
+<h2>Sign up</h2>
 
         <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
           <%= f.error_notification %>
@@ -28,11 +25,10 @@
 
         <%= render "devise/shared/links" %>
 
-      </div>
-    </div>
-    <div class="col-xs-12 col-sm-7"  style="text-align: center">
-    </div>
-  </div>
 
 </div>
+</div>
+
+
+
 
