@@ -1,133 +1,114 @@
 <div class="background-image" style="background-image: linear-gradient(180deg, rgba(0,101,168,0.2) 0%, rgba(255,255,255,0.4) 50%), url('http://res.cloudinary.com/livpuppa/image/upload/v1493238698/city_iw0rls.jpg');">
+<div class="wrapper"><!--
+<div class="container"> -->
 
 
-<div class="container">
-
-  <div class="row">
-    <div class="col-xs-12 col-sm-5">
-
-    <div>
+<div class="row">
+<div class="box col-xs-12 col-md-3 col-md-offset-2">
+  <div>
       <h2 class="text-center">Welcome, <%=@user.first_name%>!</h2>
-      <div class="border">
-      <% if @user.facebook_picture_url == nil %>
-        <center><%= image_tag "usernoimage.png", size: "200x200" %></center>
-      <% else %>
-      <center>
-        <%= image_tag avatar_url, class: "avatar" %>
-        <!-- <img src={facebook_picture_url} className="avatar"/> -->
-        </center>
-      <% end %>
-      </div>
+
+        <div class="border">
+          <% if @user.facebook_picture_url == nil %>
+          <center><%= image_tag "usernoimage.png", size: "200x200" %></center>
+          <% else %>
+          <center>
+          <%= image_tag avatar_url, class: "avatar" %>
+          <!-- <img src={facebook_picture_url} className="avatar"/> -->
+          </center>
+          <% end %>
+        </div>
 
       <h3 class="text-center"><strong>User name:</strong> <%= @user.first_name + " " + @user.last_name%></h3>
       <h3 class="text-center"><strong>User email:</strong> <%= @user.email %></h3>
-    </div>
-
-      <br>
-      <%= link_to "Edit account configurations", edit_user_registration_path %>
-      <br>
-      <% if !@user.doctor.nil? %>
-        <% if current_user.doctorstatus == "true" %>
-        <a data-toggle="modal" href="#"" data-target="#myModal">Edit public profile</a>
-        <% end %>
-      <% end %>
-    </div>
-
-    <!-- FAZER A SELECAO SOMENTE SE FOR MEDICO -->
-
-    <% if @user.doctor.nil? %>
-      <br>
-      <br>
-      <%= link_to doctors_path do %>
-      <center><%= image_tag "lupa.png", size: "200x200" %></center>
-      <%end%>
-      <h1 style="padding: 15px"><center>Find out the best doctors in town</center></h1>
-    <% else %>
-      <% if current_user.doctorstatus == "true" %>
-      <div class="col-xs-12 col-sm-7">
-        <h2><strong>Public Profile</strong></h2>
-        <h4><strong><%= @doctor.name %></strong></h4>
-        <img src=<%=@doctor.photo%> alt="">
-        <h4><strong>Endereco: </strong><%= @doctor.street_name %></h4>
-        <h4><strong>City: </strong><%= @doctor.city_name %></h4>
-        <h4><strong>Phone: </strong><%= @doctor.phone %></h4>
-        <h4><strong>Description:</strong></h4>
-        <p><%= @doctor.description %></p>
-        <h4><strong>Activity: </strong><%= @doctor.activity %></h4>
-        <h4><strong>CRM: </strong><%= @doctor.crm %></h4>
-        <h4><strong>Insurer: </strong><%= @doctor.insurance %></h4>
-        <h4><strong>Website: </strong><%= @doctor.website %></h4>
-      </div>
-      <% else %>
-      <br>
-      <br>
-      <center><%= image_tag "verifyinginfo.png", size: "200x200" %></center>
-      <h2 style="text-align: center">We are verifying your profile information <%= current_user.first_name %>.</h2>
-      <h3 style="text-align: center">You'll be granted access as soon as we finish it</h3>
-      <% end %>
+  </div>
+  <div>
+    <br><%= link_to "Edit account configurations", edit_user_registration_path %><br>
+    <% if !@user.doctor.nil? %>
+    <% if current_user.doctorstatus == "true" %>
+    <a data-toggle="modal" href="#"" data-target="#myModal">Edit public profile</a>
     <% end %>
+    <% end %>
+  </div>
+  <!-- FAZER A SELECAO SOMENTE SE FOR MEDICO -->
+  <% if @user.doctor.nil? %><br><br>
+  <%= link_to doctors_path do %>
+  <center><%= image_tag "lupa.png", size: "200x200" %></center>
+  <%end%>
+  <h2 style="padding: 15px"><center>Find out the best doctors in town</center></h2>
+  <% else %>
+  <% if current_user.doctorstatus == "true" %>
+</div> <!-- COL -->
+
+<div class="box col-xs-12 col-md-7">
+    <h2><strong>Public Profile</strong></h2>
+    <h4><strong><%= @doctor.name %></strong></h4>
+    <img src=<%=@doctor.photo%> alt="">
+    <h4><strong>Endereco: </strong><%= @doctor.street_name %></h4>
+    <h4><strong>City: </strong><%= @doctor.city_name %></h4>
+    <h4><strong>Phone: </strong><%= @doctor.phone %></h4>
+    <h4><strong>Description:</strong></h4>
+    <p><%= @doctor.description %></p>
+    <h4><strong>Activity: </strong><%= @doctor.activity %></h4>
+    <h4><strong>CRM: </strong><%= @doctor.crm %></h4>
+    <h4><strong>Insurer: </strong><%= @doctor.insurance %></h4>
+    <h4><strong>Website: </strong><%= @doctor.website %></h4>
+    <% else %><br><br>
+    <center><%= image_tag "verifyinginfo.png", size: "200x200" %></center>
+    <h2 style="text-align: center">We are verifying your profile information <%= current_user.first_name %>.</h2>
+    <h3 style="text-align: center">You'll be granted access as soon as we finish it</h3>
+    <% end %>
+    <% end %>
+</div> <!-- COL -->
+</div> <!-- ROW -->
+
+
+<!--
+</div> CONTAINER -->
+</div> <!-- WRAPPER -->
+</div> <!-- BACKGROUND IMG -->
+
+<!-- MODAL -->
+<div class="container-fluid">
+<div class="row">
+<div class="col-xs-12">
+
+  <% if @user.doctor.nil? %>
+   <!--  <h1>Nao é um médico.</h1> -->
+  <% else %>
+  <div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+  <!-- Modal content-->
+  <div class="modal-content">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <h4 class="modal-title">Public Profile Information</h4>
+    </div>
+  <div class="modal-body">
+          <%= simple_form_for (@doctor) do |f| %>
+          <%= f.input :name %>
+          <%= f.input :street_name %>
+          <%= f.input :city_name %>
+          <%= f.input :phone %>
+          <%= f.input :description %>
+          <%= f.input :activity%>
+          <%= f.input :crm%>
+          <%= f.input :insurance%>
+          <%= f.input :website%>
+  </div>
+
+  <div class="modal-footer">
+    <%= f.submit "UPDATE INFORMATION", class: "btn btn-primary" %>
+    <% end %>
+  </div>
 
   </div>
-  <br>
-  <br>
-  <br>
 
+  </div>
+  </div>
+  <% end %>
 </div>
-
-
-
-
-
-
-
-            <!-- MODAL -->
-          <div class="container-fluid">
-          <div class="row">
-          <div class="col-xs-12">
-            <% if @user.doctor.nil? %>
-           <!--  <h1>Nao é um médico.</h1> -->
-            <% else %>
-            <div id="myModal" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-
-                <!-- Modal content-->
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Public Profile Information</h4>
-                  </div>
-                  <div class="modal-body">
-
-
-                    <%= simple_form_for (@doctor) do |f| %>
-                    <%= f.input :name %>
-                    <%= f.input :street_name %>
-                    <%= f.input :city_name %>
-                    <%= f.input :phone %>
-                    <%= f.input :description %>
-                    <%= f.input :activity%>
-                    <%= f.input :crm%>
-                    <%= f.input :insurance%>
-                    <%= f.input :website%>
-
-
-                  </div>
-                  <div class="modal-footer">
-                    <%= f.submit "UPDATE INFORMATION", class: "btn btn-primary" %>
-                    <% end %>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-            <% end %>
-            </div>
-            </div>
-            </div>
-            <!-- MODAL -->
-  <br>
-  <br>
-  <br>
 </div>
-
-
+</div>
+<!-- MODAL -->

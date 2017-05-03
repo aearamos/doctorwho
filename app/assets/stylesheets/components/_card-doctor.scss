@@ -1,3 +1,8 @@
+.pad {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
 .small{
   font-size: 10px;
   color: #252761;
@@ -126,18 +131,6 @@
   display: flex;
 }
 
-.box {
-  max-width: 800px;
-  padding: 22px;
-  box-shadow: 1px 10px 20px rgba(0,0,0,0.4);
-  overflow: hidden;
-  border-top: 1px solid #d5d5d5;
-  border-left: 1px solid #d5d5d5;
-  border-right: 1px solid #d5d5d5;
-  background-color: #FFFFFF;
-  border-top-right-radius: 6px;
-  border-top-left-radius: 6px;
-}
 
 .card-doctor {
   height: 175px;
