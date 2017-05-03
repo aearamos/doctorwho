@@ -28,6 +28,62 @@
 </div> <!-- END OF BANNER BACKGROUND  -->
 
 
+<div class="block2">
+<h2 class="pool"> Latest Reviews </h2>
+<div class="row">
+
+
+<div class="col-xs-12 col-sm-4">
+  <div class="card-home">
+   <% r = Review.last %>
+    <div class="card-home-category"> <strong><%= link_to r.doctor.name, doctor_path(r.doctor) %> </strong> </div>
+    <div class="card-home-description-title">
+      <h2>"<%= truncate(r.title, length: 17) %>" </h2>
+      <p class="small-p"><%= t(r.created_at.strftime('%d %b %Y')  ) %> </p>
+    </div>
+    <div class="card-home-description-text">
+      <p class="medium-p">"<%= truncate(r.comment, length: 65)%>"</p>
+    </div>
+    <img class="card-home-user" src="<%= r.doctor.photo %>">
+  </div>
+</div>
+
+
+<div class="col-xs-12 col-sm-4">
+  <div class="card-home">
+   <% r = Review.order("created_at DESC").second %>
+    <div class="card-home-category"> <strong><%= link_to r.doctor.name, doctor_path(r.doctor) %> </strong> </div>
+    <div class="card-home-description-title">
+      <h2>"<%= truncate(r.title, length: 17) %>" </h2>
+      <p class="small-p"><%= t(r.created_at.strftime('%d %b %Y')  ) %> </p>
+    </div>
+    <div class="card-home-description-text">
+      <p class="medium-p">"<%= truncate(r.comment, length: 65)%>"</p>
+    </div>
+    <img class="card-home-user" src="<%= r.doctor.photo %>">
+  </div>
+</div>
+
+<div class="col-xs-12 col-sm-4">
+  <div class="card-home">
+   <% r = Review.order("created_at DESC").third %>
+    <div class="card-home-category"> <strong><%= link_to r.doctor.name, doctor_path(r.doctor) %> </strong> </div>
+    <div class="card-home-description-title">
+      <h2>"<%= truncate(r.title, length: 17) %>" </h2>
+      <p class="small-p"><%= t(r.created_at.strftime('%d %b %Y')  ) %> </p>
+    </div>
+    <div class="card-home-description-text">
+      <p class="medium-p">"<%= truncate(r.comment, length: 65)%>"</p>
+    </div>
+    <img class="card-home-user" src="<%= r.doctor.photo %>">
+  </div>
+</div>
+
+
+
+</div>
+</div>
+
 
 <div class="block">
   <h1 style="color:white; line-height: 55px; letter-spacing: 1px;">DoctorWho helps you find the right doctor near you based on true reviews.</h1>
