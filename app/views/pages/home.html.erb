@@ -69,30 +69,56 @@
 
 
 <div class="block4">
-<div class="row">
+  <div class="row">
 
-<div class="col-xs-12 col-sm-4">
-
-    <div><h6>PROVIDERS</h6>
-
-<h6>Ensure that your profile is accurate, comprehensive, differentiated from others in your speciality, and connect with patients who can benefit most from your care.</h6>
+    <div class="col-xs-12 col-sm-4">
+      <div><h6>PROVIDERS</h6>
+        <h6>Ensure that your profile is accurate, comprehensive, differentiated from others in your speciality, and connect with patients who can benefit most from your care.</h6>
+      </div>
     </div>
-</div>
 
-<div class="col-xs-12 col-sm-4">
-
-    <div><h6>FOR DOCTORS</h6>
-
-<h6>We have the solutions, insights and experts to meet your unique growth, engagement and quality challenges. We can measurably improve your performance.</h6>
+    <div class="col-xs-12 col-sm-4">
+      <div><h6>FOR DOCTORS</h6>
+        <h6>We have the solutions, insights and experts to meet your unique growth, engagement and quality challenges. We can measurably improve your performance.</h6>
+      </div>
     </div>
-</div>
 
-<div class="col-xs-12 col-sm-4">
-    <div><h6>FOR ADVERTISERS</h6>
-
-<h6>Reach the largest audience of patients with targeting based on over conditions, physician specialty or demographics. Your ads will reach the most relevant patients for your brand.</h6>
+    <div class="col-xs-12 col-sm-4">
+      <div><h6>FOR ADVERTISERS</h6>
+        <h6>Reach the largest audience of patients with targeting based on over conditions, physician specialty or demographics. Your ads will reach the most relevant patients for your brand.</h6>
+      </div>
     </div>
+
+    <div class="col-xs-12 col-sm-12">
+      <button type="button" class="btn btn-round-lg btn-home" data-toggle="modal" data-target="#myModal">Contact us</button>
+
+      <!-- Modal -->
+      <div id="myModal" class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+        <!-- Modal content-->
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button " class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title">Tell us your email and message</h4>
+            </div>
+            <div class="modal-body">
+              <%= simple_fields_for :message do |n| %>
+                  <%= n.input :name, label: false, placeholder: "Name"  %>
+                  <%= n.input :email, label: false, placeholder: "Email"  %>
+                  <%= n.input :text, label: false, placeholder: "Message"  %>
+              <% end %>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-round-lg btn-home" data-dismiss="modal">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+<!-- MODAL -->
+
+  </div>
 </div>
 
-</div>
-</div>
+
+
