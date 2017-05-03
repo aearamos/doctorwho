@@ -10,10 +10,10 @@
 
         <div class="border">
           <% if @user.facebook_picture_url == nil %>
-          <center><%= image_tag "usernoimage.png", size: "200x200" %></center>
+            <center><%= image_tag "usernoimage.png", size: "200x200" %></center>
           <% else %>
           <center>
-          <%= image_tag avatar_url, class: "avatar" %>
+            <%= image_tag avatar_url.gsub('square', 'large')%>
           <!-- <img src={facebook_picture_url} className="avatar"/> -->
           </center>
           <% end %>
