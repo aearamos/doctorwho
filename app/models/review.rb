@@ -7,8 +7,8 @@ class Review < ApplicationRecord
     private
 
     def calculate_doctor_average_review
-        d = Review.last.doctor
-       d.average_rating = d.reviews.average(:rating).to_f
-       d.save
+      doctor = self.doctor
+      doctor.average_rating = doctor.reviews.average(:rating).to_f
+      doctor.save
     end
 end
