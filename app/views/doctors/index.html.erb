@@ -35,7 +35,7 @@
               <% doctor.specialties.each do |specialty| %>
                <p> <%= specialty.name %> </p>
               <% end %>
-              <p class= "hidden-xs hidden-sm"><%= truncate(doctor.street_name) %> <%= doctor.city_name %></p>
+              <p class= "hidden-xs hidden-sm"><%= doctor.street_name %> <%= doctor.city_name %></p>
             </div>
             <img class="img-circle card-d-doctor-left avatar-big" src=<%= doctor.photo%> alt="">
             <span class="small">Rating:</span> <p class="card-d-review">  <%= doctor.average_rating ? doctor.average_rating.round(1) : " N/A " %></p>
