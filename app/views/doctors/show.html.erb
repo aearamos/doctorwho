@@ -77,11 +77,19 @@
 
     <div class="panel panel-default">
     <div class="paneli-body">
-    <p><h5>Specialties: <% @doctor.specialties.each do |specialty| %><%= specialty.name %>
-    <h5>Description:</h5>
-    <p class="description hide_description"><%= @doctor.description %></p><button class="read-more btn btn-primary btn-xs ">
+    <h4>Specialties: </h4>
+    <% @doctor.specialties.each do |specialty| %>
+    <p><%= specialty.name %></p>
+    <br>
+    <h4> Insurance:</h4>
+    <p> <%= @doctor.insurance %></p>
+    <br>
+    <h4>Description:</h4>
+    <p class="description hide_description"><%= @doctor.description %></p>
+    <button class="read-more btn btn-primary btn-xs ">
      read more
-    </button><button class="read-less hidden btn btn-primary btn-xs">
+    </button>
+    <button class="read-less hidden btn btn-primary btn-xs">
      read less
     </button>
 
