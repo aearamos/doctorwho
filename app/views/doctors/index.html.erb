@@ -4,96 +4,81 @@
 
 <div class="wrapper">
 <div class="row">
-<!-- <center>
-
-<h2>There are <%=@doctors.count%> doctors near you!</h3> -->
 
 
-
-  <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
-    <div class="box"><h3><i class="fa fa-filter" aria-hidden="true">
-      </i>Narrow your search results</h3>
-      <h6> <%= link_to "x Reset Filter",  doctors_path %> </h6>
+<div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+  <div class="box hidden-xs hidden-sm">
+  <h3><i class="fa fa-filter" aria-hidden="true">
+    </i>Narrow your search results</h3>
       <%= render 'filter' %>
-    </div>
   </div>
+</div>
+
+<div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
+      <div class="box">
+       <div id="map" style="width: 100%; height: 200px;"></div>
 
 
-
-  <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9">
-    <div class="box">
-
-
-     <div id="map" style="width: 100%; height: 200px;"></div>
-
-    <% if params[:search] %>
-      <h4>Your search results for </h4>
-      <h6> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> <%= @street ? " Location: #{@street}" : "" %>  <br> </h6>
-    <% end  %>
-    <br>
-
-      <% @doctors.each do |doctor|%>
-        <div class="card-doctor">
-          <div class="doctor-contact">
-            <h3 class= "card-doctor-name"><%= link_to doctor.name, doctor_path(doctor) %></h3>
-            <p class="card-doctor-address"><%= doctor.street_name %> <br> <%= doctor.city_name %></p>
-            <p class="card-doctor-specialty">
-            <% doctor.specialties.each do |specialty| %>
-            Categoria: <%= specialty.name %>
-          <% end %></p>
-          <img class= "card-doctor-profile" src= <%= doctor.photo %> alt="">
-          </div>
-
-                <div class="rating-info">
-                  <div class="btn btn-primary card-doctor-index-rating-button" data-toggle="modal" data-target="#myModal<%="#{doctor.id}"%>"> Review!</div>
+      <% if params[:search] %>
+        <h4>Your search results for </h4>
+        <h5> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> <%= @street ? " Location: #{@street}" : "" %>  <br> </h5>
+        <h6> <%= link_to "x Reset Filter",  doctors_path %> </h6>
+      <% end %>
 
 
-                      <div id="myModal<%="#{doctor.id}"%>" class="modal fade" role="dialog"> <!-- START MODAL -->
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <button type="button" class="close" data-dismiss="modal">&times;</button>
-                              <h4 class="modal-title">Review <%= doctor.name %></h4>
-                            </div>
-                            <div class="modal-body">
-                              <%= simple_form_for [doctor, @review] do |f| %>
-                              <%= f.input :title, label: false, placeholder: "Review title" %>
-                              <%= f.input :comment, label: false, placeholder: "Comment" %>
-                              <%= f.input :rating, collection: 1..5, placeholder: "Rating" %>
-                            </div>
-                            <div class="modal-footer">
-                              <%= f.button :submit %>
-                              <% end %>
-                            </div>
-                          </div>
-                        </div>
-                      </div><!-- END MODAL -->
+        <% @doctors.each do |doctor|%>
 
-                  <div class="card-doctor-rating-description"> Rating </div>
-                  <div class="card-doctor-rating-average"> <%= doctor.average_rating ? doctor.average_rating.round(1) : " N/A " %> </div>
+          <div class="card-d">
+
+            <div class="card-d-description">
+              <h2><%= link_to doctor.name, doctor_path(doctor) %></h2>
+              <% doctor.specialties.each do |specialty| %>
+               <p> <%= specialty.name %> </p>
+              <% end %>
+              <p class= "hidden-xs hidden-sm"><%= truncate(doctor.street_name) %> <%= doctor.city_name %></p>
+            </div>
+            <img class="img-circle card-d-doctor-left avatar-big" src=<%= doctor.photo%> alt="">
+            <span class="small">Rating:</span> <p class="card-d-review">  <%= doctor.average_rating ? doctor.average_rating.round(1) : " N/A " %></p>
 
 
+            <div class="btn btn-primary rating-button hidden-xs hidden-sm" data-toggle="modal" data-target="#myModal<%="#{doctor.id}"%>"> Review!</div>
 
-                  <div class="card-doctor-amount-of-reviews"> <%= pluralize(doctor.reviews.count,'Review')  %> </div>
+
+              <div id="myModal<%="#{doctor.id}"%>" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Review <%= doctor.name %></h4>
+                      </div>
+                      <div class="modal-body">
+                        <%= simple_form_for [doctor, @review] do |f| %>
+                        <%= f.input :title, label: false, placeholder: "Review title" %>
+                        <%= f.input :comment, label: false, placeholder: "Comment" %>
+                        <%= f.input :rating, collection: 1..5, placeholder: "Rating" %>
+                      </div>
+                      <div class="modal-footer">
+                        <%= f.button :submit %>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+          </div> <!-- END DOCTOR-CARD -->
+        <%end%>
 
-          <%end%>
-
-          <%= paginate @doctors, theme: 'twitter-bootstrap-3' %>
-        </div>
+            <%= paginate @doctors, theme: 'twitter-bootstrap-3' %>
       </div>
+    </div>
+
 
 
     </div> <!-- END ROW  -->
   </div> <!-- END WRAPPER -->
-
-</div>
-</div>
 </div> <!-- END BACKGROUND  -->
 
 
- <% content_for(:after_js) do %>
+<% content_for(:after_js) do %>
         <%= javascript_tag do %>
           $(document).ready(function() {
             var handler = Gmaps.build('Google');
