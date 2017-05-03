@@ -65,21 +65,12 @@
 
         </center>
 
-         <center>
-        <%if @doctor.user.nil?%>
-        <%if current_user.doctor.nil?%>
-        <%= link_to match_doctor_path(@doctor) do %>
 
-        <br>
-        <button type="button" class="btn btn-primary btn-xs" data-placement="bottom">Is this you?</button>
-
-        <%end%>
-        <%end%>
-        <%end%>
-        </center>
 
         <div class="caption">
         <h2><%= @doctor.name %> </h2>
+        <p class="center-p"><%= truncate(@doctor.street_name, length: 60) %></p>
+        <p class="center-p"><%= truncate(@doctor.city_name) %></p>
         <p><p><% if @doctor.website == "Não Disponível."%>
         Website: <%=@doctor.website %>
         <% else %>
@@ -87,6 +78,19 @@
         <% end %></p>
 
         <button role="button" class="btn btn-primary btn-md" data-toggle='modal' data-target='#myModal'>Review</button>
+
+         <center>
+        <%if @doctor.user.nil?%>
+        <%if current_user.doctor.nil?%>
+        <%= link_to match_doctor_path(@doctor) do %>
+
+        <br>
+        <button type="button" class="btn btn-text" data-placement="bottom">Is this you?</button>
+
+        <%end%>
+        <%end%>
+        <%end%>
+        </center>
 
         </a>
       </div>
@@ -100,11 +104,19 @@
 
     <div class="panel panel-default">
     <div class="paneli-body">
-    <p><h5>Specialties: <% @doctor.specialties.each do |specialty| %><%= specialty.name %>
-    <h5>Description:</h5>
-    <p class="description hide_description"><%= @doctor.description %></p><button class="read-more btn btn-primary btn-xs ">
+    <h4>Specialties: </h4>
+    <% @doctor.specialties.each do |specialty| %>
+    <p><%= specialty.name %></p>
+    <br>
+    <h4> Insurance:</h4>
+    <p> <%= @doctor.insurance %></p>
+    <br>
+    <h4>Description:</h4>
+    <p class="description hide_description"><%= @doctor.description %></p>
+    <button class="read-more btn btn-primary btn-xs ">
      read more
-    </button><button class="read-less hidden btn btn-primary btn-xs">
+    </button>
+    <button class="read-less hidden btn btn-primary btn-xs">
      read less
     </button>
 
@@ -141,10 +153,11 @@
 
 
 
-<div class="fffu"></div>
-<div class="fff"> REVIEWS First-person experiences from real patients like you. <button role="button" class="btn btn-primary btn-xs" data-toggle='modal' data-target='#myModal'>Share your experience with <%= @doctor.name %>  </button> </div>
+
 
 <!-- END JAVA REVIEWS -->
+
+<h3> <strong> All Reviews of <%= @doctor.name %>: </strong></h3>
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <% @doctor.reviews.each do |review| %>
         <div class="panel panel-default">
@@ -152,17 +165,19 @@
             <h5 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= dom_id review %>" aria-expanded="true" aria-controls="<%= dom_id review %>">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-      <%=review.title%>
-      </button> Rating:<div class="btn btn-danger"> <%= review.rating %>
-      </div>
+                <div class="overflow-p"><%=review.title%></div>
+                </button>
+                Rating:
+                <div class="btn btn-midnight"> <%= review.rating %>
+                </div>
               </a>
             </h5>
           </div>
           <div id="<%= dom_id review %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
-              <%=review.comment%>
+              <p class="overflow-p"> "<%=review.comment%>"</p>
+            <p class="small-p"> Review by <%=review.user.first_name%>, <%=review.user.created_at.strftime('%d %b %Y')%> </p>
             </div>
-            <br>Patient <%=review.user.first_name%>, at <%=review.user.created_at%>
           </div>
         </div>
       <% end %>
