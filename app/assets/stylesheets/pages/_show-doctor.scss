@@ -69,6 +69,15 @@
   width: 100px;
 }
 
+.center-p{
+  text-align: center;
+}
+
+
+.overflow-p {
+  overflow: hidden;
+  text-overflow: ellipsis
+}
 
 .infos {
   background-color: $light-gray;
@@ -161,6 +170,16 @@
 
   box-shadow: 1px 1px 2px rgba(0,0,0,0.4);
 }
+
+
+  .btn-text {
+  color: gray;
+  background-color: white;
+  font-style: italic;
+  font-size: 13px;
+
+}
+
 .btn-medium:hover {
   opacity: 1;
   text-decoration: none;
@@ -171,6 +190,13 @@
   color: white;
   border-radius: 2px;
   background: #23b1b9;
+  transition: background 0.3s ease;
+}
+
+.btn-midnight {
+  color: white;
+  border-radius: 2px;
+  background: $midnight;
   transition: background 0.3s ease;
 }
 
