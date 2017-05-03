@@ -21,7 +21,7 @@
 
       <% if params[:search] %>
         <h4>Your search results for </h4>
-        <h6> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> <%= @street ? " Location: #{@street}" : "" %>  <br> </h6>
+        <h5> <%= @name ? " Name: #{@name}" : "" %>  <br>  <%= @rating ? " Minimum Rating of: #{@rating}" : "" %> <br> <%= @specialty_params ? " Specialty: #{@specialty_params}" : "" %> <%= @street ? " Location: #{@street}" : "" %>  <br> </h5>
         <h6> <%= link_to "x Reset Filter",  doctors_path %> </h6>
       <% end %>
 
