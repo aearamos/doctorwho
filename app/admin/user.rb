@@ -28,4 +28,16 @@ ActiveAdmin.register User do
     actions
   end
 
+  form do |f|
+    f.inputs "Identity" do
+      f.input :last_name
+      f.input :first_name
+      f.input :email
+      f.input :doctorstatus
+    end
+    f.inputs "Admin" do
+      f.input :admin
+    end
+    f.actions
+  end
 end
