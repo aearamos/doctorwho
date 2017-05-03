@@ -14,7 +14,11 @@
   <div class="fff"> <button type="button" class="btn btn-link glyphicon glyphicon-chevron-left"></button> </div>
 <% end %>
 
+<!-- MAP -->
 <div id="map" style="width: 100%; height: 200px;"></div>
+    
+
+<br>
 
 <!-- DOCTOR PICTURE -->
 <div class="row">
@@ -68,19 +72,38 @@
 <div class="col-sm-12 col-md-8">
 
     <div class="panel panel-default">
-    <div class="panel-body">
-    <h6>Specialties:</h6>
-    <% @doctor.specialties.each do |specialty| %><p><%= specialty.name %></p>
-    <h6>Description:</h6>
-    <p class="hide_description"><%= @doctor.description %></p><button class="btn btn-primary btn-xs" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+    <div class="paneli-body">
+    <p><h5>Specialties: <% @doctor.specialties.each do |specialty| %><%= specialty.name %>
+    <h5>Description:</h5>
+    <p class="description hide_description"><%= @doctor.description %></p><button class="read-more btn btn-primary btn-xs ">
      read more
-      </button>
+    </button><button class="read-less hidden btn btn-primary btn-xs">
+     read less
+    </button>
+
+
+<% content_for :after_js do %>
+
+<script type="text/javascript">
+    $(document).ready(function() {
+      $('.read-more').on('click', function(event) {
+        $('.description').removeClass("hide_description");
+        $('.read-more').addClass("hidden");
+        $('.read-less').removeClass("hidden");
+      });
+
+      $('.read-less').on('click', function(event) {
+        $('.description').addClass("hide_description");
+        $('.read-more').removeClass("hidden");
+        $('.read-less').addClass("hidden");
+      });
+    });
+</script>
+
+<%end%>
+
 
     <% end %>
-    <br>
-
-
-
     </div>
   </div>
 
@@ -90,7 +113,10 @@
 </div> <!-- END DOCTOR INFO -->
 
 
-<div class="fff"> Reviews </div>
+
+<div class="fffu"></div>
+<div class="fff"> REVIEWS First-person experiences from real patients like you. <button role="button" class="btn btn-primary btn-xs" data-toggle='modal' data-target='#myModal'>Share your experience with <%= @doctor.name %>  </button> </div>
+
 <!-- END JAVA REVIEWS -->
     <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
       <% @doctor.reviews.each do |review| %>
@@ -98,18 +124,18 @@
           <div class="panel-heading" role="tab" id="headingOne">
             <h5 class="panel-title">
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#<%= dom_id review %>" aria-expanded="true" aria-controls="<%= dom_id review %>">
-                Rating:<div class="btn btn-success"> <%= review.rating %>
-      </div> | <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
       <%=review.title%>
-      </button>
+      </button> Rating:<div class="btn btn-danger"> <%= review.rating %>
+      </div>
               </a>
             </h5>
           </div>
           <div id="<%= dom_id review %>" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne">
             <div class="panel-body">
               <%=review.comment%>
-              <h6><%=review.user.first_name%>, <%=review.user.created_at%></h6>
             </div>
+            <br>Patient <%=review.user.first_name%>, at <%=review.user.created_at%>
           </div>
         </div>
       <% end %>
