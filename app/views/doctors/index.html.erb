@@ -26,18 +26,22 @@
       <% end %>
 
 
+      <h3> <center> <%= @doctors.empty? ? "No doctors found with your criteria" : "" %></h3>
+
         <% @doctors.each do |doctor|%>
 
           <div class="card-d">
 
-            <div class="card-d-description">
+            <div class="col-xs-3">
+              <img class="card-d-doctor-left avatar-big" src=<%= doctor.photo%> alt="">
+            </div>
+            <div class="card-d-description col-xs-12 col-sm-6">
               <h2><%= link_to doctor.name, doctor_path(doctor) %></h2>
               <% doctor.specialties.each do |specialty| %>
                <p> <%= specialty.name %> </p>
               <% end %>
               <p class= "hidden-xs hidden-sm"><%= truncate(doctor.street_name) %> <%= doctor.city_name %></p>
             </div>
-            <img class="img-circle card-d-doctor-left avatar-big" src=<%= doctor.photo%> alt="">
             <span class="small">Rating:</span> <p class="card-d-review">  <%= doctor.average_rating ? doctor.average_rating.round(1) : " N/A " %></p>
 
 
