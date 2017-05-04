@@ -55,7 +55,7 @@
 <div class="row">
   <div class="col-sm-12 col-md-4">
     <div class="panel panel-default">
-      <div class="panel-body">
+      <div class="panel-body minimal-height">
         <center>
         <img src=<%=@doctor.photo%> alt="user" class="avatar-square">
 
@@ -75,10 +75,10 @@
         <h2><%= @doctor.name %> </h2>
         <p class="center-p"><%= truncate(@doctor.street_name, length: 60) %></p>
         <p class="center-p"><%= truncate(@doctor.city_name) %></p>
-        <p class="center-p"><%= @doctor.phone %></p>
+        <p class="center-p"> Phone:   <%= @doctor.phone %></p>
 
-        <p><p><% if @doctor.website == "Not available."%>
-        Website: <%=@doctor.website %>
+        <p style="text-align: center"> <% if @doctor.website == "Não Disponível."%>
+        Website: <%=@doctor.website %> <p>
         <% else %>
         <center><h6><%=link_to @doctor.website, @doctor.website %></h6></center>
         <% end %></p>
@@ -109,7 +109,7 @@
 <div class="col-sm-12 col-md-8">
 
     <div class="panel panel-default">
-    <div class="paneli-body">
+    <div class="paneli-body minimal-height">
     <h4>Specialties: </h4>
     <% @doctor.specialties.each do |specialty| %>
     <p><%= specialty.name %></p>
