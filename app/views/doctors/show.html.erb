@@ -75,7 +75,9 @@
         <h2><%= @doctor.name %> </h2>
         <p class="center-p"><%= truncate(@doctor.street_name, length: 60) %></p>
         <p class="center-p"><%= truncate(@doctor.city_name) %></p>
-        <p><p><% if @doctor.website == "Não Disponível."%>
+        <p class="center-p"><%= @doctor.phone %></p>
+
+        <p><p><% if @doctor.website == "Not available."%>
         Website: <%=@doctor.website %>
         <% else %>
         <center><h6><%=link_to @doctor.website, @doctor.website %></h6></center>

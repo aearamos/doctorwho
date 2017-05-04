@@ -24,7 +24,7 @@ persisted_specialty = []
   )
 end
 
-1r.times do |i|
+1.times do |i|
   html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/#{i+1}")
   #  html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/5")
 
