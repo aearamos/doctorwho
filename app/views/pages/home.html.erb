@@ -39,7 +39,7 @@
     <div class="card-home-category"> <strong><%= link_to r.doctor.name, doctor_path(r.doctor) %> </strong> </div>
     <div class="card-home-description-title">
       <h2>"<%= truncate(r.title, length: 17) %>" </h2>
-      <p class="small-p"><%= t(r.created_at.strftime('%d %b %Y')  ) %> </p>
+      <p class="small-p"><%= (r.created_at.strftime('%d %b %Y')  ) %> </p>
     </div>
     <div class="card-home-description-text">
       <p class="medium-p">"<%= truncate(r.comment, length: 65)%>"</p>
