@@ -24,7 +24,7 @@ persisted_specialty = []
   )
 end
 
-10.times do |i|
+1r.times do |i|
   html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/#{i+1}")
   #  html_file = open("http://www.doctoralia.com.br/medicos/cidade/sao+paulo-116705/5")
 
@@ -82,7 +82,7 @@ end
   end
 end
 
-300.times do
+30.times do
   Review.create!(
   title: Faker::Lorem.sentence,
   comment: Faker::Lorem.paragraph(2),
