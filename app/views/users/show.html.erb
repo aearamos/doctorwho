@@ -33,7 +33,7 @@
   <!-- FAZER A SELECAO SOMENTE SE FOR MEDICO -->
   <% if @user.doctor.nil? %><br><br>
   <%= link_to doctors_path do %>
-  <center><%= image_tag "lupa.png", size: "200x200" %></center>
+<center><%= image_tag "lupa.png", size: "200x200" %></center>
   <%end%>
   <h2 style="padding: 15px"><center>Find out the best doctors in town</center></h2>
   <% else %>

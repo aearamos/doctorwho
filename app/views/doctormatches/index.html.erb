@@ -10,10 +10,10 @@
 
         <div class="blue">
           <div class="1">
-            <h1 style="text-align: center"><strong>Is this you?</strong></h1>
+            <h2 style="text-align: center"><strong>Is this you?</strong></h2>
             <p style="text-align: center"><strong><%=@doctor.name%></strong></p>
             <br>
-             <center><img src= <%=@doctor.photo%> ></center>
+             <center><img src= <%=@doctor.photo%> ></center><br>
             <p style="text-align: center"><strong>CRM: <%=@doctor.crm%></strong></p>
           </div>
         </div>
@@ -22,17 +22,19 @@
 
   <div class="col-xs-12 col-sm-8 col-md-8 col-lg-8 red">
 
-    <h1 style="text-align: center"> Contact us and improve your public profile </p>
+    <h2 style="text-align: center"> Contact us and improve your public profile </h2>
     <p style="text-align: center"><strong><%=@doctor.name%></strong></p>
 
-      <div style="padding: 15px">
-      <i><p>Get 150% more appoitments</p></i>
-      <i><p>Edit your public profile</p></i>
-      <i><p>Change your availability status</p></i>
-      <i><p>Add multiple addresses and phone numbers</p></i>
+      <div style="padding: 15px; text-align: center">
+
+      <i><p>Get 150% more appointments.</p></i>
+      <i><p>Edit your public profile.</p></i>
+      <i><p>Change your availability status.</p></i>
+      <i><p>Add multiple addresses and phone numbers.</p></i>
       </div>
 
-      <button type="button" class="btn btn-danger btn-round-lg btn-lg" data-toggle="modal" data-target="#myModal2"> Contact us: </button>
+      <center><button type="button" class="btn btn-danger btn-round-lg btn-md" data-toggle="modal" data-target="#myModal2">Contact us</button></center>
+      <br><br>
 
 
   </div>
